@@ -24,7 +24,7 @@ export default function CenteredGrid() {
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-          <Panel className={classes.panel}>xs=6</Panel>
+          <Panel className={classes.panel} xs={6}></Panel>
         </Grid>
         <Grid item xs={12} md={6}>
           <Panel className={classes.panel}>
