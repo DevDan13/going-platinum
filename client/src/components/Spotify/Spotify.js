@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as $ from "jquery";
-import { authEndpoint, clientId, redirectUri, scopes } from "../utils/config";
-import hash from "../utils/hash";
+import { authEndpoint, clientId, redirectUri, scopes } from "../../utils/config";
+import hash from "../../utils/hash";
 import Player from "../Player/Player";
 import "./style.css"
 

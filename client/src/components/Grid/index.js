@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Panel from "../Panel/index";
 import Grid from "@material-ui/core/Grid";
 import Spotify from "../Spotify/Spotify";
+import API from "../../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,12 +20,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CenteredGrid() {
   const classes = useStyles();
+  const onTest = () => {
+    API.getGenreSeeds();
+  };
 
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-          <Panel className={classes.panel}>xs=6</Panel>
+          <Panel className={classes.panel}>
+            <button onClick={onTest}>Test</button>
+          </Panel>
         </Grid>
         <Grid item xs={12} md={6}>
           <Panel className={classes.panel}>
