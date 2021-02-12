@@ -59,9 +59,9 @@ export default function MenuAppBar() {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <HeadsetIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h3" className={classes.title}>
             {/* Insert App title here */}
-            <h2>Going Platinum</h2>
+            Going Platinum
           </Typography>
           {auth && (
             <div>
