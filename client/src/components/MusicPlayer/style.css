@@ -1,0 +1,24 @@
+#player-container {
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+}
+
+#image-container {
+    display: flex;
+    justify-content: center;
+}
+
+#player-image {
+    padding-top: 25px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.player-button {
+  display: flex;
+  justify-content: center;
+}
+
+

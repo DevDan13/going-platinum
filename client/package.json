@@ -4,7 +4,10 @@
   "proxy": "http://localhost:3001/",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@material-ui/core": "^4.11.3",
+=======
+>>>>>>> 15cda0a06edeab124b8406e21aaad8dd85d2a2c9
     "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",

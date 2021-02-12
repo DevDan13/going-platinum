@@ -116,7 +116,7 @@ class Spotify extends Component {
             src="https://open.spotify.com/embed/track/5sNESr6pQfIhL3krM8CtZn"
             width="300"
             height="380"
-            frameborder="0"
+            frameBorder="0"
             allowtransparency="true"
             allow="encrypted-media"
           ></iframe>
