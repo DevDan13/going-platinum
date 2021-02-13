@@ -55,7 +55,7 @@ class Spotify extends Component {
   }
 
   getCurrentlyPlaying(token) {
-    // Make a call using the token
+    // Make a call using the token 
     $.ajax({
       url: "https://api.spotify.com/v1/me/player",
       type: "GET",

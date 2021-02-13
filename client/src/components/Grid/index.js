@@ -4,6 +4,9 @@ import Panel from "../Panel/index";
 import Grid from "@material-ui/core/Grid";
 import Spotify from "../Spotify/Spotify";
 import MusicPlayer from "../MusicPlayer/index";
+import Accordion from "../Accordion/index";
+import "./style.css"
+import API from "../../utils/API"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
+    overflow:"auto",
   },
 }));
 
@@ -26,7 +30,12 @@ export default function CenteredGrid() {
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Panel className={classes.panel} style>
-            <MusicPlayer></MusicPlayer>
+            {/* <MusicPlayer></MusicPlayer> */}
+            <h2 id="activity-h2">Activities</h2>
+            {/* <Accordion></Accordion> */}
+            <button onClick={API.getClientCredentialsGrant}>
+              Click
+            </button>
           </Panel>
         </Grid>
         <Grid item xs={12} md={6}>
