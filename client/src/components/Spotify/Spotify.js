@@ -83,6 +83,7 @@ class Spotify extends Component {
   }
 
   render() {
+    console.log(clientId);
     return (
       <div className="App">
         <header className="App-header">

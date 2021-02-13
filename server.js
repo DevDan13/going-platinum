@@ -17,11 +17,14 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 // app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// Connect to the Mongo DB
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost/goingPlatinum',
+  {
+    useCreateIndex: true,
+    useNewUrlParser: true
+  }
+);
 
 // Start the API server
 app.listen(PORT, () =>
