@@ -5,7 +5,7 @@ const dotenv = require("dotenv").config();
 
 const redirect_uri = 
   process.env.REDIRECT_URI || 
-  'http://localhost:8888/callback'
+  'http://localhost:3001/callback'
 
 router.get('/login', function(req, res) {
   res.redirect('https://accounts.spotify.com/authorize?' +
