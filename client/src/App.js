@@ -1,10 +1,9 @@
-import Home from "./pages/Home /Home";
-import Login from "./pages/Login";
+import Home from "./pages/Home/Home"
+import Login from "./pages/Login/Login";
+import Profile from "./pages/profile";
+import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // import './App.css';
-import Navbar from "./components/Navbar/Navbar";
-import Profile from "./pages/profile";
-
 function App() {
   return (
     <div className="App">
