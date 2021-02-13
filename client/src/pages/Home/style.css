@@ -1,0 +1,14 @@
+.img {
+     background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
+     /* background-repeat: repeat; */
+     height: 100vh;
+  
+    
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+ 
+}
