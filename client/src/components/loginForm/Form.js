@@ -1,17 +1,40 @@
 import React from "react";
-import { Button, FormHelperText, Input, FormControl, InputLabel } from '@material-ui/core';
-import "./style.css"
-
+import { Button, FormHelperText, FormControl, Grid } from "@material-ui/core";
+import CssTextField from "../InputField/index";
+import Paper from "@material-ui/core/Paper"
+import "./style.css";
 
 function Form() {
-    return (
-        <FormControl className="all login ">
-                        <FormHelperText className="title">Log In</FormHelperText>
-                                    <InputLabel for="inputEmail4" className="form-label">Username</InputLabel>
-                                    <Input type="text" className="inputRow form-control" className="inputUsername" placeholder="Username" />
-                                    <InputLabel for="inputPassword4" className="form-label">Password</InputLabel>
-                                    <Input type="password" className="inputRow form-control" className="inputPassword" placeholder="Your password" />
-                 {/* <Row className="signup">
+  return (
+    <Paper>
+      <FormControl className="all login ">
+        <FormHelperText className="title">Log In</FormHelperText>
+
+        <Grid item xs={10}>
+          <CssTextField
+            className="text-field"
+            id="custom-css-standard-input"
+            label="Name"
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item xs={10}>
+          <CssTextField
+            className="text-field"
+            id="custom-css-standard-input"
+            label="Name"
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item xs={10}>
+          <CssTextField
+            className="text-field"
+            id="custom-css-standard-input"
+            label="Name"
+            variant="outlined"
+          />
+        </Grid>
+        {/* <Row className="signup">
                     <Col>
                         <h2 className="title">Create a new account</h2>
                         <div className="sign">
@@ -50,9 +73,9 @@ function Form() {
                         </div>
                     </Col>
                 </Row> */}
-        </FormControl>
-    )
-
+      </FormControl>
+    </Paper>
+  );
 }
 
 export default Form;
