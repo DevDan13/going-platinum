@@ -1,6 +1,6 @@
 import Grid from "../../components/Grid/index";
 
-function Home() {
+function Profile() {
   return (
     <div>
       <Grid></Grid>
@@ -8,4 +8,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Profile;
