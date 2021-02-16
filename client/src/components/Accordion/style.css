@@ -1,0 +1,15 @@
+ /* .column {
+    flex-basis: 33.33%;
+} */
+
+#heading {
+    font-size: 18px;
+    color: white;
+    margin-top: 8px;
+  } 
+
+  @media screen and (max-width: 482px) {
+    #heading {
+        margin-top: 14px;
+    }
+  }

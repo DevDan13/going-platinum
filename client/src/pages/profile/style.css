@@ -1,6 +1,6 @@
 .accordion {
   margin-top: 8px;
-  background-color: rgb(204, 162, 162);
+  border-radius: 20px;
 }
 
 .accordion-div {

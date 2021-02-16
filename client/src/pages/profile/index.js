@@ -1,7 +1,7 @@
 import Grid from "@material-ui/core/Grid";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
-import StyledAccordion from "../../components/StyledAccordion/index"
+import StyledAccordion from "../../components/StyledAccordion/index";
 import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
 import "./style.css";
@@ -14,10 +14,16 @@ function Profile() {
         <Grid item xs={12} md={6}>
           <Panel>
             <Grid container className="accordion-div">
-            <h2 id="activity-h2">Activities</h2>
+              <Grid item xs={12}>
+                <h2 id="activity-h2">Activities</h2>
+              </Grid>
+
               {tasks.map((task) => (
                 <Grid item xs={10}>
-                  <StyledAccordion className="accordion" task={task}></StyledAccordion>
+                  <Accordion
+                    className="accordion"
+                    task={task}
+                  ></Accordion>
                 </Grid>
               ))}
             </Grid>
