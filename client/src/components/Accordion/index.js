@@ -30,10 +30,11 @@ export default function ControlledAccordions({task}) {
   };
 
   return (
-    <div id="accordion-div">
+    <div className="accordion">
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
+        
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

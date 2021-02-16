@@ -1,5 +1,9 @@
-.img {
-     background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
-     /* background-repeat: repeat; */
-     /* height: 100vh; */
+.accordion {
+  margin-top: 8px;
+}
+
+.accordion-div {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
 }
