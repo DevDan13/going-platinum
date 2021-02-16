@@ -1,19 +1,20 @@
-
 .main-nav {
-    float: right;
-    list-style: none;
-    margin-top: 55px;
-    /* margin-right: 50px; */
-    
+  float: right;
+  list-style: none;
+  margin-top: 55px;
+  /* margin-right: 50px; */
 }
 #account-circle-div {
-    margin-top: 25px;
+  margin-top: 25px;
 }
 
 @media screen and (min-width: 600px) {
-    #account-circle-div{
-        margin-left: 25px;
-    }
+  #account-circle-div {
+    margin-left: 25px;
+  }
+  .logo {
+    margin-left: 25px;
+  }
 }
 
 /* 
@@ -38,18 +39,17 @@
 }  */
 
 .logo {
-    float: left;
-    /* margin-top: 45px; */
-    font-size: 40px;
-    font-family: 'Anton', sans-serif;
-    font-family: 'Concert One', cursive;
-    color: #fff;
+  float: left;
+  /* margin-top: 45px; */
+  font-size: 40px;
+  font-family: "Anton", sans-serif;
+  font-family: "Concert One", cursive;
+  color: #fff;
 }
 
-
 @media screen and (max-width: 720px) {
- .main-nav li a:link,
- .main-nav li a:visited{
+  .main-nav li a:link,
+  .main-nav li a:visited {
     font-size: 15px;
- }
+  }
 }
