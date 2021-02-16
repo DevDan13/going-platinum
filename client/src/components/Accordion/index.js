@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ControlledAccordions() {
+export default function ControlledAccordions({task}) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -45,11 +45,11 @@ export default function ControlledAccordions() {
             onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
             control={<Checkbox />}
-            label="Household activity 1"
+            label={task.name}
           />
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>Mood: {}</Typography>
+          <Typography>Mood:{task.mood}</Typography>
         </AccordionDetails>
       </Accordion>
     </div>

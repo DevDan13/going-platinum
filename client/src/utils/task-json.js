@@ -1,4 +1,4 @@
-const Tasks = [
+const tasks = [
     {
         "name": "Cleaning",
         "mood": "Chill"
@@ -21,4 +21,4 @@ const Tasks = [
     }
 ]
 
-export default Tasks;
+export default tasks;
