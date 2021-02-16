@@ -5,18 +5,23 @@ import ProfilePage from "./ProfilePage";
 import PasswordReset from "./PasswordReset";
 
 function Application() {
-    const user = null;
-    return (
-          user ?
-          <ProfilePage />
-        :
-          <Router>
-            <SignUp path="signUp" />
-            <SignIn path="/" />
-            <PasswordReset path = "passwordReset" />
-          </Router>
-  
-    );
-  }
-  export default Application;
-  
+  const user = null;
+  return user ? (
+    <ProfilePage />
+  ) : (
+    <Router>
+      <Switch>
+        <Route exact path="/signUp">
+          <SignUp />
+        </Route>
+        <Route exact path="/">
+          <SignIn />
+        </Route>
+        <Route exact path="/passwordReset">
+          <PasswordReset />
+        </Route>
+      </Switch>
+    </Router>
+  );
+}
+export default Application;
