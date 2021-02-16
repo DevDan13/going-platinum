@@ -28,6 +28,7 @@
     "if-env": "^1.0.4",
     "jquery": "^3.5.1",
     "mongoose": "^5.3.16",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "styled-components": "^5.2.1"
   }
 }
