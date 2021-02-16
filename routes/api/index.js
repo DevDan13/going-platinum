@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const spotifyRoutes = require("./books");
+const spotifyRoutes = require("./spotify");
 
 //Spotify Routes
 router.use("/Spotify", spotifyRoutes);

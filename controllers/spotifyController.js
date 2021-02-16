@@ -135,21 +135,13 @@ module.exports = {
         }
       );
   },
-  getAccessToken: function () {
-    spotifyApi.clientCredentialsGrant().then(
-      function (data) {
-        console.log("The access token expires in " + data.body["expires_in"]);
-        console.log("The access token is " + data.body["access_token"]);
+  getAccess: function () {
+    const scopes = ["user-read-private", "user-read-email"],
+      state = "some-state-of-my-choice";
 
-        // Save the access token so that it's used in future calls
-        spotifyApi.setAccessToken(data.body["access_token"]);
-      },
-      function (err) {
-        console.log(
-          "Something went wrong when retrieving an access token",
-          err
-        );
-      }
-    );
+    // Create the authorization URL
+    const authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
+
+    console.log(authorizeURL);
   },
 };

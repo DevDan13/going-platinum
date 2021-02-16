@@ -36,6 +36,11 @@ router
   .route("/get-recommendations")
   .get(spotifyController.getSpotifyRecommendations);
 
+// "/api/Spotify/test"
+router.route("/test").get(spotifyController.getAccess);
+
 //Template for further addtions
 // // "/api/Spotify/"
 // router.route("/").get(spotifyController)
+
+module.exports = router;
