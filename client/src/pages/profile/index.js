@@ -1,9 +1,19 @@
-import Grid from "../../components/Grid/index";
+import Grid from "@material-ui/core/Grid";
+import Panel from "../../components/Panel/index";
+import Header from "../../components/Header/index"
 
 function Profile() {
   return (
-    <div>
-      <Grid></Grid>
+    <div className="img">
+      <Header />
+      <Grid container>
+        <Grid item xs={12} md={6}>
+          <Panel></Panel>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Panel></Panel>
+        </Grid>
+      </Grid>
     </div>
   );
 }

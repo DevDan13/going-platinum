@@ -2,11 +2,11 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Panel from "../Panel/index";
 import Grid from "@material-ui/core/Grid";
-import Spotify from "../Spotify/Spotify";
+// import Spotify from "../Spotify/Spotify";
 import MusicPlayer from "../MusicPlayer/index";
 import Accordion from "../Accordion/index";
 import "./style.css"
-import API from "../../utils/API"
+// import API from "../../utils/API"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,14 +33,14 @@ export default function CenteredGrid() {
             {/* <MusicPlayer></MusicPlayer> */}
             <h2 id="activity-h2">Activities</h2>
             {/* <Accordion></Accordion> */}
-            <button onClick={API.getClientCredentialsGrant}>
+            {/* <button onClick={() => API.getClientCredentialsGrant}>
               Click
-            </button>
+            </button> */}
           </Panel>
         </Grid>
         <Grid item xs={12} md={6}>
           <Panel className={classes.panel}>
-            <Spotify></Spotify>
+            {/* <Spotify></Spotify> */}
           </Panel>
         </Grid>
       </Grid>
