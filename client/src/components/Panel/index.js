@@ -10,8 +10,8 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(3),
       width: "100%",
-      height: theme.spacing(50),
-      paddingBottom: theme.spacing(14.5),
+      height: theme.spacing(60),
+      paddingBottom: 80,
     },
   },
 }));

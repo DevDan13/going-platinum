@@ -13,17 +13,17 @@ function Profile() {
       <Grid container>
         <Grid item xs={12} md={6}>
           <Panel>
-            <Grid container className="accordion-div">
-              <Grid item xs={12}>
-                <h2 id="activity-h2">Activities</h2>
-              </Grid>
-
+            <Grid item xs={12}>
+              <h2 id="activity-h2">Activities</h2>
+            </Grid>
+            <Grid
+              container
+              className="accordion-div"
+              style={{ overflowY: "scroll", height: "100%" }}
+            >
               {tasks.map((task) => (
                 <Grid item xs={10}>
-                  <Accordion
-                    className="accordion"
-                    task={task}
-                  ></Accordion>
+                  <Accordion className="accordion" task={task}></Accordion>
                 </Grid>
               ))}
             </Grid>

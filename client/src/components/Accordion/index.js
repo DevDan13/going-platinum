@@ -68,7 +68,7 @@ export default function ControlledAccordions({ task }) {
   };
 
   return (
-    <div className="accordion">
+    <div className="container">
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
