@@ -67,74 +67,89 @@ export default {
     );
   },
   createSpotifyPlaylist: function () {
-    spotifyApi.createPlaylist('My playlist', { 'description': 'My description', 'public': true })
-      .then(function (data) {
-        console.log('Created playlist!');
-      }, function (err) {
-        console.log('Something went wrong!', err);
-      }
+    spotifyApi
+      .createPlaylist("My playlist", {
+        description: "My description",
+        public: true,
+      })
+      .then(
+        function (data) {
+          console.log("Created playlist!");
+        },
+        function (err) {
+          console.log("Something went wrong!", err);
+        }
       );
   },
   getSpotifyPlaylist: function () {
-    spotifyApi.getPlaylist('5ieJqeLJjjI8iJWaxeBLuK')
-      .then(function (data) {
-        console.log('Some information about this playlist', data.body);
-      }, function (err) {
-        console.log('Something went wrong!', err);
-      }
-      );
-  },
-  searchSpotifyPlaylist: function () {
-    spotifyApi.searchPlaylists('workout')
-      .then(function (data) {
-        console.log('Found playlists are', data.body);
-      }, function (err) {
-        console.log('Something went wrong!', err);
-      }
-      );
-  },
-  getSpotifyCategories: function () {
-    spotifyApi.getCategories({
-      limit: 5,
-      offset: 0,
-      country: 'SE',
-      locale: 'sv_SE'
-    })
-      .then(function (data) {
-        console.log(data.body);
-      }, function (err) {
+    spotifyApi.getPlaylist("5ieJqeLJjjI8iJWaxeBLuK").then(
+      function (data) {
+        console.log("Some information about this playlist", data.body);
+      },
+      function (err) {
         console.log("Something went wrong!", err);
       }
+    );
+  },
+  searchSpotifyPlaylist: function () {
+    spotifyApi.searchPlaylists("workout").then(
+      function (data) {
+        console.log("Found playlists are", data.body);
+      },
+      function (err) {
+        console.log("Something went wrong!", err);
+      }
+    );
+  },
+  getSpotifyCategories: function () {
+    spotifyApi
+      .getCategories({
+        limit: 5,
+        offset: 0,
+        country: "SE",
+        locale: "sv_SE",
+      })
+      .then(
+        function (data) {
+          console.log(data.body);
+        },
+        function (err) {
+          console.log("Something went wrong!", err);
+        }
       );
   },
   getSpotifyRecommendations: function () {
-    spotifyApi.getRecommendations({
-      min_energy: 0.4,
-      seed_artists: ['6mfK6Q2tzLMEchAr0e9Uzu', '4DYFVNKZ1uixa6SQTvzQwJ'],
-      min_popularity: 50
-    })
-      .then(function (data) {
-        let recommendations = data.body;
-        console.log(recommendations);
-      }, function (err) {
-        console.log("Something went wrong!", err);
-      }
+    spotifyApi
+      .getRecommendations({
+        min_energy: 0.4,
+        seed_artists: ["6mfK6Q2tzLMEchAr0e9Uzu", "4DYFVNKZ1uixa6SQTvzQwJ"],
+        min_popularity: 50,
+      })
+      .then(
+        function (data) {
+          let recommendations = data.body;
+          console.log(recommendations);
+        },
+        function (err) {
+          console.log("Something went wrong!", err);
+        }
       );
   },
   getAccessToken: function () {
     spotifyApi.clientCredentialsGrant().then(
       function (data) {
-        console.log('The access token expires in ' + data.body['expires_in']);
-        console.log('The access token is ' + data.body['access_token']);
+        console.log("The access token expires in " + data.body["expires_in"]);
+        console.log("The access token is " + data.body["access_token"]);
 
         // Save the access token so that it's used in future calls
-        spotifyApi.setAccessToken(data.body['access_token']);
+        spotifyApi.setAccessToken(data.body["access_token"]);
       },
       function (err) {
-        console.log('Something went wrong when retrieving an access token', err);
+        console.log(
+          "Something went wrong when retrieving an access token",
+          err
+        );
       }
     );
-  }
-
-
+  },
 };
