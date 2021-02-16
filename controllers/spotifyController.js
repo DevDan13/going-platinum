@@ -10,7 +10,7 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 //Spotify API Calls
-export default {
+module.exports = {
   songPause: function () {
     spotifyApi.pause().then(
       function () {
