@@ -1,4 +1,4 @@
-[
+const Tasks = [
     {
         "name": "Cleaning",
         "mood": "Chill"
@@ -20,3 +20,5 @@
         "mood": "Calm"
     }
 ]
+
+export default Tasks;

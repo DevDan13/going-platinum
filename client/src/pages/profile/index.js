@@ -1,6 +1,7 @@
 import Grid from "@material-ui/core/Grid";
 import Panel from "../../components/Panel/index";
-import Header from "../../components/Header/index"
+import Header from "../../components/Header/index";
+
 
 function Profile() {
   return (
