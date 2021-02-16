@@ -1,7 +1,4 @@
 const router = require("express").Router();
-const {
-  createSpotifyPlaylist,
-} = require("../../controllers/spotifyController");
 const spotifyController = require("../../controllers/spotifyController");
 
 // "/api/Spotify/"
