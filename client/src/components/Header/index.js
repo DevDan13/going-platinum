@@ -1,30 +1,24 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import HeadsetIcon from '@material-ui/icons/Headset';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import HeadsetIcon from "@material-ui/icons/Headset";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import Grid from "@material-ui/core/Grid";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+import { Link } from "react-router-dom";
+import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   appBar: {
-    background: "#000",
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
+    background: "transparent",
   },
   title: {
     flexGrow: 1,
-    textAlign: "center"
+    textAlign: "center",
   },
 }));
 
@@ -47,53 +41,88 @@ export default function MenuAppBar() {
   };
 
   return (
-    <div>
+    <div className="header">
       {/* <FormGroup>
         <FormControlLabel
           control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
           label={auth ? 'Logout' : 'Login'}
         />
       </FormGroup> */}
-      <AppBar className={classes.appBar} position="static">
+      <AppBar className={classes.appBar} position="static" elevation={0}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <HeadsetIcon />
-          </IconButton>
-          <Typography variant="h3" className={classes.title}>
-            {/* Insert App title here */}
-            Going Platinum
-          </Typography>
-          {auth && (
-            <div>
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
+          <Grid container>
+            <Grid item xs={10} md={11}>
+              <Link
+                to="/"
+                className={
+                  window.location.pathname === "/" ||
+                  window.location.pathname === "/home"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
               >
-                <AccountCircle />
-              </IconButton>
+                <h1 className="logo">Going Platinum</h1>
+              </Link>
+            </Grid>
+
+            <Grid item xs={2} md={1}>
+              <div id="account-circle-div">
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle fontSize="large" />
+                </IconButton>
+              </div>
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 keepMounted
                 transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={handleClose}>
+                  {" "}
+                  <Link
+                    to="/profile"
+                    className={
+                      window.location.pathname === "/" ||
+                      window.location.pathname === "/profile"
+                        ? "nav-link active"
+                        : "nav-link"
+                    }
+                  >
+                    Settings
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  {" "}
+                  <Link
+                    to="/login"
+                    className={
+                      window.location.pathname === "/" ||
+                      window.location.pathname === "/login"
+                        ? "nav-link active"
+                        : "nav-link"
+                    }
+                  >
+                    Login
+                  </Link>
+                </MenuItem>
               </Menu>
-            </div>
-          )}
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
     </div>

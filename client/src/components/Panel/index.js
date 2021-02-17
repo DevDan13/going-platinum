@@ -8,10 +8,10 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     flexWrap: "noWrap",
     "& > *": {
-      margin: theme.spacing(7),
+      margin: theme.spacing(3),
       width: "100%",
-      height: theme.spacing(50),
-      paddingBottom: theme.spacing(14.5),
+      height: theme.spacing(60),
+      paddingBottom: 80,
     },
   },
 }));
@@ -21,7 +21,7 @@ export default function Panel(props) {
 
   return (
     <div className={classes.root}>
-      <Paper style={{ backgroundColor: "#4a4a4a" }} elevation={3}>
+      <Paper style={{ background: "rgba(0, 0, 0, 0.8"}} elevation={3}>
         {props.children}
       </Paper>
     </div>
