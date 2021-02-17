@@ -88,7 +88,7 @@ export default function ControlledAccordions({ task }) {
               control={<Checkbox style={{ color: "rgba(204, 162, 162)" }} />}
             />
             <div className={classes.column}>
-              <Typography id="heading">Task</Typography>
+              <Typography id="heading">{task.name}</Typography>
             </div>
             <div className={classes.column}>
               <Typography className={classes.secondaryHeading}>
@@ -100,8 +100,8 @@ export default function ControlledAccordions({ task }) {
         <AccordionDetails className={classes.details}>
           <div className={classes.column} />
           <div className={classes.column}>
-            Moods will show here!
-            {/* <Chip label={task.mood} onDelete={() => {}} /> */}
+            <Chip label="Placeholder" style={{marginRight:5}}/>
+            <Chip label={task.mood} style={{marginRight:5}}/>
           </div>
           <div className={clsx(classes.column, classes.helper)}>
             <Typography variant="caption">
