@@ -3,20 +3,16 @@ import React from "react";
 // import Container from "../../components/Container";
 // import Row from "../../components/Row";
 // import Col from "../../components//Col";
-import Btn from "../../components/Btn/index"
-import "./style.css"
-
-
+import Grid from "../../components/Grid/index";
+import Btn from "../../components/Btn/index";
+import "./style.css";
 
 function Home() {
-    return (
-        <div>
-            <div className="img">
-                <Btn />
-            </div>
-
-        </div>
-    )
+  return (
+    <div className="img">
+      <Grid></Grid>
+    </div>
+  );
 }
 
 export default Home;

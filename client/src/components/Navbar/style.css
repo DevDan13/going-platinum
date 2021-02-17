@@ -37,7 +37,6 @@
     font-family: 'Anton', sans-serif;
     font-family: 'Concert One', cursive;
     color: #fff;
-    
 }
 
 .header {
@@ -48,7 +47,7 @@
 
 
 @media screen and (max-width: 720px) {
-    body{
+    body {
         /* width: 500px; */
     }
     
