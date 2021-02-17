@@ -1,0 +1,19 @@
+body {
+    background-color: rgb(32, 33, 33);
+}
+
+#form-paper {
+    background-color: rgb(70, 70, 70);
+}
+
+.text-field {
+    color: white;
+    margin-top: 20px;
+}
+
+@media only screen and (min-width: 776px) {
+  #form-div {
+    display: flex;
+    justify-content: center;
+  }
+}
