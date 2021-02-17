@@ -8,13 +8,25 @@ import "./style.css";
 import API from "../../utils/API";
 
 function Home() {
+  //testing feature
+  const testBtn = () => {
+    API.getAuthentication().then((res) => {
+      window.location.replace(res.data);
+    });
+  };
   useEffect(() => {
-    API.getAccess();
+    const code = window.location.href.split("=");
+    if (code[1]) {
+      console.log("code=", code[1]);
+      API.getTokens(code[1]);
+    }
   }, []);
+  //testing feature ends here
 
   return (
     <div>
       <div className="img">
+        <button onClick={testBtn}>Test</button>
         <Btn />
       </div>
     </div>

@@ -5,7 +5,7 @@ require("dotenv").config();
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.REACT_APP_CLIENT_ID,
   clientSecret: process.env.REACT_APP_CLIENT_SECRET,
-  redirectUri: "http://localhost/callback",
+  redirectUri: "http://localhost:3000/callback/",
   accessToken: process.env.REACT_APP_ACCESS_TOKEN,
 });
 
@@ -135,13 +135,29 @@ module.exports = {
         }
       );
   },
-  getAccess: function () {
-    const scopes = ["user-read-private", "user-read-email"],
-      state = "some-state-of-my-choice";
+  getAuthentication: function (req, res) {
+    const scopes = ["user-read-private", "user-read-email"];
 
     // Create the authorization URL
-    const authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
-
+    const authorizeURL = spotifyApi.createAuthorizeURL(scopes);
+    res.send(authorizeURL);
     console.log(authorizeURL);
+  },
+  getTokens: function (req, res) {
+    spotifyApi.authorizationCodeGrant(req.params.code).then(
+      function (data) {
+        res.send("You did it");
+        console.log("The token expires in " + data.body["expires_in"]);
+        console.log("The access token is " + data.body["access_token"]);
+        console.log("The refresh token is " + data.body["refresh_token"]);
+
+        // Set the access token on the API object to use it in later calls
+        spotifyApi.setAccessToken(data.body["access_token"]);
+        spotifyApi.setRefreshToken(data.body["refresh_token"]);
+      },
+      function (err) {
+        console.log("Something went wrong!", err);
+      }
+    );
   },
 };

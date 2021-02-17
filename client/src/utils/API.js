@@ -31,8 +31,11 @@ export default {
   getSpotifyRecommendations: function () {
     return axios.get("/api/Spotify/get-recommendations");
   },
-  getAccess: function () {
-    return axios.get("/api/Spotify/test");
+  getAuthentication: function () {
+    return axios.get("/api/Spotify/authentication");
+  },
+  getTokens: function (code) {
+    return axios.get("/api/Spotify/tokens/" + code);
   },
   // getAccessToken: function () {
 

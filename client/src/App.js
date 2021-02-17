@@ -1,4 +1,4 @@
-import Home from "./pages/Home/Home"
+import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/profile";
 import Navbar from "./components/Navbar/Navbar";
@@ -9,8 +9,8 @@ function App() {
     <div className="App">
       <Router>
         <div>
-          <Navbar/>
-          <Route exact path="/" component={Home} />
+          <Navbar />
+          <Route exact path={["/", "/callback/"]} component={Home} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/login" component={Login} />
         </div>
@@ -18,6 +18,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
