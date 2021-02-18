@@ -3,10 +3,10 @@ require("dotenv").config();
 
 // credentials are optional
 const spotifyApi = new SpotifyWebApi({
-  clientId: process.env.REACT_APP_CLIENT_ID,
-  clientSecret: process.env.REACT_APP_CLIENT_SECRET,
+  clientId: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
   redirectUri: "http://localhost:3000/callback/",
-  accessToken: process.env.REACT_APP_ACCESS_TOKEN,
+  accessToken: process.env.ACCESS_TOKEN,
 });
 
 //Spotify API Calls
