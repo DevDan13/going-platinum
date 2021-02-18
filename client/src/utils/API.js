@@ -1,6 +1,4 @@
-/* eslint-disable import/no-anonymous-default-export */
-var SpotifyWebApi = require("spotify-web-api-node");
-require("dotenv").config();
+import axios from "axios";
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
@@ -27,129 +25,42 @@ export default {
   },
   
   songPause: function () {
-    spotifyApi.pause().then(
-      function () {
-        console.log("Playback paused");
-      },
-      function (err) {
-        //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
-        console.log("Something went wrong!", err);
-      }
-    );
+    return axios.put("/api/Spotify/pause");
   },
   songPlay: function () {
-    spotifyApi.play().then(
-      function () {
-        console.log("Playback started");
-      },
-      function (err) {
-        //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
-        console.log("Something went wrong!", err);
-      }
-    );
+    return axios.put("/api/Spotify/play");
   },
   playNext: function () {
-    spotifyApi.skipToNext().then(
-      function () {
-        console.log("Skip to next");
-      },
-      function (err) {
-        //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
-        console.log("Something went wrong!", err);
-      }
-    );
+    return axios.put("/api/Spotify/next");
   },
   playPrevious: function () {
-    spotifyApi.skipToPrevious().then(
-      function () {
-        console.log("Skip to previous");
-      },
-      function (err) {
-        //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
-        console.log("Something went wrong!", err);
-      }
-    );
+    return axios.put("/api/Spotify/previous");
   },
   getGenreSeeds: function () {
-    spotifyApi.getAvailableGenreSeeds().then(
-      function (data) {
-        let genreSeeds = data.body;
-        console.log(genreSeeds);
-      },
-      function (err) {
-        console.log("Something went wrong!", err);
-      }
-    );
+    return axios.get("/api/Spotify/genre-seeds");
   },
   createSpotifyPlaylist: function () {
-    spotifyApi.createPlaylist('My playlist', { 'description': 'My description', 'public': true })
-      .then(function (data) {
-        console.log('Created playlist!');
-      }, function (err) {
-        console.log('Something went wrong!', err);
-      }
-      );
+    return axios.post("/api/Spotify/create-playlist");
   },
   getSpotifyPlaylist: function () {
-    spotifyApi.getPlaylist('5ieJqeLJjjI8iJWaxeBLuK')
-      .then(function (data) {
-        console.log('Some information about this playlist', data.body);
-      }, function (err) {
-        console.log('Something went wrong!', err);
-      }
-      );
+    return axios.get("/api/Spotify/get-playlist");
   },
   searchSpotifyPlaylist: function () {
-    spotifyApi.searchPlaylists('workout')
-      .then(function (data) {
-        console.log('Found playlists are', data.body);
-      }, function (err) {
-        console.log('Something went wrong!', err);
-      }
-      );
+    return axios.get("/api/Spotify/search-playlist");
   },
   getSpotifyCategories: function () {
-    spotifyApi.getCategories({
-      limit: 5,
-      offset: 0,
-      country: 'SE',
-      locale: 'sv_SE'
-    })
-      .then(function (data) {
-        console.log(data.body);
-      }, function (err) {
-        console.log("Something went wrong!", err);
-      }
-      );
+    return axios.get("/api/Spotify/spotify-categories");
   },
   getSpotifyRecommendations: function () {
-    spotifyApi.getRecommendations({
-      min_energy: 0.4,
-      seed_artists: ['6mfK6Q2tzLMEchAr0e9Uzu', '4DYFVNKZ1uixa6SQTvzQwJ'],
-      min_popularity: 50
-    })
-      .then(function (data) {
-        let recommendations = data.body;
-        console.log(recommendations);
-      }, function (err) {
-        console.log("Something went wrong!", err);
-      }
-      );
+    return axios.get("/api/Spotify/get-recommendations");
   },
-  getAccessToken: function () {
-    spotifyApi.clientCredentialsGrant().then(
-      function (data) {
-        console.log('The access token expires in ' + data.body['expires_in']);
-        console.log('The access token is ' + data.body['access_token']);
+  getAuthentication: function () {
+    return axios.get("/api/Spotify/authentication");
+  },
+  getTokens: function (code) {
+    return axios.get("/api/Spotify/tokens/" + code);
+  },
+  // getAccessToken: function () {
 
-        // Save the access token so that it's used in future calls
-        spotifyApi.setAccessToken(data.body['access_token']);
-      },
-      function (err) {
-        console.log('Something went wrong when retrieving an access token', err);
-      }
-    );
-  }
-
-
+  // },
 };
