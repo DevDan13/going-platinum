@@ -1,4 +1,5 @@
 import axios from "axios";
+import  SpotifyWebApi from "spotify-web-api-node";
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
