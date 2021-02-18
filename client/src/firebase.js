@@ -1,17 +1,18 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+require("dotenv");
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBHGxHdgd6TNiCdMoAAUZSNxd_F0DaKWHo",
-  authDomain: "going-platinum.firebaseapp.com",
-  projectId: "going-platinum",
-  storageBucket: "going-platinum.appspot.com",
-  messagingSenderId: "569376293174",
-  appId: "1:569376293174:web:bbf4612a6e114cfad1f397",
-  measurementId: "G-D78RPKH61B",
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
+  authDomain: "going-platinum-465e2.firebaseapp.com",
+  projectId: "going-platinum-465e2",
+  storageBucket: "going-platinum-465e2.appspot.com",
+  messagingSenderId: "230217417240",
+  appId: "1:230217417240:web:42df27f7b1d0ca0f5e396d",
+  measurementId: "G-MDX89KQ0VG"
 };
 
 firebase.initializeApp(firebaseConfig);
