@@ -3,8 +3,8 @@ import  SpotifyWebApi from "spotify-web-api-node";
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
-  clientId: process.env.REACT_APP_CLIENT_ID,
-  clientSecret: process.env.REACT_APP_CLIENT_SECRET,
+  clientId: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
   redirectUri: "http://localhost/callback",
 }); 
 
