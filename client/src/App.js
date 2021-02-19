@@ -15,7 +15,7 @@ function App() {
       </UserProvider>
       <Router>
         {/* <div> */}
-          <Route exact path="/" component={Home} />
+          <Route exact path={["/", "/callback"]} component={Home} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/login" component={Login} />
         {/* </div> */}

@@ -14,6 +14,21 @@ function Home() {
       window.location.replace(res.data);
     });
   };
+
+  const getPlaylist = () => {
+    API.getSpotifyRecommendations().then((res) => {
+      console.log(res.data);
+      //items.id
+      
+    });
+  };
+  // const testToken = () => {
+  //   const code = window.location.href.split("=");
+  //   if (code[1]) {
+  //     console.log("code=", code[1]);
+  //     API.getTokens(code[1]);
+  //   }
+  // };
   useEffect(() => {
     const code = window.location.href.split("=");
     if (code[1]) {
@@ -21,12 +36,13 @@ function Home() {
       API.getTokens(code[1]);
     }
   }, []);
-  //testing feature ends here
+  // testing feature ends here
 
   return (
     <div>
       <div className="img">
         <button onClick={testBtn}>Test</button>
+        <button onClick={getPlaylist}>playlist</button>
         <Btn />
       </div>
     </div>
