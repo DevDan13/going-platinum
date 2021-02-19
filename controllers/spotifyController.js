@@ -82,7 +82,7 @@ module.exports = {
       );
   },
   getSpotifyPlaylist: function () {
-    spotifyApi.getPlaylist("5ieJqeLJjjI8iJWaxeBLuK").then(
+    spotifyApi.getPlaylist("37i9dQZF1DXdgf6ud7uDc7").then(
       function (data) {
         console.log("Some information about this playlist", data.body);
       },
@@ -91,15 +91,19 @@ module.exports = {
       }
     );
   },
-  searchSpotifyPlaylist: function () {
-    spotifyApi.searchPlaylists("workout").then(
+  searchSpotifyPlaylist: function (req, res) {
+    spotifyApi.searchPlaylists("doom").then(
       function (data) {
         console.log("Found playlists are", data.body);
+        res.json(data.body);
       },
       function (err) {
         console.log("Something went wrong!", err);
       }
-    );
+    )
+    .then(data => {
+      res.json(data);
+    });
   },
   getSpotifyCategories: function () {
     spotifyApi
@@ -118,10 +122,10 @@ module.exports = {
         }
       );
   },
-  getSpotifyRecommendations: function () {
+  getSpotifyRecommendations: function (req, res) {
     spotifyApi
       .getRecommendations({
-        min_energy: 0.4,
+        min_energy: 0.9,
         seed_artists: ["6mfK6Q2tzLMEchAr0e9Uzu", "4DYFVNKZ1uixa6SQTvzQwJ"],
         min_popularity: 50,
       })
@@ -129,6 +133,7 @@ module.exports = {
         function (data) {
           let recommendations = data.body;
           console.log(recommendations);
+          res.json(recommendations);
         },
         function (err) {
           console.log("Something went wrong!", err);
