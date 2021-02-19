@@ -3,9 +3,12 @@
 }
 
 #activity-h2 {
-  margin-top: 15px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-family: 'Montserrat Subrayada', sans-serif;
+  color: white;
 }
-
 ::-webkit-scrollbar {
   width: 7px;
 }

@@ -1,4 +1,4 @@
-import Grid from "../../components/Grid/index";
+import Grid from "@material-ui/core/Grid";
 import React, { useEffect } from "react";
 import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
