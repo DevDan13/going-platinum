@@ -1,5 +1,6 @@
 import axios from "axios";
 
+<<<<<<< HEAD
 // // credentials are optional
 // var spotifyApi = new SpotifyWebApi({
 //   clientId: process.env.REACT_APP_CLIENT_ID,
@@ -9,12 +10,29 @@ import axios from "axios";
 
 // //Spotify API Calls
 //
+=======
+// import  SpotifyWebApi from "spotify-web-api-node";
+
+// // credentials are optional
+// var spotifyApi = new SpotifyWebApi({
+//   clientId: process.env.REACT_APP_CLIENT_ID,
+//   clientSecret: process.env.REACT_APP_CLIENT_SECRET,
+//   redirectUri: "http://localhost/callback",
+// }); 
+
+// //Spotify API Calls
+// export default {
+>>>>>>> 85af00edf1072909b596a71c454e4b314ccb9946
 //   getClientCredentialsGrant: function() {
 //     spotifyApi.clientCredentialsGrant().then(
 //       function(data) {
 //         console.log('The access token expires in ' + data.body['expires_in']);
 //         console.log('The access token is ' + data.body['access_token']);
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 85af00edf1072909b596a71c454e4b314ccb9946
 //         // Save the access token so that it's used in future calls
 //         spotifyApi.setAccessToken(data.body['access_token']);
 //       },
@@ -23,6 +41,10 @@ import axios from "axios";
 //       }
 //     );
 //   },
+<<<<<<< HEAD
+=======
+// eslint-disable-next-line import/no-anonymous-default-export
+>>>>>>> 85af00edf1072909b596a71c454e4b314ccb9946
 export default {
   songPause: function () {
     return axios.put("/api/Spotify/pause");

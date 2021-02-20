@@ -1,12 +1,17 @@
-import Grid from "../../components/Grid/index";
+import Grid from "@material-ui/core/Grid";
 import React, { useEffect } from "react";
 import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
+<<<<<<< HEAD
 import Footer from "../../components/Footer/index";
 import "./style.css";
+=======
+import Footer from "../../components/Footer/index"
+import "./profile.css";
+>>>>>>> 85af00edf1072909b596a71c454e4b314ccb9946
 
 function Profile() {
   return (
@@ -23,8 +28,8 @@ function Profile() {
               className="accordion-div"
               style={{ overflowY: "scroll", height: "100%" }}
             >
-              {tasks.map((task) => (
-                <Grid item xs={10}>
+              {tasks.map((task, i) => (
+                <Grid item xs={10} key={i}>
                   <Accordion className="accordion" task={task}></Accordion>
                 </Grid>
               ))}

@@ -1,11 +1,12 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+require("dotenv");
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBHGxHdgd6TNiCdMoAAUZSNxd_F0DaKWHo",
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: "going-platinum.firebaseapp.com",
   projectId: "going-platinum",
   storageBucket: "going-platinum.appspot.com",
