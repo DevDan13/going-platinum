@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 // import Row from "../../components/Row";
 // import Col from "../../components//Col";
 import Btn from "../../components/Btn/index";
+import Spotify from "../../components/video/spotify.mp4"
 import "./style.css";
 import API from "../../utils/API";
 
@@ -19,7 +20,7 @@ function Home() {
     API.getSpotifyRecommendations().then((res) => {
       console.log(res.data);
       //items.id
-      
+
     });
   };
   // const testToken = () => {
@@ -41,6 +42,10 @@ function Home() {
   return (
     <div>
       <div className="img">
+        <video className="video" autoPlay="autoplay" loop="loop" muted  >
+          <source src={Spotify} type="video/mp4" />
+        </video>
+        <h1 className="listening">Music is<br />everything</h1>
         <button onClick={testBtn}>Test</button>
         <button onClick={getPlaylist}>playlist</button>
         <Btn />
