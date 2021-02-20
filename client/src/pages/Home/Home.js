@@ -41,7 +41,7 @@ function Home() {
 
   return (
     <div>
-      <div>
+      <div className='layout'>
         <video className="video" autoPlay="autoplay" loop="loop" muted  >
           <source src={Spotify} type="video/mp4" />
         </video>
