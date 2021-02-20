@@ -1,12 +1,11 @@
 import Grid from "../../components/Grid/index";
 import React, { useEffect } from "react";
 import API from "../../utils/API";
-import Grid from "@material-ui/core/Grid";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
-import Footer from "../../components/Footer/index"
+import Footer from "../../components/Footer/index";
 import "./style.css";
 
 function Profile() {
@@ -36,7 +35,7 @@ function Profile() {
           <Panel></Panel>
         </Grid>
       </Grid>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
