@@ -7,9 +7,9 @@ function Login() {
   return (
     <div>
       <div className="img">
-        <Paper>
+        {/* <Paper>
           <FormControl />
-        </Paper>
+        </Paper> */}
       </div>
     </div>
   );

@@ -2,13 +2,14 @@
   border-radius: 20px;
 }
 
-#activity-h2 {
+ #activity-h2 {
   text-align: center;
   margin-bottom: 10px;
   margin-top: 10px;
   font-family: 'Montserrat Subrayada', sans-serif;
   color: white;
 }
+
 ::-webkit-scrollbar {
   width: 7px;
 }
@@ -35,3 +36,22 @@
   display: flex;
   justify-content: center;
 }
+
+
+@media screen and (min-width: 862px) {
+  .img{
+    background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
+    height: 100vh;
+  } 
+}
+
+
+@media screen and (max-width: 862px) {
+  .img {
+    background-color: rgb(195, 148, 148) ;
+  }
+  
+}
+
+
+
