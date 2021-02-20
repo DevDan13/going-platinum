@@ -14,6 +14,15 @@
   }
 }
 
+/* Below 600px */
+@media screen and (max-width: 600px) {
+  #logo-div {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
 @media screen and (max-width: 426px) {
   .listening {
     margin-top: 350px;
@@ -22,10 +31,22 @@
 }
 
 .listening {
-  
   font-family: "Yeseva One", cursive;
   color: #fff;
 }
+
+
+/* @media screen and(max-width: 600px) {
+  .start-button-div {
+    float: none;
+  }
+}
+
+@media screen and(min-width: 600px) {
+  .start-button {
+    float: right;
+  }
+} */
 
 .video {
   position: absolute;
@@ -46,6 +67,10 @@
   overflow: hidden;
   opacity: 0.95;
 }
+
+/* .start-button-div {
+  float: right;
+} */
 
 /* 
 

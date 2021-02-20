@@ -7,7 +7,7 @@ import Btn from "../../components/Btn/index";
 import Spotify from "../../components/video/spotify.mp4";
 import Grid from "@material-ui/core/Grid";
 import "./home.css";
-import Header from "../../components/Header/index"
+import Header from "../../components/Header/index";
 import API from "../../utils/API";
 
 function Home() {
@@ -46,7 +46,18 @@ function Home() {
         <video className="video" autoPlay="autoplay" loop="loop" muted>
           <source src={Spotify} type="video/mp4" />
         </video>
-        <h1 className="logo">Going Platinum</h1>
+        
+          <Grid container>
+            <Grid id="logo-div" item xs={12} sm={9} lg={10}>
+              <h1 className="logo">Going Platinum</h1>
+            </Grid>
+
+            <Grid className="start-button-div" item xs={12} sm={3} lg={2}>
+              <Btn  />
+            </Grid>
+          </Grid>
+      
+
         <Grid container style={{ display: "flex", justifyContent: "center" }}>
           <Grid item xs={12}>
             <h1 className="listening">
@@ -58,7 +69,6 @@ function Home() {
           <Grid item xs={12}>
             <button onClick={testBtn}>Test</button>
             <button onClick={getPlaylist}>playlist</button>
-            <Btn />
           </Grid>
         </Grid>
       </div>
