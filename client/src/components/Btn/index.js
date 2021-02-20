@@ -11,7 +11,7 @@ function Btn() {
         history.push(path)
     }
     return (
-        <button type="button" className="btn-start" id="Generate" onClick={routeChange}>Go Platinum</button>
+        <button type="button" className="btn-start" id="Generate" onClick={routeChange}>Get Started</button>
     )
 }
 

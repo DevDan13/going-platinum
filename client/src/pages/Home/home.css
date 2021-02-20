@@ -34,12 +34,14 @@
   color: #fff;
 }
 
-/* @media screen and(max-width: 600px) {
+ @media screen and(max-width: 600px) {
   .start-button-div {
-    float: none;
+    position: fixed;
+    bottom: 0;
   }
 }
 
+/*
 @media screen and(min-width: 600px) {
   .start-button {
     float: right;
