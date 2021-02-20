@@ -1,7 +1,32 @@
 
 @media screen and (min-width: 862px) {
-  body{
+  /* body{
     background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
+  } */
+      
+  .listening{
+    font-size: 100px;
+    font-family: 'Holtwood One SC', serif;
+    font-family: 'Seymour One', sans-serif;
+    font-family: 'Yeseva One', cursive;
+    padding-top:  450px;
+    padding-bottom: 100px;
+
+  }
+
+
+
+
+  .video{
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    height: 100;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0.5;
   }
 }
 
