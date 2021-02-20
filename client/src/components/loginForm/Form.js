@@ -3,7 +3,7 @@ import "./style.css";
 function LoginForm() {
   return (
     <div>
-      <h1>Going Platinum</h1>
+      <h1 id="login-title">Going Platinum</h1>
       <div class="login-box">
         <h2>Login</h2>
         <form>

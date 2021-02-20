@@ -6,7 +6,7 @@ import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index"
-import "./style.css";
+import "./profile.css";
 
 function Profile() {
   return (

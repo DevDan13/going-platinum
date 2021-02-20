@@ -61,7 +61,7 @@ html {
     background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
   }
   
-  h1 {
+  #login-title {
     text-align: center;
     font-family: "Concert One", cursive;
     color: white;
