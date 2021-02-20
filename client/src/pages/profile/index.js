@@ -1,17 +1,12 @@
 import Grid from "@material-ui/core/Grid";
-import React, { useEffect } from "react";
-import API from "../../utils/API";
+import React from "react";
+// import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
-<<<<<<< HEAD
-import Footer from "../../components/Footer/index";
-import "./style.css";
-=======
 import Footer from "../../components/Footer/index"
 import "./profile.css";
->>>>>>> 85af00edf1072909b596a71c454e4b314ccb9946
 
 function Profile() {
   return (

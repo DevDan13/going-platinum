@@ -92,18 +92,20 @@ module.exports = {
     );
   },
   searchSpotifyPlaylist: function (req, res) {
-    spotifyApi.searchPlaylists("doom").then(
-      function (data) {
-        console.log("Found playlists are", data.body);
-        res.json(data.body);
-      },
-      function (err) {
-        console.log("Something went wrong!", err);
-      }
-    )
-    .then(data => {
-      res.json(data);
-    });
+    spotifyApi
+      .searchPlaylists("doom")
+      .then(
+        function (data) {
+          console.log("Found playlists are", data.body);
+          res.json(data.body);
+        },
+        function (err) {
+          console.log("Something went wrong!", err);
+        }
+      )
+      .then((data) => {
+        res.json(data);
+      });
   },
   getSpotifyCategories: function () {
     spotifyApi
@@ -123,11 +125,12 @@ module.exports = {
       );
   },
   getSpotifyRecommendations: function (req, res) {
+    let inputs = req.params.input.split("=");
     spotifyApi
       .getRecommendations({
-        min_energy: 0.9,
-        seed_artists: ["6mfK6Q2tzLMEchAr0e9Uzu", "4DYFVNKZ1uixa6SQTvzQwJ"],
-        min_popularity: 50,
+        min_energy: inputs[1],
+        seed_artists: inputs[2],
+        min_popularity: inputs[3],
       })
       .then(
         function (data) {
@@ -162,6 +165,17 @@ module.exports = {
       },
       function (err) {
         console.log("Something went wrong!", err);
+      }
+    );
+  },
+  getArtist: function (req, res) {
+    spotifyApi.searchArtists(req.params.artist).then(
+      function (data) {
+        res.send(data.body);
+        console.log("Search artists by anythings", data.body);
+      },
+      function (err) {
+        console.error(err);
       }
     );
   },
