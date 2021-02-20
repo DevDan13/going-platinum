@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-// import Grid from "@material-ui/core/Grid";
+import Grid from "@material-ui/core/Grid";
 import Chip from "@material-ui/core/Chip";
 import Divider from "@material-ui/core/Divider";
 import clsx from "clsx";
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   column: {
     flexBasis: "33.33%",
   },
-  internalColumn: { flexBasis: "50%" },
+  internalColumn: { flexBasis: "100%", flexGrow: 1 },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
     padding: theme.spacing(1, 2),
@@ -45,10 +45,21 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       textDecoration: "underline",
     },
-    inputFields: {
-      float: "left",
-      marginTop: "5px",
-    },
+  },
+  formFields: {
+    padding: "10px",
+    position: "relative",
+    float: "left",
+    width: "100%",
+  },
+  formLabels: {
+    paddingTop: "10px",
+    paddingBottom: "10px",
+    position: "relative",
+    fontSize: "20px",
+  },
+  formItems: {
+    width: "200px",
   },
 }));
 
@@ -96,28 +107,56 @@ export default function ControlledAccordions({ task }) {
           </div>
           <div className={classes.column}>
             <Typography className={classes.secondaryHeading}>
-              View Settings
+              Playlist Settings
             </Typography>
           </div>
         </AccordionSummary>
         <AccordionDetails className={classes.details}>
           <div className={classes.internalColumn}>
             <form>
-              <label for="playlist-name">Playlist Name</label>
-              <input
-                className={classes.inputFields}
-                name="playlist-name"
-              ></input>
-              <label for="artists">Artists</label>
-              <input className={classes.inputFields} name="artists"></input>
-              <button>Search</button>
-              <label for="mood">Mood</label>
-              <button type="radio">Angry</button>
-              <label for="duration">Duration</label>
-              <input className={classes.inputFields} name="duration"></input>
+              <Grid
+                container
+                direction="column"
+                justify="space-between"
+                alignItems="flex-start"
+              >
+                <Grid item lg={12} className={classes.formLabels}>
+                  <label for="playlist-name">Playlist Name</label>
+                </Grid>
+                <Grid item lg={12}>
+                  <input
+                    className={classes.formItems}
+                    name="playlist-name"
+                  ></input>
+                </Grid>
+
+                <Grid item className={classes.formLabels}>
+                  <label for="artists">Artists</label>
+                </Grid>
+                <Grid item xs={9}>
+                  <input className={classes.formItems} name="artists"></input>
+                </Grid>
+                <Grid item xs={3}>
+                  <button>Search</button>
+                </Grid>
+                <Grid item className={classes.formLabels}>
+                  <label for="mood">Mood</label>
+                </Grid>
+                <Grid item>
+                  <button type="radio">Angry</button>
+                </Grid>
+                <Grid item className={classes.formLabels}>
+                  <label for="duration">Duration</label>
+                </Grid>
+                <Grid item>
+                  <input className={classes.formItems} name="duration"></input>
+                </Grid>
+                <Grid item className={classes.formLabels}>
+                  <button type="submit">Generate Playlist</button>
+                </Grid>
+              </Grid>
             </form>
           </div>
-          <div className={classes.internalColumn}></div>
 
           {/* <div className={clsx(classes.column, classes.helper)}>
             <Typography variant="caption">
