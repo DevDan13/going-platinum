@@ -23,8 +23,8 @@ function Profile() {
               className="accordion-div"
               style={{ overflowY: "scroll", height: "100%" }}
             >
-              {tasks.map((task) => (
-                <Grid item xs={10}>
+              {tasks.map((task, i) => (
+                <Grid item xs={10} key={i}>
                   <Accordion className="accordion" task={task}></Accordion>
                 </Grid>
               ))}

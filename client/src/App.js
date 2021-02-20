@@ -10,9 +10,9 @@ import Application from "./components/Firebase/Application";
 function App() {
   return (
     <div className="App">
-      {/* <UserProvider>
+      <UserProvider>
         <Application />
-      </UserProvider> */}
+      </UserProvider>
       <Router>
         {/* <div> */}
           <Route exact path={["/", "/callback"]} component={Home} />
