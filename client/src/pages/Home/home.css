@@ -1,25 +1,52 @@
-/* 
 @media screen and (min-width: 862px) {
-  .img{
-    background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
-  } 
+  .listening {
+    display: flex;
+    justify-content: center;
+    font-size: 100px;
+  }
 }
 
-
+/* Medium to small screens */
 @media screen and (max-width: 862px) {
-  .img {
-    background-color: rgb(195, 148, 148) ;
+  .listening {
+    margin-top: 200px;
+    font-size: 75px;
   }
-  
-} */
+}
+
+/* Below 600px */
+@media screen and (max-width: 600px) {
+  #logo-div {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .listening {
+    margin-top: 200px;
+    font-size: 50px;
+  }
+}
 
 .listening {
-  font-size: 100px;
   font-family: "Yeseva One", cursive;
-  padding-top: 200px;
-  padding-bottom: 20px;
   color: #fff;
 }
+
+ @media screen and(max-width: 600px) {
+  .start-button-div {
+    position: fixed;
+    bottom: 0;
+  }
+}
+
+/*
+@media screen and(min-width: 600px) {
+  .start-button {
+    float: right;
+  }
+} */
 
 .video {
   position: absolute;
@@ -33,7 +60,21 @@
   opacity: 0.5;
 }
 
-/* html {
+.layout {
+  background: #333;
+  width: 100 vw;
+  height: 100vh;
+  overflow: hidden;
+  opacity: 0.95;
+}
+
+/* .start-button-div {
+  float: right;
+} */
+
+/* 
+
+html{
   background: #333;
   width: 100 vw;
   height: 100vh;
