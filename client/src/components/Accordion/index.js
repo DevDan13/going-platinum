@@ -17,6 +17,7 @@ import "./style.css";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+    
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
@@ -85,14 +86,15 @@ export default function ControlledAccordions({ task }) {
               aria-label="Select"
               onClick={(event) => event.stopPropagation()}
               onFocus={(event) => event.stopPropagation()}
-              control={<Checkbox style={{ color: "rgba(204, 162, 162)" }} />}
+              style={{marginRight: 0}}
+              control={<Checkbox style={{ color: "rgba(204, 162, 162)"}} />}
             />
             <div className={classes.column}>
               <Typography id="heading">{task.name}</Typography>
             </div>
             <div className={classes.column}>
               <Typography className={classes.secondaryHeading}>
-                View Settings
+                
               </Typography>
             </div>
 
