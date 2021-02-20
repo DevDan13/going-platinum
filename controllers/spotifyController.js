@@ -126,8 +126,13 @@ module.exports = {
     spotifyApi
       .getRecommendations({
         min_energy: 0.9,
-        seed_artists: ["6mfK6Q2tzLMEchAr0e9Uzu", "4DYFVNKZ1uixa6SQTvzQwJ"],
-        min_popularity: 50,
+        seed_artists: ["6mfK6Q2tzLMEchAr0e9Uzu", "4DYFVNKZ1uixa6SQTvzQwJ",
+        "17lzZA2AlOHwCwFALHttmp",
+        "1ZwdS5xdxEREPySFridCfh",
+        "4YLQaW1UU3mrVetC8gNkg5"
+      ],
+        min_popularity: 1,
+        limit: 100
       })
       .then(
         function (data) {
