@@ -45,10 +45,11 @@ function Home() {
         <video className="video" autoPlay="autoplay" loop="loop" muted  >
           <source src={Spotify} type="video/mp4" />
         </video>
-        <h1 className="listening">Music is<br />everything</h1>
+        <h1 className="listening">Music is<br />everything
         <button onClick={testBtn}>Test</button>
         <button onClick={getPlaylist}>playlist</button>
         <Btn />
+        </h1>
       </div>
     </div>
   );
