@@ -39,10 +39,10 @@
 
 
 @media screen and (min-width: 862px) {
-  /* .img{
+  .img{
     background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
     height: 100vh;
-  }  */
+  } 
 }
 
 
@@ -50,7 +50,6 @@
   .img {
     background-color: rgb(195, 148, 148) ;
   }
-  
 }
 
 

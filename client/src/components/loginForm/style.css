@@ -1,72 +1,36 @@
-/* .all{
-    background-color: rgb(199, 198, 198,0.2);
-    padding: 100px;
-    
-   
-}
-
-
-.login,
-.signup {
-    font-size: 25px;
-}
-
-
-.username,
-.email,
-.phone,
-.password {
- font-family: 'Bodoni Moda', serif;;
- font-size: 20px;
-}
-
-
-.title{
-    font-size: 25px;
-    margin-bottom: 15px;
-}
-
-
-.btn{
-    font-size: 15px;
-}
-
-
-input{
-    font-size: 20px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    width: 100;
-    height: 10% ;
-
-}
-
-::placeholder{
-    font-size: 15px;
-}
-
-
-.login{
-    padding-right: 20px;
-} */
-
 
 html {
     height: 100%;
   }
-  body {
+
+  /* body {
     margin:0;
     padding:0;
     font-family: sans-serif;
     /* background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg"); */
-  }
-  
+
+    @media screen and (min-width: 862px) {
+      .img{
+        background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
+        height: 100%;
+      } 
+    }
+    
+    
+    @media screen and (max-width: 862px) {
+      .img {
+        background-color: rgb(195, 148, 148) ;
+      }
+    }
+    
+
   #login-title {
     text-align: center;
     font-family: "Concert One", cursive;
     color: white;
+    margin: 0;
     font-size: 55px;
-    margin-top: 125px;
+    padding-top: 125px;
   }
 
   /* Box */
