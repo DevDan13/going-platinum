@@ -4,13 +4,9 @@ import React, { useEffect } from "react";
 // import Row from "../../components/Row";
 // import Col from "../../components//Col";
 import Btn from "../../components/Btn/index";
-<<<<<<< HEAD
 import Spotify from "../../components/video/spotify.mp4";
-import "./style.css";
-=======
-import Spotify from "../../components/video/spotify.mp4"
+import Grid from "@material-ui/core/Grid";
 import "./home.css";
->>>>>>> 85af00edf1072909b596a71c454e4b314ccb9946
 import API from "../../utils/API";
 
 function Home() {
@@ -45,24 +41,24 @@ function Home() {
 
   return (
     <div>
-<<<<<<< HEAD
-      <div>
+      <div className="layout">
         <video className="video" autoPlay="autoplay" loop="loop" muted>
-=======
-      <div className='layout'>
-        <video className="video" autoPlay="autoplay" loop="loop" muted  >
->>>>>>> 85af00edf1072909b596a71c454e4b314ccb9946
           <source src={Spotify} type="video/mp4" />
-          <h1 className="listening">
-            Music is
-            <br />
-            everything
-          </h1>
         </video>
-
-        <button onClick={testBtn}>Test</button>
-        <button onClick={getPlaylist}>playlist</button>
-        <Btn />
+        <Grid container style={{ display: "flex", justifyContent: "center" }}>
+          <Grid item xs={12}>
+            <h1 className="listening">
+              Music is
+              <br />
+              everything
+            </h1>
+          </Grid>
+          <Grid item xs={12}>
+            <button onClick={testBtn}>Test</button>
+            <button onClick={getPlaylist}>playlist</button>
+            <Btn />
+          </Grid>
+        </Grid>
       </div>
     </div>
   );
