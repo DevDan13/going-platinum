@@ -131,6 +131,7 @@ module.exports = {
         min_energy: inputs[1],
         seed_artists: inputs[2],
         min_popularity: inputs[3],
+        limit: 50,
       })
       .then(
         function (data) {

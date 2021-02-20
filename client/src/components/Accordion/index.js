@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   column: {
     flexBasis: "33.33%",
   },
+  internalColumn: { flexBasis: "50%" },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
     padding: theme.spacing(1, 2),
@@ -43,6 +44,10 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     "&:hover": {
       textDecoration: "underline",
+    },
+    inputFields: {
+      float: "left",
+      marginTop: "5px",
     },
   },
 }));
@@ -96,19 +101,24 @@ export default function ControlledAccordions({ task }) {
           </div>
         </AccordionSummary>
         <AccordionDetails className={classes.details}>
-          <div className={classes.column}>
+          <div className={classes.internalColumn}>
             <form>
+              <label for="playlist-name">Playlist Name</label>
+              <input
+                className={classes.inputFields}
+                name="playlist-name"
+              ></input>
               <label for="artists">Artists</label>
-              <input name="artists"></input>
-
+              <input className={classes.inputFields} name="artists"></input>
+              <button>Search</button>
               <label for="mood">Mood</label>
               <button type="radio">Angry</button>
+              <label for="duration">Duration</label>
+              <input className={classes.inputFields} name="duration"></input>
             </form>
           </div>
-          <div className={classes.column}>
-            <Chip label="Input" style={{ marginRight: 5 }} />
-            <Chip label={task.mood} style={{ marginRight: 5 }} />
-          </div>
+          <div className={classes.internalColumn}></div>
+
           {/* <div className={clsx(classes.column, classes.helper)}>
             <Typography variant="caption">
               Change your preferences in the{" "}
