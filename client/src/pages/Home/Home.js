@@ -48,11 +48,11 @@ function Home() {
         </video>
         
           <Grid container>
-            <Grid id="logo-div" item xs={12} sm={9} lg={10}>
+            <Grid id="logo-div" item xs={12} sm={8} md={9} lg={10}>
               <h1 className="logo">Going Platinum</h1>
             </Grid>
 
-            <Grid className="start-button-div" item xs={12} sm={3} lg={2}>
+            <Grid className="start-button-div" item xs={12} sm={4} md={3} lg={2}>
               <Btn  />
             </Grid>
           </Grid>
@@ -63,12 +63,12 @@ function Home() {
             <h1 className="listening">
               Music is
               <br />
-              everything
+              everything.
             </h1>
           </Grid>
           <Grid item xs={12}>
-            <button onClick={testBtn}>Test</button>
-            <button onClick={getPlaylist}>playlist</button>
+            {/* <button onClick={testBtn}>Test</button>
+            <button onClick={getPlaylist}>playlist</button> */}
           </Grid>
         </Grid>
       </div>

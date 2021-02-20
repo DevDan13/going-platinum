@@ -1,7 +1,7 @@
 @media screen and (min-width: 862px) {
   .listening {
-    margin-top: 460px;
-    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
     font-size: 100px;
   }
 }
@@ -9,7 +9,7 @@
 /* Medium to small screens */
 @media screen and (max-width: 862px) {
   .listening {
-    margin-top: 350px;
+    margin-top: 200px;
     font-size: 75px;
   }
 }
@@ -22,10 +22,9 @@
   }
 }
 
-
 @media screen and (max-width: 426px) {
   .listening {
-    margin-top: 350px;
+    margin-top: 200px;
     font-size: 50px;
   }
 }
@@ -34,7 +33,6 @@
   font-family: "Yeseva One", cursive;
   color: #fff;
 }
-
 
 /* @media screen and(max-width: 600px) {
   .start-button-div {
