@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 // import Col from "../../components//Col";
 import Btn from "../../components/Btn/index";
 import Spotify from "../../components/video/spotify.mp4"
-import "./style.css";
+import "./home.css";
 import API from "../../utils/API";
 
 function Home() {
@@ -41,7 +41,7 @@ function Home() {
 
   return (
     <div>
-      <div >
+      <div>
         <video className="video" autoPlay="autoplay" loop="loop" muted  >
           <source src={Spotify} type="video/mp4" />
         </video>
