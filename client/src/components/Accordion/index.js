@@ -14,6 +14,7 @@ import Divider from "@material-ui/core/Divider";
 // import clsx from "clsx";
 import RadioButtons from "../../components/RadioButtons";
 import "./style.css";
+import API from "../../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -138,7 +139,30 @@ export default function ControlledAccordions({ task, onSubmit }) {
                   <input className={classes.formItems} name="artists"></input>
                 </Grid>
                 <Grid item xs={3}>
-                  <button>Find</button>
+                  <button
+                    onClick={(event) => {
+                      event.preventDefault();
+                      let search =
+                        event.target.parentElement.previousSibling.firstChild
+                          .value;
+                      API.getArtist(search).then((res) => {
+                        let items = res.data.artists.items;
+                        if (items[0]) {
+                          console.log(items[0].name);
+                        }
+                        if (items[1]) {
+                          console.log(items[1].name);
+                        }
+                        if (items[2]) {
+                          console.log(items[2].name);
+                        }
+
+                        //items.id
+                      });
+                    }}
+                  >
+                    Find
+                  </button>
                 </Grid>
                 <Grid item className={classes.formLabels}>
                   <label for="mood">Mood</label>
@@ -159,7 +183,7 @@ export default function ControlledAccordions({ task, onSubmit }) {
                       let formData =
                         event.target.parentElement.parentElement.parentElement
                           .elements;
-                      // console.log(formData);
+
                       onSubmit(formData);
                     }}
                     type="submit"

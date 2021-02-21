@@ -1,6 +1,6 @@
 import Grid from "@material-ui/core/Grid";
-import React from "react";
-// import API from "../../utils/API";
+import React, { useEffect } from "react";
+import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
@@ -19,10 +19,33 @@ function Profile() {
       }
     }
   };
+
+  const testBtn = () => {
+    API.getAuthentication().then((res) => {
+      window.location.replace(res.data);
+    });
+  };
+
+  const getPlaylist = () => {
+    API.getArtist("Eminem").then((res) => {
+      console.log(res.data);
+      //items.id
+    });
+  };
+
+  useEffect(() => {
+    const code = window.location.href.split("=");
+    if (code[1]) {
+      console.log("code=", code[1]);
+      API.getTokens(code[1]);
+    }
+  }, []);
+
   return (
     <div className="img">
       <Header />
       <Grid container>
+        <button onClick={testBtn}>LogIn</button>
         <Grid item xs={12} md={6}>
           <Panel>
             <Grid item xs={12}>
