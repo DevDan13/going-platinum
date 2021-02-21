@@ -19,7 +19,7 @@ function Home() {
   };
 
   const getPlaylist = () => {
-    API.getSpotifyRecommendations().then((res) => {
+    API.getArtist("Eminem").then((res) => {
       console.log(res.data);
       //items.id
     });

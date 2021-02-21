@@ -1,6 +1,6 @@
 import Grid from "@material-ui/core/Grid";
-import React, { useEffect } from "react";
-import API from "../../utils/API";
+import React from "react";
+// import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
@@ -35,7 +35,7 @@ function Profile() {
           <Panel></Panel>
         </Grid>
       </Grid>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
