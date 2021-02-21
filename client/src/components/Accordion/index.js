@@ -80,6 +80,7 @@ const Accordion = withStyles({
 export default function ControlledAccordions({ task, onSubmit }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const [artistState, setArtists] = React.useState([]);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -145,24 +146,57 @@ export default function ControlledAccordions({ task, onSubmit }) {
                       let search =
                         event.target.parentElement.previousSibling.firstChild
                           .value;
-                      API.getArtist(search).then((res) => {
-                        let items = res.data.artists.items;
-                        if (items[0]) {
-                          console.log(items[0].name);
-                        }
-                        if (items[1]) {
-                          console.log(items[1].name);
-                        }
-                        if (items[2]) {
-                          console.log(items[2].name);
-                        }
+                      API.getArtist(search)
+                        .then((res) => {
+                          let items = res.data.artists.items;
+                          let searchedArtists = [];
+                          if (items[0]) {
+                            console.log(items[0]);
+                            searchedArtists.push(items[0]);
+                          } else {
+                            console.log("No Artists Available");
+                          }
+                          if (items[1]) {
+                            console.log(items[1]);
+                            searchedArtists.push(items[1]);
+                          }
+                          if (items[2]) {
+                            console.log(items[2]);
+                            searchedArtists.push(items[2]);
+                          }
+                          setArtists({
+                            ...artistState,
+                            artists: searchedArtists,
+                          });
 
-                        //items.id
-                      });
+                          //items.id
+                        })
+                        .then(() => {
+                          console.log("State", artistState);
+                        });
                     }}
                   >
                     Find
                   </button>
+                </Grid>
+                <Grid item>
+                  {artistState.artists == null
+                    ? null
+                    : artistState.artists.map((artist, i) => {
+                        return (
+                          <div>
+                            <button
+                              key={i}
+                              onClick={(event) => {
+                                event.preventDefault();
+                                const btn = event.target;
+                              }}
+                            >
+                              {artist.name}
+                            </button>
+                          </div>
+                        );
+                      })}
                 </Grid>
                 <Grid item className={classes.formLabels}>
                   <label for="mood">Mood</label>
@@ -180,11 +214,17 @@ export default function ControlledAccordions({ task, onSubmit }) {
                   <button
                     onClick={(event) => {
                       event.preventDefault();
+
+                      let radioBtns =
+                        event.target.parentElement.previousSibling
+                          .previousSibling.previousSibling.firstChild;
                       let formData =
                         event.target.parentElement.parentElement.parentElement
                           .elements;
+                      let data = [formData, radioBtns];
+                      console.log(data);
 
-                      onSubmit(formData);
+                      onSubmit(data);
                     }}
                     type="submit"
                   >

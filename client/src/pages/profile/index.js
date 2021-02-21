@@ -10,10 +10,11 @@ import "./profile.css";
 
 function Profile() {
   const onSubmit = (res) => {
-    for (var i = 0, length = res[3].elements.length; i < length; i++) {
-      if (res[3].elements[i].checked) {
+    // console.log(res);
+    for (var i = 0, length = res[1].elements.length; i < length; i++) {
+      if (res[1].elements[i].checked) {
         // Check what mood was clicked
-        console.log(res[3].elements[i].value);
+        console.log(res[1].elements[i].value);
 
         break;
       }
@@ -45,7 +46,6 @@ function Profile() {
     <div className="img">
       <Header />
       <Grid container>
-        <button onClick={testBtn}>LogIn</button>
         <Grid item xs={12} md={6}>
           <Panel>
             <Grid item xs={12}>
