@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-// const spotifyApi = require("./routes/api/spotify");
 const app = express();
 const PORT = process.env.PORT || 3001;
 require("dotenv").config();
@@ -16,7 +15,7 @@ if (process.env.NODE_ENV === "production") {
 
 // Add routes, both API and view
 app.use("/", routes);
-// app.use(spotifyApi);
+
 
 // Connect to the Mongo DB
 mongoose.connect(

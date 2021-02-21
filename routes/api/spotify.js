@@ -33,14 +33,17 @@ router.route("/spotify-categories").get(spotifyController.getSpotifyCategories);
 
 // "/api/Spotify/get-recommendations"
 router
-  .route("/get-recommendations")
+  .route("/get-recommendations/:inputs")
   .get(spotifyController.getSpotifyRecommendations);
 
 // "/api/Spotify/authentication"
 router.route("/authentication").get(spotifyController.getAuthentication);
 
-// "/api/Spotify/tokens"
+// "/api/Spotify/tokens/:code"
 router.route("/tokens/:code").get(spotifyController.getTokens);
+
+// "/api/Spotify/get-artist/:artist"
+router.route("/get-artist/:artist").get(spotifyController.getArtist);
 
 //Template for further addtions
 // // "/api/Spotify/"

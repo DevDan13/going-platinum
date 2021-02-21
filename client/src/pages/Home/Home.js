@@ -19,7 +19,7 @@ function Home() {
   };
 
   const getPlaylist = () => {
-    API.getSpotifyRecommendations().then((res) => {
+    API.getArtist("Eminem").then((res) => {
       console.log(res.data);
       //items.id
     });
@@ -67,8 +67,8 @@ function Home() {
             </h1>
           </Grid>
           <Grid item xs={12}>
-            {/* <button onClick={testBtn}>Test</button>
-            <button onClick={getPlaylist}>playlist</button> */}
+            <button onClick={testBtn}>Test</button>
+            <button onClick={getPlaylist}>playlist</button>
           </Grid>
         </Grid>
       </div>

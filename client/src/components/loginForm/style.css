@@ -23,6 +23,10 @@ html {
       }
     }
     
+  #signup-redirect {
+    color:white;
+    
+  }
 
   #login-title {
     text-align: center;
