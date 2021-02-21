@@ -5,10 +5,20 @@ import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
-import Footer from "../../components/Footer/index"
+import Footer from "../../components/Footer/index";
 import "./profile.css";
 
 function Profile() {
+  const onSubmit = (res) => {
+    for (var i = 0, length = res[3].elements.length; i < length; i++) {
+      if (res[3].elements[i].checked) {
+        // Check what mood was clicked
+        console.log(res[3].elements[i].value);
+
+        break;
+      }
+    }
+  };
   return (
     <div className="img">
       <Header />
@@ -25,7 +35,11 @@ function Profile() {
             >
               {tasks.map((task, i) => (
                 <Grid item xs={10} key={i}>
-                  <Accordion className="accordion" task={task}></Accordion>
+                  <Accordion
+                    className="accordion"
+                    task={task}
+                    onSubmit={onSubmit}
+                  ></Accordion>
                 </Grid>
               ))}
             </Grid>

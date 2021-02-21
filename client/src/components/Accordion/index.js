@@ -9,9 +9,10 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Grid from "@material-ui/core/Grid";
-import Chip from "@material-ui/core/Chip";
+// import Chip from "@material-ui/core/Chip";
 import Divider from "@material-ui/core/Divider";
-import clsx from "clsx";
+// import clsx from "clsx";
+import RadioButtons from "../../components/RadioButtons";
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -75,7 +76,7 @@ const Accordion = withStyles({
   },
 })(MuiAccordion);
 
-export default function ControlledAccordions({ task }) {
+export default function ControlledAccordions({ task, onSubmit }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -113,7 +114,7 @@ export default function ControlledAccordions({ task }) {
         </AccordionSummary>
         <AccordionDetails className={classes.details}>
           <div className={classes.internalColumn}>
-            <form>
+            <form className="formData">
               <Grid
                 container
                 direction="column"
@@ -137,13 +138,13 @@ export default function ControlledAccordions({ task }) {
                   <input className={classes.formItems} name="artists"></input>
                 </Grid>
                 <Grid item xs={3}>
-                  <button>Search</button>
+                  <button>Find</button>
                 </Grid>
                 <Grid item className={classes.formLabels}>
                   <label for="mood">Mood</label>
                 </Grid>
                 <Grid item>
-                  <button type="radio">Angry</button>
+                  <RadioButtons></RadioButtons>
                 </Grid>
                 <Grid item className={classes.formLabels}>
                   <label for="duration">Duration</label>
@@ -152,7 +153,19 @@ export default function ControlledAccordions({ task }) {
                   <input className={classes.formItems} name="duration"></input>
                 </Grid>
                 <Grid item className={classes.formLabels}>
-                  <button type="submit">Generate Playlist</button>
+                  <button
+                    onClick={(event) => {
+                      event.preventDefault();
+                      let formData =
+                        event.target.parentElement.parentElement.parentElement
+                          .elements;
+                      // console.log(formData);
+                      onSubmit(formData);
+                    }}
+                    type="submit"
+                  >
+                    Generate Playlist
+                  </button>
                 </Grid>
               </Grid>
             </form>
