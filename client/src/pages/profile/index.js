@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import Grid from "@material-ui/core/Grid";
 import React, { useEffect } from "react";
 import API from "../../utils/API";
@@ -7,6 +8,7 @@ import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index";
 import MusicPlayer from "../../components/MusicPlayer/index";
+import PlayerPulse from "../../components/PlayerPulse/index"
 import { Link, animateScroll as scroll } from "react-scroll";
 import "./profile.css";
 
@@ -44,7 +46,7 @@ function Profile() {
     <div className="img">
       <Header />
       <Grid container>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={5}>
           <Panel>
             <Grid item xs={12}>
               <h2 id="activity-h2">Activities</h2>
@@ -85,7 +87,10 @@ function Profile() {
             </Grid>
           </Panel>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={2}>
+          <PlayerPulse></PlayerPulse>
+        </Grid>
+        <Grid item xs={12} md={5}>
           <Panel>
             <div id="sign-up-div"></div>
             <MusicPlayer></MusicPlayer>
