@@ -6,6 +6,7 @@ import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index";
+import MusicPlayer from "../../components/MusicPlayer/index"
 import "./profile.css";
 
 function Profile() {
@@ -65,7 +66,9 @@ function Profile() {
           </Panel>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Panel></Panel>
+          <Panel>
+            <MusicPlayer></MusicPlayer>
+          </Panel>
         </Grid>
       </Grid>
       <Footer />

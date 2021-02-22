@@ -19,6 +19,7 @@ import API from "../../utils/API";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+    
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),

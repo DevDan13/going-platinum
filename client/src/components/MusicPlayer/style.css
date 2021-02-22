@@ -14,11 +14,15 @@
     display: flex;
     justify-content: center;
     margin-bottom: 25px;
+    position: relative;
 }
 
-.player-button {
+.player-button-div {
   display: flex;
   justify-content: center;
 }
 
+#music-player-div {
+  margin-top: 40px;
+}
 
