@@ -1,50 +1,84 @@
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import PauseIcon from "@material-ui/icons/Pause";
 import IconButton from "@material-ui/core/IconButton";
 import ShuffleIcon from "@material-ui/icons/Shuffle";
 import RepeatIcon from "@material-ui/icons/Repeat";
 import Grid from "@material-ui/core/Grid";
 import "./style.css";
+import { makeStyles } from "@material-ui/core/styles";
 import { Icon } from "@material-ui/core";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+  iconBtn: {
+    color: "pink",
+  },
+  icon: {
+    backgroundColor: "black",
+    borderRadius: 25,
+    borderColor: "pink",
+    borderStyle: "solid",
+  },
+}));
+
 function MusicPlayer() {
+  const classes = useStyles();
+
   return (
-    <Grid container>
+    <Grid container id="music-player-div">
       <Grid container id="image-container">
         <Grid item xs={12} id="player-image">
           <img src="https://via.placeholder.com/300" alt="placeholder"></img>
         </Grid>
         <Grid container id="player-container">
-          <Grid item xs={2} className="player-button" id="skip-prev-btn">
-
+          <Grid item xs={2} className="player-button-div" id="skip-prev-btn">
             <IconButton
+              className={classes.iconBtn}
               aria-label="skip-previous"
               // onclick = spotify api call to skip previous
             >
-              <SkipPreviousIcon></SkipPreviousIcon>
+              <SkipPreviousIcon
+                className={classes.icon}
+                fontSize="large"
+              ></SkipPreviousIcon>
             </IconButton>
-
           </Grid>
-          <Grid item xs={2} className="player-button" id="play-btn">
-
+          <Grid item xs={2} className="player-button-div" id="play-btn">
             <IconButton
+              className={classes.iconBtn}
               aria-label="play"
+              component="span"
               // onclick = spotify api call to start/resume playback
             >
-              <PlayArrowIcon></PlayArrowIcon>
+              <PlayArrowIcon
+                className={classes.icon}
+                fontSize="large"
+              ></PlayArrowIcon>
+              <PauseIcon
+                className={classes.icon}
+                fontSize="large"
+                color="inherit"
+              ></PauseIcon>
             </IconButton>
-
           </Grid>
-          <Grid item xs={2} className="player-button">
-
+          <Grid item xs={2} className="player-button-div">
             <IconButton
+              className={classes.iconBtn}
               aria-label="skip-next"
+              component="span"
               // onclick = spotify api call to skip next
             >
-              <SkipNextIcon></SkipNextIcon>
+              <SkipNextIcon
+                className={classes.icon}
+                fontSize="large"
+              ></SkipNextIcon>
             </IconButton>
-            
           </Grid>
         </Grid>
       </Grid>
