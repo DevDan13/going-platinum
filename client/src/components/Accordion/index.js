@@ -223,6 +223,29 @@ export default function ControlledAccordions({ task, onSubmit }) {
                         );
                       })}
                 </Grid>
+                <Grid
+                  container
+                  direction="row"
+                  justify="flex-start"
+                  alignItems="center"
+                >
+                  {artistArrayState.map((artist, i) => {
+                    return (
+                      <Grid item key={i}>
+                        <a
+                          onClick={() => {
+                            setArtistArray(
+                              artistArrayState.filter((e) => e !== artist)
+                            );
+                          }}
+                        >
+                          <p>{artist} - </p>
+                        </a>
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+
                 <Grid item className={classes.formLabels}>
                   <label for="mood">Mood</label>
                 </Grid>
@@ -271,7 +294,6 @@ export default function ControlledAccordions({ task, onSubmit }) {
                           break;
                         }
                       }
-                      
 
                       onSubmit(data);
                     }}
