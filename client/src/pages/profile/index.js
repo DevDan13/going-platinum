@@ -10,8 +10,11 @@ import "./profile.css";
 
 function Profile() {
   const onSubmit = (res) => {
-    
-    
+    console.log(res);
+
+    API.getSpotifyRecommendations(0.5, 50, res[0]).then((data) => {
+      console.log("data", data);
+    });
   };
 
   const testBtn = () => {

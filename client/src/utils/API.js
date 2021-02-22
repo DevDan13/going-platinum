@@ -1,30 +1,5 @@
 import axios from "axios";
 
-// import  SpotifyWebApi from "spotify-web-api-node";
-
-// // credentials are optional
-// var spotifyApi = new SpotifyWebApi({
-//   clientId: process.env.REACT_APP_CLIENT_ID,
-//   clientSecret: process.env.REACT_APP_CLIENT_SECRET,
-//   redirectUri: "http://localhost/callback",
-// });
-
-// //Spotify API Calls
-// export default {
-//   getClientCredentialsGrant: function() {
-//     spotifyApi.clientCredentialsGrant().then(
-//       function(data) {
-//         console.log('The access token expires in ' + data.body['expires_in']);
-//         console.log('The access token is ' + data.body['access_token']);
-
-//         // Save the access token so that it's used in future calls
-//         spotifyApi.setAccessToken(data.body['access_token']);
-//       },
-//       function(err) {
-//         console.log('Something went wrong when retrieving an access token', err);
-//       }
-//     );
-//   },
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   songPause: function () {
@@ -56,11 +31,11 @@ export default {
   },
   getSpotifyRecommendations: function (energy, popularity, artists) {
     return axios.get(
-      "/api/Spotify/get-recommendations/energy=" +
+      "/api/Spotify/get-recommendations/" +
         energy +
-        "/popularity=" +
+        "-" +
         popularity +
-        "/artists=" +
+        "-" +
         artists
     );
   },

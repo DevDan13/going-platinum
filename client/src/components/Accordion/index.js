@@ -205,7 +205,7 @@ export default function ControlledAccordions({ task, onSubmit }) {
                         return (
                           <Grid item key={i}>
                             <button
-                              id={artist.name + "-" + artist.id}
+                              id={artist.id}
                               onClick={(event) => {
                                 event.preventDefault();
                                 const btn = event.target.id;
