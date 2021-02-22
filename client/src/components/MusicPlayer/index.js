@@ -36,6 +36,9 @@ function MusicPlayer() {
         <Grid item xs={12} id="player-image">
           <img src="https://via.placeholder.com/300" alt="placeholder"></img>
         </Grid>
+
+
+        {/* PREVIOUS BUTTON */}
         <Grid container id="player-container">
           <Grid item xs={2} className="player-button-div" id="skip-prev-btn">
             <IconButton
@@ -49,6 +52,9 @@ function MusicPlayer() {
               ></SkipPreviousIcon>
             </IconButton>
           </Grid>
+
+
+          {/* PLAY BUTTON */}
           <Grid item xs={2} className="player-button-div" id="play-btn">
             <IconButton
               className={classes.iconBtn}
@@ -60,6 +66,18 @@ function MusicPlayer() {
                 className={classes.icon}
                 fontSize="large"
               ></PlayArrowIcon>
+            </IconButton>
+          </Grid>
+
+
+          {/* PAUSE BUTTON */}
+          <Grid item xs={2} className="player-button-div" id="play-btn">
+            <IconButton
+              className={classes.iconBtn}
+              aria-label="play"
+              component="span"
+              // onclick = spotify api call to start/resume playback
+            >
               <PauseIcon
                 className={classes.icon}
                 fontSize="large"
@@ -67,6 +85,9 @@ function MusicPlayer() {
               ></PauseIcon>
             </IconButton>
           </Grid>
+
+
+          {/* SKIP BUTTON */}
           <Grid item xs={2} className="player-button-div">
             <IconButton
               className={classes.iconBtn}
@@ -80,6 +101,7 @@ function MusicPlayer() {
               ></SkipNextIcon>
             </IconButton>
           </Grid>
+
         </Grid>
       </Grid>
     </Grid>
