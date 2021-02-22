@@ -6,7 +6,8 @@ import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index";
-import MusicPlayer from "../../components/MusicPlayer/index"
+import MusicPlayer from "../../components/MusicPlayer/index";
+import { Link, animateScroll as scroll } from "react-scroll";
 import "./profile.css";
 
 function Profile() {
@@ -53,6 +54,25 @@ function Profile() {
               className="accordion-div"
               style={{ overflowY: "scroll", height: "100%" }}
             >
+              {/* This code block is intended for the signup/login page. 
+              When the user clicks "here", it will scroll to the bottom where the signup panel will be 
+              -----------------------------------------------------------------------------------------*/}
+
+              <p style={{ color: "white" }}>
+                New user? Sign up{" "}
+                <Link
+                  to="sign-up-div"
+                  smooth="easeInOutExpo"
+                  duration={750}
+                  delay={250}
+                  ignoreCancelEvents={false}
+                >
+                 <a style={{color:"rgb(207, 104, 104)"}} href="#">here</a>!
+                </Link>
+              </p>
+
+              {/* ------------------------------------------------------------------------------------ */}
+
               {tasks.map((task, i) => (
                 <Grid item xs={10} key={i}>
                   <Accordion
@@ -67,6 +87,7 @@ function Profile() {
         </Grid>
         <Grid item xs={12} md={6}>
           <Panel>
+            <div id="sign-up-div"></div>
             <MusicPlayer></MusicPlayer>
           </Panel>
         </Grid>
