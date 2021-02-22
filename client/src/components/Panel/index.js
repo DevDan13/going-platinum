@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import "./style.css"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +23,7 @@ export default function Panel(props) {
 
   return (
     <div className={classes.root}>
-      <Paper style={{ background: "rgba(0, 0, 0, 0.8"}} elevation={3}>
+      <Paper className="panel" style={{ background: "rgba(0, 0, 0, 0.8"}} elevation={3}>
         {props.children}
       </Paper>
     </div>

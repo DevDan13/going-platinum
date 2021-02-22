@@ -16,25 +16,26 @@
 
 
 
+.btn-start {
+  background-color: transparent;
+  border-radius: 2em;
+  border: 0.2em solid rgb(207, 104, 104);
+  color: #000;
+  cursor: pointer;
+  padding: 0.7em 1.5em;
+  
+  transition: all 0.25s ease;
 
-.btn-start{
-    background-color: transparent;
-    border-radius: 2em;
-    border: 0.2em solid #1ecd97;
-    color: #000;
-    cursor: pointer;
-    padding: 0.7em 1.5em;
-    text-transform: uppercase;
-    transition: all 0.25s ease;
-    margin: 3px;
-    /* margin-top: 45%; */
-    font-size: 20px;
-    background-color: #1ecd97 ;
-
+  margin: 3px;
+  margin-top: 0.75em;
+  font-size: 20px;
+  background-color: rgb(207, 104, 104);
 }
 
 
+
+
 .btn-start:hover {
-    background: #fff;
-    color: #333;
+  background: #fff;
+  color: #333;
 }
