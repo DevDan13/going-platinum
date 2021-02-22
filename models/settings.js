@@ -8,6 +8,6 @@ const settingsSchema = new Schema({
   firebaseId: { type: String, required: true, unique: true }
 });
 
-const Settings = mongoose.model("Settings", userSchema);
+const Settings = mongoose.model("Settings", settingsSchema);
 
 module.exports = Settings;

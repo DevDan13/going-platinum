@@ -3,15 +3,15 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import MuiAccordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionActions from '@material-ui/core/AccordionActions';
+import AccordionActions from "@material-ui/core/AccordionActions";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Grid from "@material-ui/core/Grid";
-import Chip from '@material-ui/core/Chip';
-import Divider from '@material-ui/core/Divider';
-import clsx from 'clsx';
+// import Grid from "@material-ui/core/Grid";
+import Chip from "@material-ui/core/Chip";
+import Divider from "@material-ui/core/Divider";
+import clsx from "clsx";
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   column: {
     flexBasis: "33.33%",
   },
+  internalColumn: { flexBasis: "50%" },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
     padding: theme.spacing(1, 2),
@@ -43,6 +44,10 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     "&:hover": {
       textDecoration: "underline",
+    },
+    inputFields: {
+      float: "left",
+      marginTop: "5px",
     },
   },
 }));
@@ -80,44 +85,53 @@ export default function ControlledAccordions({ task }) {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-
-            <FormControlLabel
-              aria-label="Select"
-              onClick={(event) => event.stopPropagation()}
-              onFocus={(event) => event.stopPropagation()}
-              control={<Checkbox style={{ color: "rgba(204, 162, 162)" }} />}
-            />
-            <div className={classes.column}>
-              <Typography id="heading">{task.name}</Typography>
-            </div>
-            <div className={classes.column}>
-              <Typography className={classes.secondaryHeading}>
-                View Settings
-              </Typography>
-            </div>
-
-        </AccordionSummary>
-        <AccordionDetails className={classes.details}>
-          <div className={classes.column} />
+          <FormControlLabel
+            aria-label="Select"
+            onClick={(event) => event.stopPropagation()}
+            onFocus={(event) => event.stopPropagation()}
+            control={<Checkbox style={{ color: "rgba(204, 162, 162)" }} />}
+          />
           <div className={classes.column}>
-            <Chip label="Placeholder" style={{marginRight:5}}/>
-            <Chip label={task.mood} style={{marginRight:5}}/>
+            <Typography id="heading">{task.name}</Typography>
           </div>
-          <div className={clsx(classes.column, classes.helper)}>
-            <Typography variant="caption">
-              Change your preferences in the {" "}  
-              <a href="#secondary-heading-and-columns" className={classes.link}>
-                Settings
-              </a>
-              {" "}
-              menu.
+          <div className={classes.column}>
+            <Typography className={classes.secondaryHeading}>
+              View Settings
             </Typography>
           </div>
+        </AccordionSummary>
+        <AccordionDetails className={classes.details}>
+          <div className={classes.internalColumn}>
+            <form>
+              <label for="playlist-name">Playlist Name</label>
+              <input
+                className={classes.inputFields}
+                name="playlist-name"
+              ></input>
+              <label for="artists">Artists</label>
+              <input className={classes.inputFields} name="artists"></input>
+              <button>Search</button>
+              <label for="mood">Mood</label>
+              <button type="radio">Angry</button>
+              <label for="duration">Duration</label>
+              <input className={classes.inputFields} name="duration"></input>
+            </form>
+          </div>
+          <div className={classes.internalColumn}></div>
+
+          {/* <div className={clsx(classes.column, classes.helper)}>
+            <Typography variant="caption">
+              Change your preferences in the{" "}
+              <a href="#secondary-heading-and-columns" className={classes.link}>
+                SettingsHey
+              </a>{" "}
+              menu.
+            </Typography>
+          </div> */}
         </AccordionDetails>
         <Divider />
         <AccordionActions>
-          {/* Delete */}
-          Delete button here
+          <button>Delete</button>
         </AccordionActions>
       </Accordion>
     </div>
