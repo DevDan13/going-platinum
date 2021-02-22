@@ -14,11 +14,11 @@ function App() {
         <Application />
       </UserProvider> */}
       <Router>
-        {/* <div> */}
+        <div>
           <Route exact path={["/", "/callback"]} component={Home} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/login" component={Login} />
-        {/* </div> */}
+        </div>
       </Router>
     </div>
   );

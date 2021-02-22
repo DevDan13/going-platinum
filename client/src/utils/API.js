@@ -7,7 +7,7 @@ import axios from "axios";
 //   clientId: process.env.REACT_APP_CLIENT_ID,
 //   clientSecret: process.env.REACT_APP_CLIENT_SECRET,
 //   redirectUri: "http://localhost/callback",
-// }); 
+// });
 
 // //Spotify API Calls
 // export default {
@@ -16,7 +16,7 @@ import axios from "axios";
 //       function(data) {
 //         console.log('The access token expires in ' + data.body['expires_in']);
 //         console.log('The access token is ' + data.body['access_token']);
-    
+
 //         // Save the access token so that it's used in future calls
 //         spotifyApi.setAccessToken(data.body['access_token']);
 //       },
@@ -54,14 +54,24 @@ export default {
   getSpotifyCategories: function () {
     return axios.get("/api/Spotify/spotify-categories");
   },
-  getSpotifyRecommendations: function () {
-    return axios.get("/api/Spotify/get-recommendations");
+  getSpotifyRecommendations: function (energy, popularity, artists) {
+    return axios.get(
+      "/api/Spotify/get-recommendations/energy=" +
+        energy +
+        "/popularity=" +
+        popularity +
+        "/artists=" +
+        artists
+    );
   },
   getAuthentication: function () {
     return axios.get("/api/Spotify/authentication");
   },
   getTokens: function (code) {
     return axios.get("/api/Spotify/tokens/" + code);
+  },
+  getArtist: function (artist) {
+    return axios.get("/api/Spotify/get-artist/" + artist);
   },
   // getAccessToken: function () {
 
