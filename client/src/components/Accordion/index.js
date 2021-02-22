@@ -81,7 +81,12 @@ export default function ControlledAccordions({ task, onSubmit }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [artistState, setArtists] = React.useState([]);
-
+  const [artistArrayState, setArtistArray] = React.useState([]);
+  const [playlistState, setPlaylistState] = React.useState({
+    playlistName: "",
+    mood: "",
+    duration: "",
+  });
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -130,6 +135,12 @@ export default function ControlledAccordions({ task, onSubmit }) {
                   <input
                     className={classes.formItems}
                     name="playlist-name"
+                    onChange={(event) => {
+                      setPlaylistState({
+                        ...playlistState,
+                        playlistName: event.target.value,
+                      });
+                    }}
                   ></input>
                 </Grid>
 
@@ -143,9 +154,12 @@ export default function ControlledAccordions({ task, onSubmit }) {
                   <button
                     onClick={(event) => {
                       event.preventDefault();
+
                       let search =
                         event.target.parentElement.previousSibling.firstChild
                           .value;
+
+                      console.log("search ", search);
                       API.getArtist(search)
                         .then((res) => {
                           let items = res.data.artists.items;
@@ -179,22 +193,33 @@ export default function ControlledAccordions({ task, onSubmit }) {
                     Find
                   </button>
                 </Grid>
-                <Grid item>
+                <Grid
+                  container
+                  direction="row"
+                  justify="flex-start"
+                  alignItems="center"
+                >
                   {artistState.artists == null
                     ? null
                     : artistState.artists.map((artist, i) => {
                         return (
-                          <div>
+                          <Grid item key={i}>
                             <button
-                              key={i}
+                              id={artist.name + "-" + artist.id}
                               onClick={(event) => {
                                 event.preventDefault();
-                                const btn = event.target;
+                                const btn = event.target.id;
+                                console.log(btn);
+                                setArtistArray((artistArrayState) => [
+                                  ...artistArrayState,
+                                  btn,
+                                ]);
+                                console.log(artistArrayState);
                               }}
                             >
                               {artist.name}
                             </button>
-                          </div>
+                          </Grid>
                         );
                       })}
                 </Grid>
@@ -208,21 +233,45 @@ export default function ControlledAccordions({ task, onSubmit }) {
                   <label for="duration">Duration</label>
                 </Grid>
                 <Grid item>
-                  <input className={classes.formItems} name="duration"></input>
+                  <input
+                    className={classes.formItems}
+                    name="duration"
+                    onChange={(event) => {
+                      setPlaylistState({
+                        ...playlistState,
+                        duration: event.target.value,
+                      });
+                    }}
+                  ></input>
                 </Grid>
                 <Grid item className={classes.formLabels}>
                   <button
                     onClick={(event) => {
                       event.preventDefault();
 
-                      let radioBtns =
+                      console.log("playlistState", playlistState);
+                      const radioBtns =
                         event.target.parentElement.previousSibling
                           .previousSibling.previousSibling.firstChild;
-                      let formData =
-                        event.target.parentElement.parentElement.parentElement
-                          .elements;
-                      let data = [formData, radioBtns];
-                      console.log(data);
+
+                      let data = [artistArrayState, playlistState];
+
+                      for (
+                        var i = 0, length = radioBtns.elements.length;
+                        i < length;
+                        i++
+                      ) {
+                        if (radioBtns.elements[i].checked) {
+                          // Check what mood was clicked
+                          setPlaylistState({
+                            ...playlistState,
+                            mood: radioBtns.elements[i].value,
+                          });
+
+                          break;
+                        }
+                      }
+                      
 
                       onSubmit(data);
                     }}

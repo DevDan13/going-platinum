@@ -10,15 +10,8 @@ import "./profile.css";
 
 function Profile() {
   const onSubmit = (res) => {
-    // console.log(res);
-    for (var i = 0, length = res[1].elements.length; i < length; i++) {
-      if (res[1].elements[i].checked) {
-        // Check what mood was clicked
-        console.log(res[1].elements[i].value);
-
-        break;
-      }
-    }
+    
+    
   };
 
   const testBtn = () => {
