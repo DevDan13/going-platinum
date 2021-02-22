@@ -125,7 +125,7 @@ module.exports = {
   getSpotifyRecommendations: function (req, res) {
     spotifyApi
       .getRecommendations({
-        min_energy: 0.9,
+        min_energy: 0.5,
         seed_artists: ["6mfK6Q2tzLMEchAr0e9Uzu", "4DYFVNKZ1uixa6SQTvzQwJ",
         "17lzZA2AlOHwCwFALHttmp",
         "1ZwdS5xdxEREPySFridCfh",
