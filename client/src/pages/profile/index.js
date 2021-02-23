@@ -10,6 +10,7 @@ import Footer from "../../components/Footer/index";
 import MusicPlayer from "../../components/MusicPlayer/index";
 import PlayerPulse from "../../components/PlayerPulse/index";
 import LinePulse from "../../components/LinePulse/index";
+import Zoom from "@material-ui/core/Zoom";
 import { Link, animateScroll as scroll } from "react-scroll";
 import "./profile.css";
 
@@ -19,10 +20,12 @@ function Profile() {
   const [playing, setPlaying] = useState(false);
 
   const setToPlay = () => {
+    setChecked((prev) => !prev);
     return setPlaying(true);
   };
 
   const setToPause = () => {
+    setChecked((prev) => !prev);
     return setPlaying(false);
   };
 
@@ -68,6 +71,8 @@ function Profile() {
     }
   }, []);
   //=========================================================================
+
+  const [checked, setChecked] = useState(false);
 
   return (
     <div className="img">
@@ -125,27 +130,27 @@ function Profile() {
         {/* The moving stuff in the middle of the page */}
         <Grid item xs={12} md={1}>
           <div id="motion-div">
-
-            {isDesktop ? (
-              <LinePulse playing={playing}></LinePulse>
-            ) : (
-              <div></div>
-            )}
-
-            <div id="player-pulse-div">
-              {playerPulse ? (
-                <PlayerPulse playing={playing} size={"la-3x"}></PlayerPulse>
+            {/* <Zoom in={checked}> */}
+              {isDesktop ? (
+                <LinePulse playing={playing}></LinePulse>
               ) : (
-                <PlayerPulse playing={playing} size={"la-2x"}></PlayerPulse>
+                <div></div>
               )}
-            </div>
 
-            {isDesktop ? (
-              <LinePulse playing={playing}></LinePulse>
-            ) : (
-              <div></div>
-            )}
-            
+              <div id="player-pulse-div">
+                {playerPulse ? (
+                  <PlayerPulse playing={playing} size={"la-3x"}></PlayerPulse>
+                ) : (
+                  <PlayerPulse playing={playing} size={"la-2x"}></PlayerPulse>
+                )}
+              </div>
+
+              {isDesktop ? (
+                <LinePulse playing={playing}></LinePulse>
+              ) : (
+                <div></div>
+              )}
+            {/* </Zoom> */}
           </div>
         </Grid>
 

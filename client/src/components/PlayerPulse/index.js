@@ -44,7 +44,7 @@ function PlayerPulse({ size, playing }) {
             }}
           ></div>
         </div>
-      ) : null}
+      ) : <div style={{height:64}}></div>}
     </div>
 
     // <div style={{color: "#ad0e46"}} className={`la-line-scale-pulse-out ${size}`}>
