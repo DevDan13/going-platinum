@@ -8,7 +8,7 @@ import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index";
 import NewTaskAccordion from "../../components/NewTaskAccordion";
 import Playlist from "../../components/Playlist";
-import MusicPlayer from "../../components/MusicPlayer/index"
+import MusicPlayer from "../../components/MusicPlayer/index";
 import "./profile.css";
 
 function Profile() {
@@ -21,6 +21,9 @@ function Profile() {
   };
 
   const addTask = () => {};
+  const deleteTask = () => {
+    console.log("Delete Task");
+  };
 
   return (
     <div className="img">
@@ -46,7 +49,7 @@ function Profile() {
                   <Accordion
                     className="accordion"
                     task={task}
-                    onSubmit={onSubmit}
+                    delBtn={deleteTask}
                   ></Accordion>
                 </Grid>
               ))}
