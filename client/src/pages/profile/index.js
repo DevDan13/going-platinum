@@ -14,17 +14,16 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import "./profile.css";
 
 function Profile() {
-  
   const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
   const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
-  const [playing, setPlaying] = useState((false));
+  const [playing, setPlaying] = useState(false);
 
   const setToPlay = () => {
-    return(setPlaying(true));
+    return setPlaying(true);
   };
 
   const setToPause = () => {
-    return(setPlaying(false));
+    return setPlaying(false);
   };
 
   // This code adjusts the motion media depending on the viewport size =======
@@ -38,7 +37,6 @@ function Profile() {
     return () => window.removeEventListener("resize", updateMedia);
   });
   // =========================================================================
-
 
   // Spotify test code =======================================================
   const onSubmit = (res) => {
@@ -70,7 +68,6 @@ function Profile() {
     }
   }, []);
   //=========================================================================
-
 
   return (
     <div className="img">
@@ -128,7 +125,12 @@ function Profile() {
         {/* The moving stuff in the middle of the page */}
         <Grid item xs={12} md={1}>
           <div id="motion-div">
-            {isDesktop ? <LinePulse></LinePulse> : <div></div>}
+
+            {isDesktop ? (
+              <LinePulse playing={playing}></LinePulse>
+            ) : (
+              <div></div>
+            )}
 
             <div id="player-pulse-div">
               {playerPulse ? (
@@ -138,7 +140,12 @@ function Profile() {
               )}
             </div>
 
-            {isDesktop ? <LinePulse></LinePulse> : <div></div>}
+            {isDesktop ? (
+              <LinePulse playing={playing}></LinePulse>
+            ) : (
+              <div></div>
+            )}
+            
           </div>
         </Grid>
 
@@ -147,8 +154,8 @@ function Profile() {
           <Panel>
             <div id="sign-up-div"></div>
             <MusicPlayer
-            setToPlay={setToPlay}
-            setToPause={setToPause}
+              setToPlay={setToPlay}
+              setToPause={setToPause}
             ></MusicPlayer>
           </Panel>
         </Grid>

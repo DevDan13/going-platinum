@@ -1,14 +1,18 @@
 import "./style.scss";
 
-function LinePulse() {
+function LinePulse({ playing }) {
   return (
-    <div id="container">
-      <div className="loader">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    <div>
+      {playing ? (
+        <div id="container">
+          <div className="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
