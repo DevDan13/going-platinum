@@ -14,7 +14,7 @@ function Application() {
         <Route exact path="/signUp">
           <SignUp />
         </Route>
-        <Route exact path="/">
+        <Route exact path="/signIn">
           <SignIn />
         </Route>
         <Route exact path="/passwordReset">

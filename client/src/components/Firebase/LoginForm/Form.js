@@ -8,8 +8,8 @@ function LoginForm() {
         <h2>Login</h2>
         <form>
           <div className="user-box">
-            <input type="text" name="" required=""></input>
-            <label>Username</label>
+            <input type="email" name="userEmail" required=""></input>
+            <label>Email</label>
           </div>
           <div className="user-box">
             <input type="password" name="" required=""></input>

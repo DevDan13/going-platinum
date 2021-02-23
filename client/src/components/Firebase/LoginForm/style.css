@@ -40,7 +40,7 @@ html {
   /* Box */
   .login-box {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     width: 400px;
     padding: 40px;
