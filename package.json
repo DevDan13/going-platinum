@@ -29,6 +29,7 @@
     "if-env": "^1.0.4",
     "jquery": "^3.5.1",
     "mongoose": "^5.3.16",
+    "node-sass": "^4.14.1",
     "react-scroll": "^1.8.1",
     "request": "^2.88.2",
     "spotify-web-api-node": "^5.0.2",

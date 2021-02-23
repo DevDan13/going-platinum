@@ -8,7 +8,8 @@ import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index";
 import MusicPlayer from "../../components/MusicPlayer/index";
-import PlayerPulse from "../../components/PlayerPulse/index"
+import PlayerPulse from "../../components/PlayerPulse/index";
+import LinePulse from "../../components/LinePulse/index";
 import { Link, animateScroll as scroll } from "react-scroll";
 import "./profile.css";
 
@@ -69,7 +70,10 @@ function Profile() {
                   delay={250}
                   ignoreCancelEvents={false}
                 >
-                 <a style={{color:"rgb(207, 104, 104)"}} href="#">here</a>!
+                  <a style={{ color: "rgb(207, 104, 104)" }} href="#">
+                    here
+                  </a>
+                  !
                 </Link>
               </p>
 
@@ -87,9 +91,26 @@ function Profile() {
             </Grid>
           </Panel>
         </Grid>
+
         <Grid item xs={12} md={2}>
-          <PlayerPulse></PlayerPulse>
+          <div id="motion-div" style={{marginTop: 100}}>
+            <LinePulse></LinePulse>
+            <div
+              style={{
+                paddingTop: 120,
+                paddingBottom: 120,
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <PlayerPulse></PlayerPulse>
+            </div>
+            <div>
+              <LinePulse></LinePulse>
+            </div>
+          </div>
         </Grid>
+
         <Grid item xs={12} md={5}>
           <Panel>
             <div id="sign-up-div"></div>

@@ -2,12 +2,12 @@ import "./style.css";
 
 function PlayerPulse() {
   return (
-    <div style={{color: "#79bbb5"}} className="la-line-scale-pulse-out la-3x">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+    <div style={{color: "#ad0e46"}} className="la-line-scale-pulse-out la-3x">
+      <div style={{borderStyle: "solid", borderWidth: .1, borderColor: "pink"}}></div>
+      <div style={{borderStyle: "solid", borderWidth: .1, borderColor: "pink"}}></div>
+      <div style={{borderStyle: "solid", borderWidth: .1, borderColor: "pink"}}></div>
+      <div style={{borderStyle: "solid", borderWidth: .1, borderColor: "pink"}}></div>
+      <div style={{borderStyle: "solid", borderWidth: .1, borderColor: "pink"}}></div>
     </div>
   );
 }
