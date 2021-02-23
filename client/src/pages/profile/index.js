@@ -8,6 +8,7 @@ import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index";
 import NewTaskAccordion from "../../components/NewTaskAccordion";
 import Playlist from "../../components/Playlist";
+import MusicPlayer from "../../components/MusicPlayer/index"
 import "./profile.css";
 
 function Profile() {
@@ -54,7 +55,7 @@ function Profile() {
         </Grid>
         <Grid item xs={12} md={6}>
           <Panel>
-            <Playlist />
+            <MusicPlayer></MusicPlayer>
           </Panel>
         </Grid>
       </Grid>
