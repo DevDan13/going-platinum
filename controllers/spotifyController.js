@@ -125,12 +125,15 @@ module.exports = {
       );
   },
   getSpotifyRecommendations: function (req, res) {
-    let inputs = req.params.input.split("=");
+    let inputs = req.params.inputs.split("-");
+    let energy = parseFloat(inputs[0]);
+    let popularity = parseInt(inputs[1]);
+    console.log(energy, inputs[2], popularity);
     spotifyApi
       .getRecommendations({
-        min_energy: inputs[1],
-        seed_artists: inputs[2],
-        min_popularity: inputs[3],
+        min_energy: energy,
+        seed_artists: [inputs[2]],
+        min_popularity: popularity,
         limit: 50,
       })
       .then(
