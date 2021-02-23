@@ -8,11 +8,11 @@ function LoginForm() {
         <h2>Login</h2>
         <form>
           <div className="user-box">
-            <input type="text" name="" required=""></input>
+            <input type="text" name="" required />
             <label>Username</label>
           </div>
           <div className="user-box">
-            <input type="password" name="" required=""></input>
+            <input type="password" name="" required />
             <label>Password</label>
           </div>
           <a href="#">
@@ -44,7 +44,7 @@ function LoginForm() {
             <span></span>
             <span></span>
             <span></span>
-            Submit
+            Sign Up
           </a>
         </form>
       </div>
