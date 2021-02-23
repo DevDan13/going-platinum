@@ -46,7 +46,7 @@ function Profile() {
   return (
     <div className="img">
       <Header />
-      <Grid container>
+      <Grid style={{display: "flex", justifyContent:"center", marginTop: 45}}container>
         <Grid item xs={12} md={5}>
           <Panel>
             <Grid item xs={12}>
@@ -92,7 +92,7 @@ function Profile() {
           </Panel>
         </Grid>
 
-        <Grid item xs={12} md={2}>
+        <Grid item xs={12} md={1}>
           <div id="motion-div" style={{marginTop: 100}}>
             <LinePulse></LinePulse>
             <div
