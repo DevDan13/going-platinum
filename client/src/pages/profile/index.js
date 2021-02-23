@@ -109,17 +109,10 @@ function Profile() {
 
         {/* The moving stuff in the middle of the page */}
         <Grid item xs={12} md={1}>
-          <div id="motion-div" style={{ marginTop: 100 }}>
+          <div id="motion-div">
             {isDesktop ? <LinePulse></LinePulse> : <div></div>}
 
-            <div
-              style={{
-                paddingTop: 120,
-                paddingBottom: 120,
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
+            <div id="player-pulse-div">
               <PlayerPulse></PlayerPulse>
             </div>
 

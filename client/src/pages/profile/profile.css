@@ -2,11 +2,11 @@
   border-radius: 20px;
 }
 
- #activity-h2 {
+#activity-h2 {
   text-align: center;
   margin-bottom: 10px;
   margin-top: 10px;
-  font-family: 'Montserrat Subrayada', sans-serif;
+  font-family: "Montserrat Subrayada", sans-serif;
   color: white;
 }
 
@@ -37,21 +37,37 @@
   justify-content: center;
 }
 
-
-
-@media screen and (min-width: 862px) {
-  .img{
+@media screen and (min-width: 864px) {
+  .img {
     background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
     height: 100vh;
-  } 
-}
+  }
 
+  #motion-div {
+    margin-top: 90px;
+  }
 
-@media screen and (max-width: 862px) {
-  .img {
-    background-color: rgb(195, 148, 148) ;
+  #player-pulse-div {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: flex;
+    justify-content: center;
   }
 }
 
+@media screen and (max-width: 864px) {
+  .img {
+    background-color: rgb(195, 148, 148);
+  }
 
+  #motion-div {
+    margin-bottom: 50px;
+  }
 
+  #player-pulse-div {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+}
