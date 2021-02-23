@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Grid from "@material-ui/core/Grid";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
@@ -14,6 +14,17 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import "./profile.css";
 
 function Profile() {
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
+
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 962);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
+
   const onSubmit = (res) => {
     console.log(res);
 
@@ -99,7 +110,8 @@ function Profile() {
         {/* The moving stuff in the middle of the page */}
         <Grid item xs={12} md={1}>
           <div id="motion-div" style={{ marginTop: 100 }}>
-            <LinePulse></LinePulse>
+            {isDesktop ? <LinePulse></LinePulse> : <div></div>}
+
             <div
               style={{
                 paddingTop: 120,
@@ -110,9 +122,8 @@ function Profile() {
             >
               <PlayerPulse></PlayerPulse>
             </div>
-            <div>
-              <LinePulse></LinePulse>
-            </div>
+
+            {isDesktop ? <LinePulse></LinePulse> : <div></div>}
           </div>
         </Grid>
 
