@@ -2,6 +2,7 @@ import axios from "axios";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
+  //Spotify Routes
   songPause: function () {
     return axios.put("/api/Spotify/pause");
   },
@@ -50,5 +51,6 @@ export default {
   },
   // getAccessToken: function () {
 
-  // },
+  //User Routes
+  
 };
