@@ -8,15 +8,18 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-// import Grid from "@material-ui/core/Grid";
-import Chip from "@material-ui/core/Chip";
+import Grid from "@material-ui/core/Grid";
+// import Chip from "@material-ui/core/Chip";
 import Divider from "@material-ui/core/Divider";
-import clsx from "clsx";
+// import clsx from "clsx";
+import RadioButtons from "../../components/RadioButtons";
 import "./style.css";
+import API from "../../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+    
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
@@ -34,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   column: {
     flexBasis: "33.33%",
   },
-  internalColumn: { flexBasis: "50%" },
+  internalColumn: { flexBasis: "100%", flexGrow: 1 },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
     padding: theme.spacing(1, 2),
@@ -45,10 +48,21 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       textDecoration: "underline",
     },
-    inputFields: {
-      float: "left",
-      marginTop: "5px",
-    },
+  },
+  formFields: {
+    padding: "10px",
+    position: "relative",
+    float: "left",
+    width: "100%",
+  },
+  formLabels: {
+    paddingTop: "10px",
+    paddingBottom: "10px",
+    position: "relative",
+    fontSize: "20px",
+  },
+  formItems: {
+    width: "200px",
   },
 }));
 
@@ -64,10 +78,16 @@ const Accordion = withStyles({
   },
 })(MuiAccordion);
 
-export default function ControlledAccordions({ task }) {
+export default function ControlledAccordions({ task, onSubmit }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
+  const [artistState, setArtists] = React.useState([]);
+  const [artistArrayState, setArtistArray] = React.useState([]);
+  const [playlistState, setPlaylistState] = React.useState({
+    playlistName: "",
+    mood: "",
+    duration: "",
+  });
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -96,28 +116,196 @@ export default function ControlledAccordions({ task }) {
           </div>
           <div className={classes.column}>
             <Typography className={classes.secondaryHeading}>
-              View Settings
+              Playlist Settings
             </Typography>
           </div>
         </AccordionSummary>
         <AccordionDetails className={classes.details}>
           <div className={classes.internalColumn}>
-            <form>
-              <label for="playlist-name">Playlist Name</label>
-              <input
-                className={classes.inputFields}
-                name="playlist-name"
-              ></input>
-              <label for="artists">Artists</label>
-              <input className={classes.inputFields} name="artists"></input>
-              <button>Search</button>
-              <label for="mood">Mood</label>
-              <button type="radio">Angry</button>
-              <label for="duration">Duration</label>
-              <input className={classes.inputFields} name="duration"></input>
+            <form className="formData">
+              <Grid
+                container
+                direction="column"
+                justify="space-between"
+                alignItems="flex-start"
+              >
+                <Grid item lg={12} className={classes.formLabels}>
+                  <label for="playlist-name">Playlist Name</label>
+                </Grid>
+                <Grid item lg={12}>
+                  <input
+                    className={classes.formItems}
+                    name="playlist-name"
+                    onChange={(event) => {
+                      setPlaylistState({
+                        ...playlistState,
+                        playlistName: event.target.value,
+                      });
+                    }}
+                  ></input>
+                </Grid>
+
+                <Grid item className={classes.formLabels}>
+                  <label for="artists">Artists</label>
+                </Grid>
+                <Grid item xs={9}>
+                  <input className={classes.formItems} name="artists"></input>
+                </Grid>
+                <Grid item xs={3}>
+                  <button
+                    onClick={(event) => {
+                      event.preventDefault();
+
+                      let search =
+                        event.target.parentElement.previousSibling.firstChild
+                          .value;
+
+                      console.log("search ", search);
+                      API.getArtist(search)
+                        .then((res) => {
+                          let items = res.data.artists.items;
+                          let searchedArtists = [];
+                          if (items[0]) {
+                            console.log(items[0]);
+                            searchedArtists.push(items[0]);
+                          } else {
+                            console.log("No Artists Available");
+                          }
+                          if (items[1]) {
+                            console.log(items[1]);
+                            searchedArtists.push(items[1]);
+                          }
+                          if (items[2]) {
+                            console.log(items[2]);
+                            searchedArtists.push(items[2]);
+                          }
+                          setArtists({
+                            ...artistState,
+                            artists: searchedArtists,
+                          });
+
+                          //items.id
+                        })
+                        .then(() => {
+                          console.log("State", artistState);
+                        });
+                    }}
+                  >
+                    Find
+                  </button>
+                </Grid>
+                <Grid
+                  container
+                  direction="row"
+                  justify="flex-start"
+                  alignItems="center"
+                >
+                  {artistState.artists == null
+                    ? null
+                    : artistState.artists.map((artist, i) => {
+                        return (
+                          <Grid item key={i}>
+                            <button
+                              id={artist.id}
+                              onClick={(event) => {
+                                event.preventDefault();
+                                const btn = event.target.id;
+                                console.log(btn);
+                                setArtistArray((artistArrayState) => [
+                                  ...artistArrayState,
+                                  btn,
+                                ]);
+                                console.log(artistArrayState);
+                              }}
+                            >
+                              {artist.name}
+                            </button>
+                          </Grid>
+                        );
+                      })}
+                </Grid>
+                <Grid
+                  container
+                  direction="row"
+                  justify="flex-start"
+                  alignItems="center"
+                >
+                  {artistArrayState.map((artist, i) => {
+                    return (
+                      <Grid item key={i}>
+                        <a
+                          onClick={() => {
+                            setArtistArray(
+                              artistArrayState.filter((e) => e !== artist)
+                            );
+                          }}
+                        >
+                          <p>{artist} - </p>
+                        </a>
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+
+                <Grid item className={classes.formLabels}>
+                  <label for="mood">Mood</label>
+                </Grid>
+                <Grid item>
+                  <RadioButtons></RadioButtons>
+                </Grid>
+                <Grid item className={classes.formLabels}>
+                  <label for="duration">Duration</label>
+                </Grid>
+                <Grid item>
+                  <input
+                    className={classes.formItems}
+                    name="duration"
+                    onChange={(event) => {
+                      setPlaylistState({
+                        ...playlistState,
+                        duration: event.target.value,
+                      });
+                    }}
+                  ></input>
+                </Grid>
+                <Grid item className={classes.formLabels}>
+                  <button
+                    onClick={(event) => {
+                      event.preventDefault();
+
+                      console.log("playlistState", playlistState);
+                      const radioBtns =
+                        event.target.parentElement.previousSibling
+                          .previousSibling.previousSibling.firstChild;
+
+                      let data = [artistArrayState, playlistState];
+
+                      for (
+                        var i = 0, length = radioBtns.elements.length;
+                        i < length;
+                        i++
+                      ) {
+                        if (radioBtns.elements[i].checked) {
+                          // Check what mood was clicked
+                          setPlaylistState({
+                            ...playlistState,
+                            mood: radioBtns.elements[i].value,
+                          });
+
+                          break;
+                        }
+                      }
+
+                      onSubmit(data);
+                    }}
+                    type="submit"
+                  >
+                    Generate Playlist
+                  </button>
+                </Grid>
+              </Grid>
             </form>
           </div>
-          <div className={classes.internalColumn}></div>
 
           {/* <div className={clsx(classes.column, classes.helper)}>
             <Typography variant="caption">
