@@ -37,7 +37,7 @@
   justify-content: center;
 }
 
-@media screen and (min-width: 864px) {
+@media screen and (min-width: 964px) {
   .img {
     background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
     height: 100vh;
@@ -55,7 +55,7 @@
   }
 }
 
-@media screen and (max-width: 864px) {
+@media screen and (max-width: 960px) {
   .img {
     background-color: rgb(195, 148, 148);
   }
