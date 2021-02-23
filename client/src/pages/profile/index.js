@@ -14,17 +14,24 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import "./profile.css";
 
 function Profile() {
+
+  // This code adjusts the motion media depending on the viewport size =======
   const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
+  const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 962);
+    setPlayerPulse(window.innerWidth > 1500);
   };
 
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   });
+  // =========================================================================
 
+
+  // Spotify test code =======================================================
   const onSubmit = (res) => {
     console.log(res);
 
@@ -53,6 +60,8 @@ function Profile() {
       API.getTokens(code[1]);
     }
   }, []);
+  //========================================================================= 
+
 
   return (
     <div className="img">
@@ -113,7 +122,11 @@ function Profile() {
             {isDesktop ? <LinePulse></LinePulse> : <div></div>}
 
             <div id="player-pulse-div">
-              <PlayerPulse></PlayerPulse>
+              {playerPulse ? (
+                <PlayerPulse size={"la-3x"}></PlayerPulse>
+              ) : (
+                <PlayerPulse size={"la-2x"}></PlayerPulse>
+              )}
             </div>
 
             {isDesktop ? <LinePulse></LinePulse> : <div></div>}
