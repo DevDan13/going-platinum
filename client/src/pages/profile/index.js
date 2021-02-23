@@ -46,7 +46,10 @@ function Profile() {
   return (
     <div className="img">
       <Header />
-      <Grid style={{display: "flex", justifyContent:"center", marginTop: 45}}container>
+      <Grid
+        style={{ display: "flex", justifyContent: "center", marginTop: 45 }}
+        container
+      >
         <Grid item xs={12} md={5}>
           <Panel>
             <Grid item xs={12}>
@@ -79,6 +82,7 @@ function Profile() {
 
               {/* ------------------------------------------------------------------------------------ */}
 
+              {/* Dynamically generated accordions */}
               {tasks.map((task, i) => (
                 <Grid item xs={10} key={i}>
                   <Accordion
@@ -92,8 +96,9 @@ function Profile() {
           </Panel>
         </Grid>
 
+        {/* The moving stuff in the middle of the page */}
         <Grid item xs={12} md={1}>
-          <div id="motion-div" style={{marginTop: 100}}>
+          <div id="motion-div" style={{ marginTop: 100 }}>
             <LinePulse></LinePulse>
             <div
               style={{
@@ -111,6 +116,7 @@ function Profile() {
           </div>
         </Grid>
 
+        {/* The music player panel */}
         <Grid item xs={12} md={5}>
           <Panel>
             <div id="sign-up-div"></div>

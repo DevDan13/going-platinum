@@ -1,7 +1,4 @@
-$accentColor: pink;
-body {
-	background:#333;
-}
+$accentColor: #c74359;
 
 #container {
 	max-width:400px;
@@ -19,8 +16,8 @@ body {
 		display:block;
 		height:5px;
 		width:10px;
-		box-shadow:$accentColor 0 0 15px;
-		animation: animate 2s infinite ease-in-out;
+		box-shadow:$accentColor 0 0 7px;
+		animation: animate 3s infinite ease-in-out;
 		opacity:0;
 	}
 	span:nth-child(1) {
