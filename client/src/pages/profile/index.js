@@ -14,11 +14,20 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import "./profile.css";
 
 function Profile() {
-
-  // This code adjusts the motion media depending on the viewport size =======
+  
   const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
   const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
+  const [playing, setPlaying] = useState((false));
 
+  const setToPlay = () => {
+    return(setPlaying(true));
+  };
+
+  const setToPause = () => {
+    return(setPlaying(false));
+  };
+
+  // This code adjusts the motion media depending on the viewport size =======
   const updateMedia = () => {
     setDesktop(window.innerWidth > 962);
     setPlayerPulse(window.innerWidth > 1500);
@@ -60,7 +69,7 @@ function Profile() {
       API.getTokens(code[1]);
     }
   }, []);
-  //========================================================================= 
+  //=========================================================================
 
 
   return (
@@ -123,9 +132,9 @@ function Profile() {
 
             <div id="player-pulse-div">
               {playerPulse ? (
-                <PlayerPulse size={"la-3x"}></PlayerPulse>
+                <PlayerPulse playing={playing} size={"la-3x"}></PlayerPulse>
               ) : (
-                <PlayerPulse size={"la-2x"}></PlayerPulse>
+                <PlayerPulse playing={playing} size={"la-2x"}></PlayerPulse>
               )}
             </div>
 
@@ -137,7 +146,10 @@ function Profile() {
         <Grid item xs={12} md={5}>
           <Panel>
             <div id="sign-up-div"></div>
-            <MusicPlayer></MusicPlayer>
+            <MusicPlayer
+            setToPlay={setToPlay}
+            setToPause={setToPause}
+            ></MusicPlayer>
           </Panel>
         </Grid>
       </Grid>
