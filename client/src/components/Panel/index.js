@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     flexWrap: "noWrap",
     "& > *": {
-      margin: theme.spacing(3),
+      // margin: theme.spacing(3),
       width: "100%",
       height: theme.spacing(55),
       paddingBottom: 80,

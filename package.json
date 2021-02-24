@@ -25,12 +25,14 @@
     "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "firebase": "^8.2.7",
+    "firebase-admin": "^9.5.0",
     "firebase-tools": "^9.4.0",
     "if-env": "^1.0.4",
     "jquery": "^3.5.1",
     "mongoose": "^5.3.16",
-    "spotify-web-api-node": "^5.0.2",
+    "react-scroll": "^1.8.1",
     "request": "^2.88.2",
+    "spotify-web-api-node": "^5.0.2",
     "styled-components": "^5.2.1"
   }
 }

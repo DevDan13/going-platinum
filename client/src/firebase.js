@@ -5,14 +5,15 @@ require("dotenv");
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_KEY,
-  authDomain: "spotify-playlist-generat-dd85d.firebaseapp.com",
-  projectId: "spotify-playlist-generat-dd85d",
-  storageBucket: "spotify-playlist-generat-dd85d.appspot.com",
-  messagingSenderId: "995562264719",
-  appId: "1:995562264719:web:85d7f2b658eea3ba32b8fa",
-  measurementId: "G-XBVJP1LBJY",
+  apiKey: "AIzaSyDUQYq8cu_K8zT5RhZfcjIbVNuXSq6sWSo",
+  authDomain: "going-platinum-465e2.firebaseapp.com",
+  projectId: "going-platinum-465e2",
+  storageBucket: "going-platinum-465e2.appspot.com",
+  messagingSenderId: "230217417240",
+  appId: "1:230217417240:web:42df27f7b1d0ca0f5e396d",
+  measurementId: "G-MDX89KQ0VG"
 };
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
