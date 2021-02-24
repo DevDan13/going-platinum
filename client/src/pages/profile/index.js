@@ -1,20 +1,31 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import Grid from "@material-ui/core/Grid";
-import React, { useEffect, useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index";
+import MusicPlayer from "../../components/MusicPlayer/index";
+import PlayerPulse from "../../components/PlayerPulse/index";
+import LinePulse from "../../components/LinePulse/index";
+import Zoom from "@material-ui/core/Zoom";
+import { Link, animateScroll as scroll } from "react-scroll";
+import "./profile.css";
 import {UserContext} from "../../providers/UserProvider";
 import NewTaskAccordion from "../../components/NewTaskAccordion";
 import Playlist from "../../components/Playlist";
-import MusicPlayer from "../../components/MusicPlayer/index";
-import "./profile.css";
+
 
 function Profile() {
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
+  const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
+  const [playing, setPlaying] = useState(false);
+
   const user = useContext(UserContext);
   console.log(user);
+  
   const onSubmit = (res) => {
     console.log(res);
 
@@ -36,13 +47,50 @@ function Profile() {
     });
   }
 
+  const setToPlay = () => {
+    setChecked((prev) => !prev);
+    return setPlaying(true);
+  };
+
+  const setToPause = () => {
+    setChecked((prev) => !prev);
+    return setPlaying(false);
+  };
+
+  // This code adjusts the motion media depending on the viewport size =======
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 962);
+    setPlayerPulse(window.innerWidth > 1500);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
+  // =========================================================================
+
+  // Spotify test code =======================================================
+
+  useEffect(() => {
+    const code = window.location.href.split("=");
+    if (code[1]) {
+      console.log("code=", code[1]);
+      API.getTokens(code[1]);
+    }
+  }, []);
+  //=========================================================================
+
+  const [checked, setChecked] = useState(false);
 
   return (
     <div className="img">
       <Header />
       <button onClick={handleUser}>test</button>
-      <Grid container>
-        <Grid item xs={12} md={6}>
+      <Grid
+        style={{ display: "flex", justifyContent: "center", marginTop: 45 }}
+        container
+      >
+        <Grid item xs={12} md={5}>
           <Panel>
             <Grid item xs={12}>
               <h2 id="activity-h2">Activities</h2>
@@ -53,6 +101,29 @@ function Profile() {
               className="accordion-div"
               style={{ overflowY: "scroll", height: "100%" }}
             >
+              {/* This code block is intended for the signup/login page. 
+              When the user clicks "here", it will scroll to the bottom where the signup panel will be 
+              -----------------------------------------------------------------------------------------*/}
+
+              <p style={{ color: "white" }}>
+                New user? Sign up{" "}
+                <Link
+                  to="sign-up-div"
+                  smooth="easeInOutExpo"
+                  duration={750}
+                  delay={250}
+                  ignoreCancelEvents={false}
+                >
+                  <a style={{ color: "rgb(207, 104, 104)" }} href="#">
+                    here
+                  </a>
+                  !
+                </Link>
+              </p>
+
+              {/* ------------------------------------------------------------------------------------ */}
+
+              {/* Dynamically generated accordions */}
               <Grid item xs={9}>
                 <NewTaskAccordion className="accordion" onSubmit={addTask} />
               </Grid>
@@ -69,9 +140,42 @@ function Profile() {
             </Grid>
           </Panel>
         </Grid>
-        <Grid item xs={12} md={6}>
+
+        {/* The moving stuff in the middle of the page */}
+        <Grid item xs={12} md={1}>
+          <div id="motion-div">
+            {/* <Zoom in={checked}> */}
+              {isDesktop ? (
+                <LinePulse playing={playing}></LinePulse>
+              ) : (
+                <div></div>
+              )}
+
+              <div id="player-pulse-div">
+                {playerPulse ? (
+                  <PlayerPulse playing={playing} size={"la-3x"}></PlayerPulse>
+                ) : (
+                  <PlayerPulse playing={playing} size={"la-2x"}></PlayerPulse>
+                )}
+              </div>
+
+              {isDesktop ? (
+                <LinePulse playing={playing}></LinePulse>
+              ) : (
+                <div></div>
+              )}
+            {/* </Zoom> */}
+          </div>
+        </Grid>
+
+        {/* The music player panel */}
+        <Grid item xs={12} md={5}>
           <Panel>
-            <MusicPlayer></MusicPlayer>
+            <div id="sign-up-div"></div>
+            <MusicPlayer
+              setToPlay={setToPlay}
+              setToPause={setToPause}
+            ></MusicPlayer>
           </Panel>
         </Grid>
       </Grid>
