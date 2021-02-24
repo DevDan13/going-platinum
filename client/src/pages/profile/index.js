@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Grid from "@material-ui/core/Grid";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
@@ -13,11 +13,39 @@ import LinePulse from "../../components/LinePulse/index";
 import Zoom from "@material-ui/core/Zoom";
 import { Link, animateScroll as scroll } from "react-scroll";
 import "./profile.css";
+import {UserContext} from "../../providers/UserProvider";
+import NewTaskAccordion from "../../components/NewTaskAccordion";
+import Playlist from "../../components/Playlist";
+
 
 function Profile() {
   const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
   const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
   const [playing, setPlaying] = useState(false);
+
+  const user = useContext(UserContext);
+  console.log(user);
+  
+  const onSubmit = (res) => {
+    console.log(res);
+
+    API.getSpotifyRecommendations(0.5, 50, res[0]).then((data) => {
+      console.log("data", data);
+    });
+  };
+
+  const addTask = () => {};
+  const deleteTask = () => {
+    console.log("Delete Task");
+  };
+
+  const handleUser = () => {
+    API.createUser({
+      name: user.displayName,
+      email: user.email,
+      _id: user.uid
+    });
+  }
 
   const setToPlay = () => {
     setChecked((prev) => !prev);
@@ -42,26 +70,6 @@ function Profile() {
   // =========================================================================
 
   // Spotify test code =======================================================
-  const onSubmit = (res) => {
-    console.log(res);
-
-    API.getSpotifyRecommendations(0.5, 50, res[0]).then((data) => {
-      console.log("data", data);
-    });
-  };
-
-  const testBtn = () => {
-    API.getAuthentication().then((res) => {
-      window.location.replace(res.data);
-    });
-  };
-
-  const getPlaylist = () => {
-    API.getArtist("Eminem").then((res) => {
-      console.log(res.data);
-      //items.id
-    });
-  };
 
   useEffect(() => {
     const code = window.location.href.split("=");
@@ -77,6 +85,7 @@ function Profile() {
   return (
     <div className="img">
       <Header />
+      <button onClick={handleUser}>test</button>
       <Grid
         style={{ display: "flex", justifyContent: "center", marginTop: 45 }}
         container
@@ -86,6 +95,7 @@ function Profile() {
             <Grid item xs={12}>
               <h2 id="activity-h2">Activities</h2>
             </Grid>
+
             <Grid
               container
               className="accordion-div"
@@ -114,12 +124,16 @@ function Profile() {
               {/* ------------------------------------------------------------------------------------ */}
 
               {/* Dynamically generated accordions */}
+              <Grid item xs={9}>
+                <NewTaskAccordion className="accordion" onSubmit={addTask} />
+              </Grid>
+
               {tasks.map((task, i) => (
                 <Grid item xs={10} key={i}>
                   <Accordion
                     className="accordion"
                     task={task}
-                    onSubmit={onSubmit}
+                    delBtn={deleteTask}
                   ></Accordion>
                 </Grid>
               ))}
