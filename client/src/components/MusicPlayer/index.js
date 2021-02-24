@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MusicPlayer() {
+function MusicPlayer({setToPlay, setToPause}) {
   const classes = useStyles();
 
   return (
@@ -60,6 +60,7 @@ function MusicPlayer() {
               className={classes.iconBtn}
               aria-label="play"
               component="span"
+              onClick={setToPlay}
               // onclick = spotify api call to start/resume playback
             >
               <PlayArrowIcon
@@ -76,6 +77,7 @@ function MusicPlayer() {
               className={classes.iconBtn}
               aria-label="play"
               component="span"
+              onClick={setToPause}
               // onclick = spotify api call to start/resume playback
             >
               <PauseIcon

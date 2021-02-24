@@ -15,6 +15,9 @@ import "./style.css";
 const useStyles = makeStyles((theme) => ({
   appBar: {
     background: "transparent",
+    [theme.breakpoints.down('sm')]: {
+      backgroundColor: 'black',
+    }
   },
   title: {
     flexGrow: 1,
