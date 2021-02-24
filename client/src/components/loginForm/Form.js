@@ -28,11 +28,11 @@ function LoginForm() {
         <h2>Signup</h2>
         <form>
           <div className="user-box">
-            <input type="text" name="" required />
+            <input type="text" name="" required/>
             <label>Username</label>
           </div>
           <div className="user-box">
-            <input type="email" id="email" name="" required />
+            <input type="email" id="email" name="" required/>
             <label htmlFor="email">Email</label>
           </div>
           <div className="user-box">
@@ -44,7 +44,7 @@ function LoginForm() {
             <span></span>
             <span></span>
             <span></span>
-            Sign Up
+            SignUp
           </a>
         </form>
       </div>
