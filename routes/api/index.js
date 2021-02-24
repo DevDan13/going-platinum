@@ -1,3 +1,4 @@
+const path = require("path");
 const router = require("express").Router();
 const spotifyRoutes = require("./spotify");
 const taskRoutes = require("./task");
@@ -10,7 +11,7 @@ router.use("/user", userRoutes);
 router.use("/task", taskRoutes);
 
 router.use(function(req, res) {
-    res.sendFile(path.join(__dirname, "../../client/build/index.html"));
+    res.sendFile(path.join(__dirname, "../../client/public/index.html"));
   });
   
 module.exports = router;

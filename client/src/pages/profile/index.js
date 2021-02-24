@@ -29,13 +29,18 @@ function Profile() {
   };
 
   const handleUser = () => {
-    API.createUser();
+    API.createUser({
+      name: user.displayName,
+      email: user.email,
+      _id: user.uid
+    });
   }
 
 
   return (
     <div className="img">
       <Header />
+      <button onClick={handleUser}>test</button>
       <Grid container>
         <Grid item xs={12} md={6}>
           <Panel>

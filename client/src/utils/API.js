@@ -67,5 +67,14 @@ export default {
   //User Routes
   createUser: function (userData) {
     return axios.post("/api/user", userData)
+  },
+  getUser: function () {
+    return axios.get("/api/user")
+  },
+  updateUser: function (id) {
+    return axios.get("/api/user", id)
+  },
+  deleteUser: function (id) {
+    return axios.delete("/api/user", id)
   }
 };
