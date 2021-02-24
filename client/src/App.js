@@ -5,22 +5,21 @@ import Profile from "./pages/profile";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import UserProvider from "./providers/UserProvider";
 import Application from "./components/Firebase/Application";
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <UserProvider>
         <Application />
-      <Router>
-        <div>
-          <Route exact path={["/", "/callback"]} component={Home} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/login" component={Login} />
-        </div>
-      </Router>
+        <Router>
+          <div>
+            <Route exact path={["/", "/callback"]} component={Home} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/login" component={Login} />
+          </div>
+        </Router>
       </UserProvider>
-
     </div>
   );
 }

@@ -10,7 +10,7 @@ import {
   Box,
   Grid,
 } from "@material-ui/core";
-import "./LoginForm/style.css";
+import "../LoginForm/style.css";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
