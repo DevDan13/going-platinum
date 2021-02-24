@@ -129,10 +129,12 @@ module.exports = {
     let energy = parseFloat(inputs[0]);
     let popularity = parseInt(inputs[1]);
     console.log(energy, inputs[2], popularity);
+    let artists = inputs[2].split(",");
+
     spotifyApi
       .getRecommendations({
         min_energy: energy,
-        seed_artists: [inputs[2]],
+        seed_artists: artists,
         min_popularity: popularity,
         limit: 50,
       })

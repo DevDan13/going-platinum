@@ -1,5 +1,5 @@
 import Grid from "@material-ui/core/Grid";
-import React from "react";
+import React, { useEffect } from "react";
 import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
@@ -12,17 +12,68 @@ import MusicPlayer from "../../components/MusicPlayer/index";
 import "./profile.css";
 
 function Profile() {
-  const onSubmit = (res) => {
-    console.log(res);
+  const [tasksState, setTasksState] = React.useState({ tasks: [] });
+  // const onSubmit = (res) => {
+  //   console.log(res);
 
-    API.getSpotifyRecommendations(0.5, 50, res[0]).then((data) => {
-      console.log("data", data);
+  //   API.getSpotifyRecommendations(0.5, 50, res[0]).then((data) => {
+  //     console.log("data", data);
+  //   });
+  // };
+  function setTasks() {
+    API.getUserTasks().then((res) => {
+      console.log(res);
+      if (res) {
+        setTasksState({
+          ...tasksState,
+          tasks: res.data,
+        });
+      }
     });
-  };
+  }
 
-  const addTask = () => {};
-  const deleteTask = () => {
-    console.log("Delete Task");
+  useEffect(() => {
+    setTasks();
+  }, []);
+
+  const addTask = (formData) => {
+    console.log("formdata", formData);
+    try {
+      API.getSpotifyRecommendations(0.5, 50, formData[0]).then((data) => {
+        console.log("data", data.data.tracks);
+        let newTracks = [];
+        for (let i = 0; i < 20; i++) {
+          newTracks.push(data.data.tracks[i].name);
+        }
+        console.log(newTracks);
+        try {
+          API.postUserTasks({
+            name: formData[1].taskName,
+            mood: formData[1].mood,
+            duration: formData[1].duration,
+            playlistName: formData[1].playlistName,
+            tracks: newTracks,
+          }).then(() => {
+            setTasks();
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      });
+    } catch (error) {
+      console.log("API ERROR", error);
+    }
+  };
+  const deleteTask = (id) => {
+    try {
+      API.deleteUserTasks(id).then((res) => {
+        console.log(res);
+        setTasks();
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    console.log("End");
   };
 
   return (
@@ -43,16 +94,17 @@ function Profile() {
               <Grid item xs={9}>
                 <NewTaskAccordion className="accordion" onSubmit={addTask} />
               </Grid>
-
-              {tasks.map((task, i) => (
-                <Grid item xs={10} key={i}>
-                  <Accordion
-                    className="accordion"
-                    task={task}
-                    delBtn={deleteTask}
-                  ></Accordion>
-                </Grid>
-              ))}
+              {tasksState.tasks.length
+                ? tasksState.tasks.map((task, i) => (
+                    <Grid item xs={10} key={i}>
+                      <Accordion
+                        className="accordion"
+                        task={task}
+                        delBtn={deleteTask}
+                      ></Accordion>
+                    </Grid>
+                  ))
+                : null}
             </Grid>
           </Panel>
         </Grid>
