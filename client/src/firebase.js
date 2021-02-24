@@ -15,7 +15,6 @@ const firebaseConfig = {
   appId: "1:230217417240:web:42df27f7b1d0ca0f5e396d",
   measurementId: "G-MDX89KQ0VG"
 };
-
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
@@ -24,7 +23,7 @@ export const signInWithGoogle = () => {
 };
 export const generateUserDocument = async (user, additionalData) => {
   if (!user) return;
- 
+
   const userRef = firestore.doc(`users/${user.uid}`);
   console.log(userRef);
   const snapshot = await userRef.get();

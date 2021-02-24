@@ -1,13 +1,23 @@
 import Grid from "@material-ui/core/Grid";
+<<<<<<< HEAD
 import React, { useEffect, useContext} from "react";
+=======
+import React from "react";
+>>>>>>> 034cd0b8d17f53ddf3f02137f03297d0d7164373
 import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index";
+<<<<<<< HEAD
 import MusicPlayer from "../../components/MusicPlayer/index"
 import {UserContext} from "../../providers/UserProvider";
+=======
+import NewTaskAccordion from "../../components/NewTaskAccordion";
+import Playlist from "../../components/Playlist";
+import MusicPlayer from "../../components/MusicPlayer/index";
+>>>>>>> 034cd0b8d17f53ddf3f02137f03297d0d7164373
 import "./profile.css";
 
 function Profile() {
@@ -21,26 +31,10 @@ function Profile() {
     });
   };
 
-  const testBtn = () => {
-    API.getAuthentication().then((res) => {
-      window.location.replace(res.data);
-    });
+  const addTask = () => {};
+  const deleteTask = () => {
+    console.log("Delete Task");
   };
-
-  const getPlaylist = () => {
-    API.getArtist("Eminem").then((res) => {
-      console.log(res.data);
-      //items.id
-    });
-  };
-
-  useEffect(() => {
-    const code = window.location.href.split("=");
-    if (code[1]) {
-      console.log("code=", code[1]);
-      API.getTokens(code[1]);
-    }
-  }, []);
 
   return (
     <div className="img">
@@ -51,17 +45,22 @@ function Profile() {
             <Grid item xs={12}>
               <h2 id="activity-h2">Activities</h2>
             </Grid>
+
             <Grid
               container
               className="accordion-div"
               style={{ overflowY: "scroll", height: "100%" }}
             >
+              <Grid item xs={9}>
+                <NewTaskAccordion className="accordion" onSubmit={addTask} />
+              </Grid>
+
               {tasks.map((task, i) => (
                 <Grid item xs={10} key={i}>
                   <Accordion
                     className="accordion"
                     task={task}
-                    onSubmit={onSubmit}
+                    delBtn={deleteTask}
                   ></Accordion>
                 </Grid>
               ))}
