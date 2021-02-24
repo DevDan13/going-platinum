@@ -49,8 +49,20 @@ export default {
   getArtist: function (artist) {
     return axios.get("/api/Spotify/get-artist/" + artist);
   },
+  //Users
+  getUserTracks: function () {
+    return axios.get("/api/user/task/");
+  },
+  postUserTrack: function () {
+    return axios.post("/api/user/task");
+  },
+  updateUserTrack: function (id) {
+    return axios.put("/api/user/task");
+  },
+  deleteUserTrack: function (id) {
+    return axios.delete("/api/user/task");
+  },
   // getAccessToken: function () {
 
   //User Routes
-  
 };
