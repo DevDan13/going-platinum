@@ -1,5 +1,5 @@
 import Grid from "@material-ui/core/Grid";
-import React, { useEffect } from "react";
+import React, { useEffect, useContext} from "react";
 import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
@@ -7,9 +7,12 @@ import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index";
 import MusicPlayer from "../../components/MusicPlayer/index"
+import {UserContext} from "../../providers/UserProvider";
 import "./profile.css";
 
 function Profile() {
+  const user = useContext(UserContext);
+  console.log(user);
   const onSubmit = (res) => {
     console.log(res);
 
