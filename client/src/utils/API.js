@@ -49,7 +49,7 @@ export default {
   getArtist: function (artist) {
     return axios.get("/api/Spotify/get-artist/" + artist);
   },
-  //Users
+  //user task routes
   getUserTracks: function () {
     return axios.get("/api/user/task/");
   },
@@ -65,4 +65,7 @@ export default {
   // getAccessToken: function () {
 
   //User Routes
+  createUser: function (userData) {
+    return axios.post("/api/user", userData)
+  }
 };

@@ -1,23 +1,15 @@
 import Grid from "@material-ui/core/Grid";
-<<<<<<< HEAD
 import React, { useEffect, useContext} from "react";
-=======
-import React from "react";
->>>>>>> 034cd0b8d17f53ddf3f02137f03297d0d7164373
 import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
 import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index";
-<<<<<<< HEAD
-import MusicPlayer from "../../components/MusicPlayer/index"
 import {UserContext} from "../../providers/UserProvider";
-=======
 import NewTaskAccordion from "../../components/NewTaskAccordion";
 import Playlist from "../../components/Playlist";
 import MusicPlayer from "../../components/MusicPlayer/index";
->>>>>>> 034cd0b8d17f53ddf3f02137f03297d0d7164373
 import "./profile.css";
 
 function Profile() {
@@ -35,6 +27,11 @@ function Profile() {
   const deleteTask = () => {
     console.log("Delete Task");
   };
+
+  const handleUser = () => {
+    API.createUser();
+  }
+
 
   return (
     <div className="img">
