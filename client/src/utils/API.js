@@ -49,18 +49,18 @@ export default {
   getArtist: function (artist) {
     return axios.get("/api/Spotify/get-artist/" + artist);
   },
-  //user task routes
-  getUserTracks: function () {
-    return axios.get("/api/user/task/");
+  //Users
+  getUserTasks: function () {
+    return axios.get("/api/user/task");
   },
-  postUserTrack: function () {
-    return axios.post("/api/user/task");
+  postUserTasks: function (taskData) {
+    return axios.post("/api/user/task", taskData);
   },
-  updateUserTrack: function (id) {
-    return axios.put("/api/user/task");
+  updateUserTasks: function (id) {
+    return axios.put("/api/user/task/" + id);
   },
-  deleteUserTrack: function (id) {
-    return axios.delete("/api/user/task");
+  deleteUserTasks: function (id) {
+    return axios.delete("/api/user/task/" + id);
   },
   // getAccessToken: function () {
 
