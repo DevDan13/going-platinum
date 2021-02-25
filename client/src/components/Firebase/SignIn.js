@@ -35,76 +35,67 @@ const SignIn = () => {
   };
 
   return (
-    <Grid className="img">
-      <Box>
-        <Typography id="login-title" component="h1" variant="h5">
-          Going platinum
-        </Typography>
-      </Box>
-      <Box className="login-box">
-        <FormGroup>
-          <FormHelperText>Email</FormHelperText>
-          <TextField
-            className="login-box"
-            type="email"
-            name="userEmail"
-            value={email}
-            placeholder="Email Address"
-            id="userEmail"
-            onChange={(event) => onChangeHandler(event)}
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            className="login-box"
-            type="password"
-            name="userPassword"
-            value={password}
-            placeholder="Your Password"
-            id="userPassword"
-            onChange={(event) => onChangeHandler(event)}
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            autoComplete="current-password"
-          />
-          <Button
-            className="bg-green-400 hover:bg-green-500 w-full py-2 text-white"
+    <div className="img">
+    <div className="login_container">
+      {/* <h1 id="login-title">Going Platinum</h1> */}
+      <div className="login-box">
+        <h2>Login</h2>
+        <form>
+          <div className="user-box">
+            <input
+              type="email"
+              name="userEmail"
+              value={email}
+              onChange={(event) => onChangeHandler(event)}
+              required
+            />
+            <label>Email</label>
+          </div>
+          <div className="user-box">
+            <input
+              type="password"
+              name="userPassword"
+              value={password}
+              id="userPassword"
+              onChange={(event) => onChangeHandler(event)}
+              required
+            />
+            <label>Password</label>
+          </div>
+          <a
             onClick={(event) => {
               signInWithEmailAndPasswordHandler(event, email, password);
             }}
             type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
           >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
             Login
-          </Button>
-          <Button>Sign in with Google</Button>
-          <Grid container>
-            <Grid item xs>
-              <Link to="passwordReset" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <p className="text-center my-3">
-                Don't have an account?{" "}
-                <Link to="signUp" className="text-blue-500 hover:text-blue-600">
-                  Sign up here
-                </Link>{" "}
-                <br />{" "}
-              </p>
-            </Grid>
-          </Grid>
-        </FormGroup>
-      </Box>
-    </Grid>
+          </a>
+        </form>
+      </div>
+    </div>
+    </div>
+
+    // <Button>Sign in with Google</Button>
+    // <Grid container>
+    //   <Grid item xs>
+    //     <Link to="passwordReset" variant="body2">
+    //       Forgot password?
+    //     </Link>
+    //   </Grid>
+    //   <Grid item>
+    //     <p className="text-center my-3">
+    //       Don't have an account?{" "}
+    //       <Link to="signUp" className="text-blue-500 hover:text-blue-600">
+    //         Sign up here
+    //       </Link>{" "}
+    //       <br />{" "}
+    //     </p>
+    //   </Grid>
+    // </Grid>
   );
 };
 export default SignIn;

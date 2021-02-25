@@ -131,7 +131,7 @@ export default function ControlledAccordions({ task, delBtn }) {
             {task.tracks.map((track, i) => {
               return (
                 <Grid item key={i}>
-                  <p>{track.name}</p>
+                  <p>{track}</p>
                 </Grid>
               );
             })}
@@ -142,7 +142,7 @@ export default function ControlledAccordions({ task, delBtn }) {
           <button
             onClick={(event) => {
               event.preventDefault();
-              delBtn();
+              delBtn(task._id);
             }}
           >
             Delete
