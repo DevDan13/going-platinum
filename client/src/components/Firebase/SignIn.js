@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { auth } from "../../firebase";
+import { signInWithGoogle, auth } from "../../firebase";
 import {
   FormGroup,
   FormHelperText,
@@ -36,50 +36,61 @@ const SignIn = () => {
 
   return (
     <div className="img">
-    <div className="login_container">
-      {/* <h1 id="login-title">Going Platinum</h1> */}
-      <div className="login-box">
-        <h2>Login</h2>
-        <form>
-          <div className="user-box">
-            <input
-              type="email"
-              name="userEmail"
-              value={email}
-              onChange={(event) => onChangeHandler(event)}
-              required
-            />
-            <label>Email</label>
-          </div>
-          <div className="user-box">
-            <input
-              type="password"
-              name="userPassword"
-              value={password}
-              id="userPassword"
-              onChange={(event) => onChangeHandler(event)}
-              required
-            />
-            <label>Password</label>
-          </div>
-          <a
-            onClick={(event) => {
-              signInWithEmailAndPasswordHandler(event, email, password);
+      <div className="login_container">
+        {/* <h1 id="login-title">Going Platinum</h1> */}
+        <div className="login-box">
+          <h2>Login</h2>
+          <form>
+            <div className="user-box">
+              <input
+                type="email"
+                name="userEmail"
+                value={email}
+                onChange={(event) => onChangeHandler(event)}
+                required
+              />
+              <label>Email</label>
+            </div>
+            <div className="user-box">
+              <input
+                type="password"
+                name="userPassword"
+                value={password}
+                id="userPassword"
+                onChange={(event) => onChangeHandler(event)}
+                required
+              />
+              <label>Password</label>
+            </div>
+            <a
+              onClick={(event) => {
+                signInWithEmailAndPasswordHandler(event, email, password);
+              }}
+              type="submit"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Login
+            </a>
+          </form>
+          <button
+            onClick={() => {
+              signInWithGoogle();
             }}
-            type="submit"
           >
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Login
-          </a>
-        </form>
+            Sign in with Google
+          </button>
+<br></br>
+          <Link to="passwordReset" variant="body2">
+            Forgot password?
+            {" "}
+          </Link>
+        </div>
       </div>
     </div>
-    </div>
 
-    // <Button>Sign in with Google</Button>
     // <Grid container>
     //   <Grid item xs>
     //     <Link to="passwordReset" variant="body2">
