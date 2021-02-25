@@ -6,7 +6,7 @@ import PasswordReset from "./PasswordReset";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/Login/Login";
 import Profile from "../../pages/profile/index";
-import LoginForm from "../LoginForm/Form"
+import LoginForm from "../../pages/Login/Login";
 
 function Application() {
   const user = null;

@@ -35,7 +35,6 @@ const SignIn = () => {
   };
 
   return (
-    <div className="img">
       <div className="login_container">
         {/* <h1 id="login-title">Going Platinum</h1> */}
         <div className="login-box">
@@ -89,7 +88,6 @@ const SignIn = () => {
           </Link>
         </div>
       </div>
-    </div>
 
     // <Grid container>
     //   <Grid item xs>
