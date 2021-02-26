@@ -3,6 +3,7 @@ import SignUp from "../Firebase/SignUp";
 import SignIn from "../Firebase/SignIn";
 import Grid from "@material-ui/core/Grid";
 import Header from "../Header/index";
+import Footer from "../Footer/index";
 
 function LoginForm() {
   return (
@@ -17,6 +18,7 @@ function LoginForm() {
           <SignUp />
         </Grid>
       </Grid>
+      <Footer></Footer>
     </div>
   );
 }

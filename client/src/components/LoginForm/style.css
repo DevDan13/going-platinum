@@ -10,11 +10,11 @@
 
 @media screen and (min-width: 964px) {
   #signin-div {
-    padding-right: 200px;
+    padding-left: 200px;
   }
 
   #signup-div {
-    padding-left: 200px;
+    padding-right: 200px;
   }
 
   #grid-container {
@@ -36,9 +36,10 @@
 @media screen and (max-width: 964px) {
   #signup-div {
     margin-top: 60px;
+    margin-bottom: 60px;
   }
 
   #signin-div {
-    margin-top: 60px;
+    margin-top: 40px;
   }
 }
