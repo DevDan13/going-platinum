@@ -100,7 +100,7 @@ function Profile() {
     API.createUser({
       name: user.displayName,
       email: user.email,
-      _id: user.uid,
+      firebaseId: user.uid,
     });
   };
 
