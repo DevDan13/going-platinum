@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { signInWithGoogle, logOut, auth } from "../../firebase";
+import ScrollLink from "../ScrollLink/index"
 import {
   FormGroup,
   FormHelperText,
@@ -93,6 +95,8 @@ const SignIn = () => {
             Forgot password?
             {" "}
           </Link>
+
+          <ScrollLink></ScrollLink>
         </div>
     
 
