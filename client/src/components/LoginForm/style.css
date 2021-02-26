@@ -8,7 +8,7 @@
   font-family: "Montserrat Subrayada";
 }
 
-@media screen and (min-width: 964px) {
+@media screen and (min-width: 1300px) {
   #signin-div {
     padding-left: 200px;
   }
@@ -16,11 +16,26 @@
   #signup-div {
     padding-right: 200px;
   }
+}
 
+@media screen and (min-width: 964px) {
   #grid-container {
     margin-top: 50px;
   }
 
+  #motion-media-div {
+    margin-top: 150px;
+  }
+}
+
+@media screen and (min-width: 964px) and (max-width: 1300px) {
+  #signin-div {
+    padding-left: 100px;
+  }
+
+  #signup-div {
+    padding-right: 100px;
+  }
 }
 
 #signin-div {
@@ -41,5 +56,9 @@
 
   #signin-div {
     margin-top: 40px;
+  }
+
+  #motion-media-div {
+    margin-top: 50px;
   }
 }
