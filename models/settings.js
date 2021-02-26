@@ -5,7 +5,7 @@ const settingsSchema = new Schema({
   genre: { type: String, required: true},
   artist: { type: String, required: true },
   activities: { type: String, required: true },
-  _id: { type: String, required: true, unique: true }
+  firebaseId: { type: String, required: true, unique: true }
 });
 
 const Settings = mongoose.model("Settings", settingsSchema);

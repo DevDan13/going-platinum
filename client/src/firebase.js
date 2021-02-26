@@ -22,6 +22,14 @@ export const firestore = firebase.firestore();
 export const signInWithGoogle = () => {
   auth.signInWithPopup(provider);
 };
+
+export const logOut = () => {
+  auth.signOut().then(function() {
+    console.log('Signed Out');
+  }, function(error) {
+    console.error('Sign Out Error', error);
+  });
+}
 export const generateUserDocument = async (user, additionalData) => {
   if (!user) return;
 
@@ -55,3 +63,4 @@ const getUserDocument = async (uid) => {
     console.error("Error fetching user", error);
   }
 };
+
