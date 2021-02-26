@@ -7,14 +7,15 @@ const provider = new firebase.auth.GoogleAuthProvider();
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDUQYq8cu_K8zT5RhZfcjIbVNuXSq6sWSo",
-  authDomain: "going-platinum-465e2.firebaseapp.com",
-  projectId: "going-platinum-465e2",
-  storageBucket: "going-platinum-465e2.appspot.com",
-  messagingSenderId: "230217417240",
-  appId: "1:230217417240:web:42df27f7b1d0ca0f5e396d",
-  measurementId: "G-MDX89KQ0VG"
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER,
+  appId: process.env.REACT_APP_FIREBASE_APPID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT
 };
+
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
