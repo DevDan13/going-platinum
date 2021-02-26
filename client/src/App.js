@@ -21,8 +21,6 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path={["/profile", "/callback"]} component={Profile} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/signin" component={SignIn} />
-            <Route exact path="/signup" component={SignUp} />
           </div>
         </Router>
       </UserProvider>
