@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { signInWithGoogle, auth } from "../../firebase";
+import { signInWithGoogle, logOut, auth } from "../../firebase";
 import {
   FormGroup,
   FormHelperText,
@@ -23,6 +23,7 @@ const SignIn = () => {
       console.error("Error signing in with password and email", error);
     });
   };
+
 
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
@@ -80,6 +81,13 @@ const SignIn = () => {
             }}
           >
             Sign in with Google
+          </button>
+          <button
+            onClick={() => {
+             logOut();
+            }}
+          >
+            Signout 
           </button>
 <br></br>
           <Link to="passwordReset" variant="body2">
