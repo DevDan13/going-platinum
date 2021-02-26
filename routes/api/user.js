@@ -13,6 +13,8 @@ router
   .put(userController.updateTask)
   .delete(userController.removeTask);
 
-router.route("/").get(userController.findById).post(userController.createUser);
+router
+  .route("/").get(userController.findById)
+  .post(userController.createUser);
 
 module.exports = router;

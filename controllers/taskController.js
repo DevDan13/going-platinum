@@ -1,11 +1,6 @@
 const db = require("../models");
 
 module.exports = {
-  findById: function (req, res) {
-    db.User.findById(req.params.id)
-      .then((dbUser) => res.json(dbUser))
-      .catch((err) => res.status(422).json(err));
-  },
   createTask: function (req, res) {
     db.Task.create(req.body)
       .then((dbModel) => res.json(dbModel))
@@ -25,6 +20,11 @@ module.exports = {
   findAllTasks: function (req, res) {
     db.Task.find(req.query)
       .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },  
+  findById: function (req, res) {
+    db.User.findById(req.params.id)
+      .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
   },
   createUser: function (req, res) {
