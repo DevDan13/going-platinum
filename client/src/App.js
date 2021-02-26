@@ -7,7 +7,7 @@ import UserProvider from "./providers/UserProvider";
 // import Application from "./components/Firebase/Application";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
@@ -17,16 +17,15 @@ function App() {
 
         <Router>
           <div>
-            <Route exact path={["/", "/callback"]} component={Home} />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/" component={Home} />
+            <Route exact path={["/profile", "/callback"]} component={Profile} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/signin" component={SignIn}/>
-            <Route exact path="/signup" component={SignUp}/>
+            <Route exact path="/signin" component={SignIn} />
+            <Route exact path="/signup" component={SignUp} />
           </div>
         </Router>
       </UserProvider>
     </div>
-
   );
 }
 

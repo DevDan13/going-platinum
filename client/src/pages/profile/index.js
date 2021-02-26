@@ -18,7 +18,7 @@ import NewTaskAccordion from "../../components/NewTaskAccordion";
 import Playlist from "../../components/Playlist";
 
 function Profile() {
-  const [tasksState, setTasksState] = React.useState({ tasks: [] });
+  const [tasksState, setTasksState] = React.useState({});
   const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
   const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
   const [playing, setPlaying] = useState(false);
@@ -30,9 +30,15 @@ function Profile() {
     API.getUserTasks().then((res) => {
       console.log(res);
       if (res) {
+        let taskIDs = [];
+        res.data.forEach((task) => {
+          taskIDs.push(task._id);
+        });
+        console.log("RES.Data", taskIDs);
+
         setTasksState({
           ...tasksState,
-          tasks: res.data,
+          tasks: taskIDs,
         });
       }
     });
@@ -49,9 +55,16 @@ function Profile() {
         console.log("data", data.data.tracks);
         let newTracks = [];
         for (let i = 0; i < 20; i++) {
-          newTracks.push(data.data.tracks[i].name);
+          let track = {
+            name: data.data.tracks[i].name,
+            songID: data.data.tracks[i].id,
+            artists: data.data.tracks[i].artists,
+            duraiton_ms: data.data.tracks[i].duration_ms,
+          };
+
+          newTracks.push(track);
         }
-        console.log(newTracks);
+        console.log("NEW TRACKS", newTracks);
         try {
           API.postUserTasks({
             name: formData[1].taskName,
@@ -60,6 +73,7 @@ function Profile() {
             playlistName: formData[1].playlistName,
             tracks: newTracks,
           }).then(() => {
+            console.log("DONE POST");
             setTasks();
           });
         } catch (err) {
@@ -170,7 +184,7 @@ function Profile() {
               <Grid item xs={9}>
                 <NewTaskAccordion className="accordion" onSubmit={addTask} />
               </Grid>
-              {tasksState.tasks.length
+              {tasksState.tasks
                 ? tasksState.tasks.map((task, i) => (
                     <Grid item xs={10} key={i}>
                       <Accordion
