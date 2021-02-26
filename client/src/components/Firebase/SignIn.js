@@ -66,6 +66,7 @@ const SignIn = () => {
               onClick={(event) => {
                 signInWithEmailAndPasswordHandler(event, email, password);
               }}
+              
               type="submit"
             >
               <span></span>
