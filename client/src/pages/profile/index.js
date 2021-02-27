@@ -5,7 +5,6 @@ import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
-import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index";
 import MusicPlayer from "../../components/MusicPlayer/index";
 import PlayerPulse from "../../components/PlayerPulse/index";
@@ -15,7 +14,7 @@ import "./profile.css";
 import { UserContext } from "../../providers/UserProvider";
 import NewTaskAccordion from "../../components/NewTaskAccordion";
 import Playlist from "../../components/Playlist";
-import {auth} from "../../firebase";
+import { auth } from "../../firebase";
 
 function Profile() {
   const [tasksState, setTasksState] = React.useState({});
@@ -24,12 +23,10 @@ function Profile() {
   const [playing, setPlaying] = useState(false);
   const [currentlyPlaying, setCurrentlyPlaying] = useState({});
 
-  const user = auth.currentUser;
+  const user = useContext(UserContext);
+  // const user = auth.currentUser;
   console.log(user);
 
-
-
-  console.log(auth.currentUser.displayName);
   function setTasks() {
     API.getUserTasks().then((res) => {
       if (res) {
@@ -65,11 +62,15 @@ function Profile() {
 
   //Accordion form Submit to Add Task to DB
   const addTask = (formData) => {
-    console.log(formData);
+    console.log("FormData: ", formData[1].duration * 60000);
+
+    const durationMAX = formData[1].duration * 60000;
+
     //Returns Tracks from user information
     try {
       API.getSpotifyRecommendations(0.5, 50, formData[0]).then((data) => {
         console.log("data", data.data.tracks);
+
         let newTracks = [];
         for (let i = 0; i < 20; i++) {
           let track = {
@@ -111,13 +112,13 @@ function Profile() {
     }
   };
 
-  const handleUser = () => {
-    API.createUser({
-      name: user.displayName,
-      email: user.email,
-      firebaseId: user.uid,
-    });
-  };
+  // const handleUser = () => {
+  //   API.createUser({
+  //     name: user.displayName,
+  //     email: user.email,
+  //     firebaseId: user.uid,
+  //   });
+  // };
 
   //Changes Checked State and Updates Play through Spotify API
   // const setToPlay = () => {

@@ -11,11 +11,8 @@ import {
   Box,
   Grid,
 } from "@material-ui/core";
-<<<<<<< HEAD
 import "../loginForm/style.css";
-=======
 import "./SignIn.css";
->>>>>>> 84acf0c0f9f290fa39dfe5507e6ea69baa82aa95
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -43,37 +40,6 @@ const SignIn = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="login_container">
-      {/* <h1 id="login-title">Going Platinum</h1> */}
-      <div className="login-box">
-        <h2>Login</h2>
-        <form>
-          <div className="user-box">
-            <input
-              type="email"
-              name="userEmail"
-              value={email}
-              onChange={(event) => onChangeHandler(event)}
-              required
-            />
-            <label>Email</label>
-          </div>
-          <div className="user-box">
-            <input
-              type="password"
-              name="userPassword"
-              value={password}
-              id="userPassword"
-              onChange={(event) => onChangeHandler(event)}
-              required
-            />
-            <label>Password</label>
-          </div>
-          <a
-            onClick={(event) => {
-              signInWithEmailAndPasswordHandler(event, email, password);
-=======
   
         <div className="login-box">
           <h2>Login</h2>
@@ -123,39 +89,9 @@ const SignIn = () => {
           <button
             onClick={() => {
              logOut();
->>>>>>> 84acf0c0f9f290fa39dfe5507e6ea69baa82aa95
             }}
             type="submit"
           >
-<<<<<<< HEAD
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Login
-          </a>
-        </form>
-        <button
-          onClick={() => {
-            signInWithGoogle();
-          }}
-        >
-          Sign in with Google
-        </button>
-        <button
-          onClick={() => {
-            logOut();
-          }}
-        >
-          Signout
-        </button>
-        <br></br>
-        <Link to="passwordReset" variant="body2">
-          Forgot password?{" "}
-        </Link>
-      </div>
-    </div>
-=======
             Signout 
           </button>
 <br></br>
@@ -165,7 +101,6 @@ const SignIn = () => {
           </Link>
         </div>
     
->>>>>>> 84acf0c0f9f290fa39dfe5507e6ea69baa82aa95
 
     // <Grid container>
     //   <Grid item xs>
