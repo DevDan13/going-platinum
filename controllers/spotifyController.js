@@ -1,6 +1,8 @@
-const SpotifyWebApi = require("spotify-web-api-node");
+const $ = require("jquery");
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 require("dotenv").config();
-
+const SpotifyWebApi = require("spotify-web-api-node");
+const axios = require("axios");
 // credentials are optional
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.CLIENT_ID,
@@ -8,7 +10,7 @@ const spotifyApi = new SpotifyWebApi({
   redirectUri: "http://localhost:3000/callback/",
   accessToken: process.env.ACCESS_TOKEN,
 });
-
+let accessToken = "";
 //Spotify API Calls
 module.exports = {
   songPause: function () {
@@ -55,17 +57,6 @@ module.exports = {
       }
     );
   },
-  getGenreSeeds: function () {
-    spotifyApi.getAvailableGenreSeeds().then(
-      function (data) {
-        let genreSeeds = data.body;
-        console.log(genreSeeds);
-      },
-      function (err) {
-        console.log("Something went wrong!", err);
-      }
-    );
-  },
   createSpotifyPlaylist: function () {
     spotifyApi
       .createPlaylist("My playlist", {
@@ -75,49 +66,6 @@ module.exports = {
       .then(
         function (data) {
           console.log("Created playlist!");
-        },
-        function (err) {
-          console.log("Something went wrong!", err);
-        }
-      );
-  },
-  getSpotifyPlaylist: function () {
-    spotifyApi.getPlaylist("37i9dQZF1DXdgf6ud7uDc7").then(
-      function (data) {
-        console.log("Some information about this playlist", data.body);
-      },
-      function (err) {
-        console.log("Something went wrong!", err);
-      }
-    );
-  },
-  searchSpotifyPlaylist: function (req, res) {
-    spotifyApi
-      .searchPlaylists("doom")
-      .then(
-        function (data) {
-          console.log("Found playlists are", data.body);
-          res.json(data.body);
-        },
-        function (err) {
-          console.log("Something went wrong!", err);
-        }
-      )
-      .then((data) => {
-        res.json(data);
-      });
-  },
-  getSpotifyCategories: function () {
-    spotifyApi
-      .getCategories({
-        limit: 5,
-        offset: 0,
-        country: "SE",
-        locale: "sv_SE",
-      })
-      .then(
-        function (data) {
-          console.log(data.body);
         },
         function (err) {
           console.log("Something went wrong!", err);
@@ -150,7 +98,12 @@ module.exports = {
       );
   },
   getAuthentication: function (req, res) {
-    const scopes = ["user-read-private", "user-read-email"];
+    const scopes = [
+      "user-read-private",
+      "user-read-email",
+      "user-modify-playback-state",
+      "user-read-currently-playing",
+    ];
 
     // Create the authorization URL
     const authorizeURL = spotifyApi.createAuthorizeURL(scopes);
@@ -163,6 +116,7 @@ module.exports = {
         res.send("You did it");
         console.log("The token expires in " + data.body["expires_in"]);
         console.log("The access token is " + data.body["access_token"]);
+        accessToken = data.body["access_token"];
         console.log("The refresh token is " + data.body["refresh_token"]);
 
         // Set the access token on the API object to use it in later calls
@@ -182,6 +136,33 @@ module.exports = {
       },
       function (err) {
         console.error(err);
+      }
+    );
+  },
+  addTrackToQueue: function (req, res) {
+    try {
+      axios({
+        url: `https://api.spotify.com/v1/me/player/queue?uri=${req.params.track}`,
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + accessToken,
+        },
+      }).then((res) => {
+        console.log(`Axios Call completed: ${res}`);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  getUserCurrentSong: function (req, res) {
+    spotifyApi.getMyCurrentPlayingTrack().then(
+      function (data) {
+        console.log("Now playing: " + data.body.item.name);
+        res.send(data.body.item);
+      },
+      function (err) {
+        console.log("Something went wrong!", err);
       }
     );
   },

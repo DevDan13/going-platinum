@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { signInWithGoogle, auth, generateUserDocument } from "../../firebase"; 
-import "../LoginForm/style.css";
+import "../loginForm/style.css";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
