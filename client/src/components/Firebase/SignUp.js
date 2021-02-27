@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { signInWithGoogle, auth, generateUserDocument } from "../../firebase"; 
+import Grid from "@material-ui/core/Grid";
+import { signInWithGoogle, auth, generateUserDocument } from "../../firebase";
 import { FcGoogle } from "react-icons/fc";
 import "./SignUp.css";
 
@@ -78,15 +80,20 @@ const SignUp = () => {
           />
           <label>Password</label>
         </div>
-        <button
-        onClick={() => {
-          signInWithGoogle();
-        }}
-      >
-        <FcGoogle/>
-        Sign Up with Google
-      </button>
+
+        <Grid style={{display: "flex", justifyContent: "center"}} item xs={12}>
+          <button
+            onClick={() => {
+              signInWithGoogle();
+            }}
+          >
+            <FcGoogle />
+            Sign Up with Google
+          </button>
+        </Grid>
+
         <a
+          className="submit-button"
           onClick={(event) => {
             createUserWithEmailAndPasswordHandler(event, email, password);
           }}
@@ -99,7 +106,7 @@ const SignUp = () => {
         </a>
       </form>
     </div>
-            /* <p className="text-center my-3">or</p>
+    /* <p className="text-center my-3">or</p>
         <button className="bg-red-500 hover:bg-red-600 w-full py-2 text-white">
           Sign In with Google
         </button>

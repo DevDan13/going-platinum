@@ -2,15 +2,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { signInWithGoogle, logOut, auth } from "../../firebase";
-import {
-  FormGroup,
-  FormHelperText,
-  Button,
-  TextField,
-  Typography,
-  Box,
-  Grid,
-} from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FcGoogle } from "react-icons/fc";
 import "./SignIn.css";
@@ -69,6 +61,7 @@ const SignIn = () => {
           <label>Password</label>
         </div>
         <a
+          className="submit-button"
           onClick={(event) => {
             signInWithEmailAndPasswordHandler(event, email, password);
           }}
@@ -81,25 +74,37 @@ const SignIn = () => {
           Login
         </a>
       </form>
-      <button
-        onClick={() => {
-          signInWithGoogle();
-        }}
-      >
-        <FcGoogle/>
-        Sign in with Google
-      </button>
-      <button
+
+      {/* <button
         onClick={() => {
           logOut();
         }}
       >
         Signout
-      </button>
-      <br></br>
-      <Link to="passwordReset" variant="body2">
-        Forgot password?{" "}
-      </Link>
+      </button> */}
+
+      {/* <br></br> */}
+
+      <Grid style={{position: "absolute", right: 40, top: 220}} item xs={12}>
+        <Link to="passwordReset" variant="body2">
+          Forgot password?{" "}
+        </Link>
+      </Grid>
+
+      <Grid style={{display: "flex", justifyContent: "center", paddingTop: 60}}item xs={12}>
+        
+        <button
+          onClick={() => {
+            signInWithGoogle();
+          }}
+        >
+          <FcGoogle />
+          Sign in with Google
+        </button>
+    
+      </Grid>
+
+
     </div>
 
     // <Grid container>
