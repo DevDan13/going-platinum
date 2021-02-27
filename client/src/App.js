@@ -12,16 +12,6 @@ function App() {
   return (
     <UserProvider>
       <Application />
-<<<<<<< HEAD
-      <Router>
-        <Switch>
-          <Route exact path={["/", "/callback"]} component={Home} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/settings" component={Settings} />
-        </Switch>
-      </Router>
-=======
->>>>>>> 3405059cecaedee3df93a9ab60822f425601d17c
     </UserProvider>
   );
 }
