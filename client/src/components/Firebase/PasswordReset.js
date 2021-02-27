@@ -6,6 +6,7 @@ const PasswordReset = () => {
   const [email, setEmail] = useState("");
   const [emailHasBeenSent, setEmailHasBeenSent] = useState(false);
   const [error, setError] = useState(null);
+  
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
     if (name === "userEmail") {
@@ -57,7 +58,9 @@ const PasswordReset = () => {
             onChange={onChangeHandler}
             className="mb-3 w-full px-1 py-2"
           />
-          <button className="w-full bg-blue-400 text-white py-3">
+          <button
+          onClick={sendResetEmail}
+          className="w-full bg-blue-400 text-white py-3">
             Send me a reset link
           </button>
         </form>
