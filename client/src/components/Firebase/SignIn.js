@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { signInWithGoogle, logOut, auth } from "../../firebase";
@@ -10,7 +11,7 @@ import {
   Box,
   Grid,
 } from "@material-ui/core";
-import "../LoginForm/style.css";
+import "./SignIn.css";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -39,8 +40,7 @@ const SignIn = () => {
   };
 
   return (
-      <div className="login_container">
-        {/* <h1 id="login-title">Going Platinum</h1> */}
+  
         <div className="login-box">
           <h2>Login</h2>
           <form>
@@ -99,7 +99,7 @@ const SignIn = () => {
             {" "}
           </Link>
         </div>
-      </div>
+    
 
     // <Grid container>
     //   <Grid item xs>
