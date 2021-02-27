@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { signInWithGoogle, auth, generateUserDocument } from "../../firebase"; 
+<<<<<<< HEAD
 import "../loginForm/style.css";
+=======
+import "./SignUp.css";
+>>>>>>> 84acf0c0f9f290fa39dfe5507e6ea69baa82aa95
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -77,18 +81,18 @@ const SignUp = () => {
           />
           <label>Password</label>
         </div>
+        <button
+        onClick={() => {
+          signInWithGoogle();
+        }}
+      >
+        Sign Up with Google
+      </button>
         <a
           onClick={(event) => {
             createUserWithEmailAndPasswordHandler(event, email, password);
           }}
         >
-          <button
-        onClick={() => {
-          signInWithGoogle();
-        }}
-      >
-        Sign in with Google
-      </button>
           <span></span>
           <span></span>
           <span></span>

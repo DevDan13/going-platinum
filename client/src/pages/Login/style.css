@@ -1,14 +1,45 @@
-@media screen and (min-width: 862px) {
-    .img{
-      background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
-      height: 100vh;
-    } 
+/* Bigger screens */
+@media screen and (min-width: 960px) {
+  .img {
+    background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-color: rgb(195, 148, 148);
+    background-attachment: fixed;
+    background-size: cover;
   }
-  
-  
-  @media screen and (max-width: 862px) {
-    .img {
-      background-color: rgb(195, 148, 148) ;
-    }
+
+  #login-title {
+    text-align: center;
+    font-family: "Concert One", cursive;
+    color: white;
+    margin-top: 0;
+    padding-top: 35px;
+    padding-bottom: 15px;
+    font-size: 50px;
   }
-  
+}
+
+/* Smaller screens */
+@media screen and (max-width: 960px) {
+  .img {
+    background-repeat: no-repeat;
+    background-color: rgb(195, 148, 148);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  #login-title {
+    background-color: rgb(172, 89, 89);
+    border: 1px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 40px;
+  }
+}
+
+/* General */
+#login-title {
+  color: "white";
+  font-family: "Concert One";
+}
