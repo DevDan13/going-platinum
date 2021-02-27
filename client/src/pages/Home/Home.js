@@ -9,14 +9,24 @@ import Grid from "@material-ui/core/Grid";
 import "./home.css";
 import Header from "../../components/Header/index";
 import API from "../../utils/API";
+import { UserContext } from "../../providers/UserProvider";
+import { useContext } from "react";
+
 
 function Home() {
+const user = useContext(UserContext);
+
   //testing feature
   const testBtn = () => {
     API.getAuthentication().then((res) => {
       window.location.replace(res.data);
     });
   };
+
+  const userButton = () => {
+    console.log(user);
+  };
+
 
   const getPlaylist = () => {
     API.getArtist("Eminem").then((res) => {
@@ -67,7 +77,7 @@ function Home() {
             </h1>
           </Grid>
           <Grid item xs={12}>
-            <button onClick={testBtn}>Test</button>
+            <button onClick={userButton}>Test</button>
             <button onClick={getPlaylist}>playlist</button>
           </Grid>
         </Grid>
