@@ -8,19 +8,7 @@ import "./style.css";
 function Login() {
   return (
     <div className="img">
-      <h1
-        style={{
-          fontFamily: "Concert One",
-          marginTop: 0,
-          paddingTop: 75,
-          paddingBottom: 25,
-          color: "white",
-          fontSize: 50,
-        }}
-      >
-        Going Platinum
-      </h1>
-
+      <h1 id="login-title">Going Platinum</h1>
       <LoginForm></LoginForm>
     </div>
   );

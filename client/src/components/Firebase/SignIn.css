@@ -9,7 +9,7 @@ html {
   font-family: sans-serif;
   /* background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg"); */
 
-  @media screen and (min-width: 862px) {
+  @media screen and (min-width: 960px) {
     .img{
       background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
       height: 100%;
@@ -17,7 +17,7 @@ html {
   }
   
   
-  @media screen and (max-width: 862px) {
+  @media screen and (max-width: 960px) {
     .img {
       background-color: rgb(195, 148, 148) ;
       /* height: 100vh; */

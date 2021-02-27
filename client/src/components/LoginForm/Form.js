@@ -10,7 +10,7 @@ function LoginForm() {
   return (
     <div className="img">
       {/* <Header></Header> */}
-      <Grid container id="grid-container">
+      <Grid container id="grid-container" style={{overflow: "auto"}}>
         <Grid id="signin-div" item xs={12} md={5}>
           <SignIn />
         </Grid>
@@ -23,7 +23,7 @@ function LoginForm() {
           <SignUp />
         </Grid>
       </Grid>
-      <Footer></Footer>
+      <Footer id="footer"></Footer>
     </div>
   );
 }
