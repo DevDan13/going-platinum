@@ -3,13 +3,13 @@ const taskController = require("../../controllers/taskController");
 
 router
   .route("/")
-  // .get(taskController.findAllTasks)
   .post(taskController.createTask);
 
 
   
 router
-  .route("/task/:id")
+  .route("/:id")
+  .get(taskController.findAllUserTasks)
   .put(taskController.updateTask)
   .delete(taskController.removeTask)
   .get(taskController.findTaskById);

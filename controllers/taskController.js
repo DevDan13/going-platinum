@@ -19,9 +19,9 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-  findAllTasks: function (req, res) {
+  findAllUserTasks: function (req, res) {
     db.Task.find({
-      userId: req.params.uid
+      userId: req.params.id
     })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
