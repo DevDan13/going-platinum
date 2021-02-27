@@ -13,7 +13,7 @@ function Profile404() {
         </p>
         <img
           id="goomba-div"
-          src="https://p7.hiclipart.com/preview/378/391/706/super-mario-bros-goomba-8-bit-thumbnail.jpg"
+          src="https://github.com/Gavin56/images/blob/main/oomba-8-bit-goomba.png?raw=true"
           alt="Mario Goomba"
         ></img>
         <p>Make sure you're logged in before attempting to view this page!</p>
