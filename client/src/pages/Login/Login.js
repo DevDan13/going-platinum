@@ -8,6 +8,7 @@ import "./style.css";
 function Login() {
   return (
     <div className="img">
+      <h1 id="login-title">Going Platinum</h1>
       <LoginForm></LoginForm>
     </div>
   );
