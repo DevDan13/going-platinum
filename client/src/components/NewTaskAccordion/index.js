@@ -124,7 +124,7 @@ export default function ControlledAccordions({ task, onSubmit }) {
                 alignItems="flex-start"
               >
                 <Grid item lg={12} className={classes.formLabels}>
-                  <label for="playlist-name">Task Name</label>
+                  <label htmlFor="playlist-name">Task Name</label>
                 </Grid>
                 <Grid item lg={12}>
                   <input
@@ -139,7 +139,7 @@ export default function ControlledAccordions({ task, onSubmit }) {
                   ></input>
                 </Grid>
                 <Grid item lg={12} className={classes.formLabels}>
-                  <label for="playlist-name">Playlist Name</label>
+                  <label htmlFor="playlist-name">Playlist Name</label>
                 </Grid>
                 <Grid item lg={12}>
                   <input
@@ -154,7 +154,7 @@ export default function ControlledAccordions({ task, onSubmit }) {
                   ></input>
                 </Grid>
                 <Grid item className={classes.formLabels}>
-                  <label for="artists">Artists</label>
+                  <label htmlFor="artists">Artists</label>
                 </Grid>
                 <Grid item xs={9}>
                   <input className={classes.formItems} name="artists"></input>
@@ -255,13 +255,13 @@ export default function ControlledAccordions({ task, onSubmit }) {
                   })}
                 </Grid>
                 <Grid item className={classes.formLabels}>
-                  <label for="mood">Mood</label>
+                  <label htmlFor="mood">Mood</label>
                 </Grid>
                 <Grid item>
                   <RadioButtons></RadioButtons>
                 </Grid>
                 <Grid item className={classes.formLabels}>
-                  <label for="duration">Duration</label>
+                  <label htmlFor="duration">Duration</label>
                 </Grid>
                 <Grid item>
                   <input

@@ -2,10 +2,12 @@ const router = require("express").Router();
 const taskController = require("../../controllers/taskController");
 
 router
-  .route("/task")
-  .get(taskController.findAllTasks)
+  .route("/")
+  // .get(taskController.findAllTasks)
   .post(taskController.createTask);
 
+
+  
 router
   .route("/task/:id")
   .put(taskController.updateTask)

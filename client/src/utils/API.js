@@ -13,22 +13,13 @@ export default {
     return axios.put("/api/Spotify/next");
   },
   playPrevious: function () {
-    return axios.put("/api/Spotify/previous");
+    return axios.post("/api/Spotify/previous");
   },
   getGenreSeeds: function () {
     return axios.get("/api/Spotify/genre-seeds");
   },
   createSpotifyPlaylist: function () {
     return axios.post("/api/Spotify/create-playlist");
-  },
-  getSpotifyPlaylist: function () {
-    return axios.get("/api/Spotify/get-playlist");
-  },
-  searchSpotifyPlaylist: function () {
-    return axios.get("/api/Spotify/search-playlist");
-  },
-  getSpotifyCategories: function () {
-    return axios.get("/api/Spotify/spotify-categories");
   },
   getSpotifyRecommendations: function (energy, popularity, artists) {
     return axios.get(
@@ -49,10 +40,14 @@ export default {
   getArtist: function (artist) {
     return axios.get("/api/Spotify/get-artist/" + artist);
   },
-  //Users Tasks
-  getUserTasks: function () {
-    return axios.get("/api/user/task");
+  getUserCurrentSong: function () {
+    return axios.get("/api/Spotify/get-current-song");
   },
+
+  //Users Tasks Routes
+  // getUserTasks: function () {
+  //   return axios.get("/api/user/");
+  // },
   postUserTasks: function (taskData) {
     return axios.post("/api/user/task", taskData);
   },
@@ -65,6 +60,10 @@ export default {
   getTaskById: function (id) {
     return axios.get("/api/user/task/" + id);
   },
+  addTrackToQueue: function (track) {
+    return axios.post("/api/Spotify/queue/" + track);
+  },
+
   // getAccessToken: function () {
 
   //User Routes
@@ -80,4 +79,7 @@ export default {
   deleteUser: function (id) {
     return axios.delete("/api/user", id);
   },
+  populate: function (id) {
+    return axios.get("/api/user/" + id);
+  }
 };

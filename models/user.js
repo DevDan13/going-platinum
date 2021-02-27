@@ -9,11 +9,7 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Settings",
   },
-  tasks: {
-    type: Schema.Types.ObjectId,
-    ref: "Task",
-  },
-  
+
   
 });
 
