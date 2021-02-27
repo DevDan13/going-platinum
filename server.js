@@ -17,11 +17,7 @@ if (process.env.NODE_ENV === "production") {
 app.use("/", routes);
 
 // Connect to the Mongo DB
-<<<<<<< HEAD
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/going-platinum", {
-=======
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/going-platinum', {
->>>>>>> d0ec4a20d508f80629af82a5fda601f9f32b243e
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
