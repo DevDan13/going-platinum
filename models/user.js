@@ -9,10 +9,12 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Settings",
   },
-  task: {
+  tasks: {
     type: Schema.Types.ObjectId,
-    ref: "Task"
-  }
+    ref: "Task",
+  },
+  
+  
 });
 
 const User = mongoose.model("User", userSchema);

@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const userController = require("../../controllers/taskController");
+const userController = require("../../controllers/userController");
 
+<<<<<<< HEAD
 // router.route("/user").get(taskController.findById);
 
 router
@@ -17,5 +18,10 @@ router
 router
   .route("/").get(userController.findById)
   .post(userController.createUser);
+=======
+router.route("/")
+.get(userController.findById)
+.post(userController.createUser);
+>>>>>>> 76ad57460508666a870d548e65901abcb8928a2a
 
 module.exports = router;
