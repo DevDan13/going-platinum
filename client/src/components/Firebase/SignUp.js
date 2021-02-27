@@ -82,13 +82,13 @@ const SignUp = () => {
             createUserWithEmailAndPasswordHandler(event, email, password);
           }}
         >
-          {/* <button
+          <button
         onClick={() => {
           signInWithGoogle();
         }}
       >
-        Sign in with Google
-      </button> */}
+        Sign Up with Google
+      </button>
           <span></span>
           <span></span>
           <span></span>
