@@ -77,18 +77,18 @@ const SignUp = () => {
           />
           <label>Password</label>
         </div>
+        <button
+        onClick={() => {
+          signInWithGoogle();
+        }}
+      >
+        Sign Up with Google
+      </button>
         <a
           onClick={(event) => {
             createUserWithEmailAndPasswordHandler(event, email, password);
           }}
         >
-          {/* <button
-        onClick={() => {
-          signInWithGoogle();
-        }}
-      >
-        Sign in with Google
-      </button> */}
           <span></span>
           <span></span>
           <span></span>
