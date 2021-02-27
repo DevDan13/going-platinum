@@ -14,6 +14,8 @@ router
   .delete(userController.removeTask)
   .get(userController.findTaskById);
 
-router.route("/").get(userController.findById).post(userController.createUser);
+router
+  .route("/").get(userController.findById)
+  .post(userController.createUser);
 
 module.exports = router;
