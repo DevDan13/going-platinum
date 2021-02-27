@@ -11,7 +11,8 @@ router
 router
   .route("/task/:id")
   .put(userController.updateTask)
-  .delete(userController.removeTask);
+  .delete(userController.removeTask)
+  .get(userController.findTaskById);
 
 router
   .route("/").get(userController.findById)
