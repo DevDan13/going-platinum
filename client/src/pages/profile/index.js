@@ -15,6 +15,7 @@ import "./profile.css";
 import { UserContext } from "../../providers/UserProvider";
 import NewTaskAccordion from "../../components/NewTaskAccordion";
 import Playlist from "../../components/Playlist";
+import {auth} from "../../firebase";
 
 function Profile() {
   const [tasksState, setTasksState] = React.useState({});
@@ -22,9 +23,12 @@ function Profile() {
   const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
   const [playing, setPlaying] = useState(false);
 
-  const user = useContext(UserContext);
+  const user = auth.currentUser;
   console.log(user);
 
+
+
+  console.log(auth.currentUser.displayName);
   function setTasks() {
     API.getUserTasks().then((res) => {
       console.log(res);
