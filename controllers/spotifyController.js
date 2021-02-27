@@ -8,7 +8,6 @@ const spotifyApi = new SpotifyWebApi({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
   redirectUri: "http://localhost:3000/callback/",
-  accessToken: process.env.ACCESS_TOKEN,
 });
 let accessToken = "";
 //Spotify API Calls
@@ -140,20 +139,16 @@ module.exports = {
     );
   },
   addTrackToQueue: function (req, res) {
-    try {
-      axios({
-        url: `https://api.spotify.com/v1/me/player/queue?uri=${req.params.track}`,
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + accessToken,
-        },
-      }).then((res) => {
-        console.log(`Axios Call completed: ${res}`);
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    axios({
+      url: `https://api.spotify.com/v1/me/player/queue?uri=${req.params.track}`,
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + accessToken,
+      },
+    }).then((res) => {
+      console.log(`Axios Call completed: ${res}`);
+    });
   },
   getUserCurrentSong: function (req, res) {
     spotifyApi.getMyCurrentPlayingTrack().then(
