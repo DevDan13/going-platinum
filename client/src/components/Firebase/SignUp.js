@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { signInWithGoogle, auth, generateUserDocument } from "../../firebase";
-import { FcGoogle } from "react-icons/fc";
+import GoogleBtn from "../GoogleBtn/index";
 import "./SignUp.css";
 
 const SignUp = () => {
@@ -82,14 +82,15 @@ const SignUp = () => {
         </div>
 
         <Grid style={{display: "flex", justifyContent: "center"}} item xs={12}>
-          <button
+          {/* <button
             onClick={() => {
               signInWithGoogle();
             }}
           >
             <FcGoogle />
             Sign Up with Google
-          </button>
+          </button> */}
+        <GoogleBtn></GoogleBtn>
         </Grid>
 
         <a

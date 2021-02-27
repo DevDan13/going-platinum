@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { signInWithGoogle, logOut, auth } from "../../firebase";
 import Grid from "@material-ui/core/Grid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FcGoogle } from "react-icons/fc";
+import GoogleBtn from "../GoogleBtn/index";
 import "./SignIn.css";
 
 const SignIn = () => {
@@ -93,15 +93,15 @@ const SignIn = () => {
 
       <Grid style={{display: "flex", justifyContent: "center", paddingTop: 60}}item xs={12}>
         
-        <button
+        {/* <button
           onClick={() => {
             signInWithGoogle();
           }}
         >
-          <FcGoogle />
+          
           Sign in with Google
-        </button>
-    
+        </button> */}
+      <GoogleBtn></GoogleBtn>
       </Grid>
 
 
