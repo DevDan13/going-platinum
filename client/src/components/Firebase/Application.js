@@ -7,6 +7,7 @@ import Home from "../../pages/Home/Home";
 import Login from "../../pages/Login/Login";
 import Profile from "../../pages/profile/index";
 import LoginForm from "../../pages/Login/Login";
+import Profile404 from "../../pages/Profile404/index"
 import React, { useContext, } from "react";
 import { UserContext } from "../../providers/UserProvider";
 
@@ -28,8 +29,9 @@ function Application() {
           <>
             <Route exact path="/profile" component={Profile} />
           </>
-        ) :(
-          null //404 here
+        ) : (
+          // <Route exact path="/profile" component={Profile} />  ===> for testing purposes
+            <Route exact path="/profile" component={Profile404} /> //404 here
         )
         }
         {/* //404 here */}
