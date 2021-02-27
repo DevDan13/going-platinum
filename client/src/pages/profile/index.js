@@ -15,7 +15,7 @@ import "./profile.css";
 import { UserContext } from "../../providers/UserProvider";
 import NewTaskAccordion from "../../components/NewTaskAccordion";
 import Playlist from "../../components/Playlist";
-import {auth} from "../../firebase";
+import { auth } from "../../firebase";
 
 function Profile() {
   const [tasksState, setTasksState] = React.useState({});
@@ -25,8 +25,6 @@ function Profile() {
 
   const user = auth.currentUser;
   console.log(user);
-
-
 
   // console.log(auth.currentUser.displayName);
   function setTasks() {
@@ -108,12 +106,12 @@ function Profile() {
   };
 
   const setToPlay = () => {
-    setChecked((prev) => !prev);
+    setChecked(true);
     return setPlaying(true);
   };
 
   const setToPause = () => {
-    setChecked((prev) => !prev);
+    setChecked(false);
     return setPlaying(false);
   };
 
@@ -182,29 +180,37 @@ function Profile() {
 
         {/* The moving stuff in the middle of the page */}
         <Grid item xs={12} md={1}>
-          <div id="motion-div">
-            {/* <Zoom in={checked}> */}
-            {isDesktop ? (
-              <LinePulse playing={playing}></LinePulse>
-            ) : (
-              <div></div>
-            )}
+          <Zoom in={checked}>
 
-            <div id="player-pulse-div">
-              {playerPulse ? (
-                <PlayerPulse playing={playing} size={"la-3x"}></PlayerPulse>
+            <div id="motion-div">
+              {isDesktop ? (
+                <LinePulse playing={{ playing }}></LinePulse>
               ) : (
-                <PlayerPulse playing={playing} size={"la-2x"}></PlayerPulse>
+                <div></div>
+              )}
+
+              <div id="player-pulse-div">
+                {playerPulse ? (
+                  <PlayerPulse
+                    playing={{ playing }}
+                    size={"la-3x"}
+                  ></PlayerPulse>
+                ) : (
+                  <PlayerPulse
+                    playing={{ playing }}
+                    size={"la-2x"}
+                  ></PlayerPulse>
+                )}
+              </div>
+
+              {isDesktop ? (
+                <LinePulse playing={{ playing }}></LinePulse>
+              ) : (
+                <div></div>
               )}
             </div>
-
-            {isDesktop ? (
-              <LinePulse playing={playing}></LinePulse>
-            ) : (
-              <div></div>
-            )}
-            {/* </Zoom> */}
-          </div>
+            
+          </Zoom>
         </Grid>
 
         {/* The music player panel */}

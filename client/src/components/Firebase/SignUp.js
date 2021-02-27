@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { signInWithGoogle, auth, generateUserDocument } from "../../firebase"; 
+import { FcGoogle } from "react-icons/fc";
 import "./SignUp.css";
 
 const SignUp = () => {
@@ -82,6 +83,7 @@ const SignUp = () => {
           signInWithGoogle();
         }}
       >
+        <FcGoogle/>
         Sign Up with Google
       </button>
         <a
