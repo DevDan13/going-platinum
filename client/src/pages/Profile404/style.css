@@ -18,16 +18,16 @@
     margin-bottom: 50px;
   }
 
-  #profile404-text > h1 {
-      margin-bottom: 0px;
+  h1 {
+    margin-bottom: 0px;
   }
 
-  #profile404-text > h2 {
+  h2 {
     margin: 0px;
-}
+  }
 
   #goomba-div {
-      width: 200px;
+    width: 200px;
   }
 }
 
@@ -35,6 +35,15 @@
 @media screen and (min-width: 600px) {
   #profile404-text {
     padding-top: 85px;
+  }
+
+  h1 {
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    margin-top: 0px;
+    margin-bottom: 45px;
   }
 
   #goomba-div {
