@@ -17,7 +17,7 @@ function Profile404() {
         <p style={{ fontFamily: "DotGothic16", fontSize: 20 }}>
           Your page is in another castle!
         </p>
-        <Slide direction={direction} in={true} {...{ timeout: 1000 }}>
+        <Slide direction={direction} in={true} {...{ timeout: 1000 }} mountOnEnter unmountOnExit>
           <img
             id="goomba-div"
             src="https://github.com/Gavin56/images/blob/main/oomba-8-bit-goomba.png?raw=true"

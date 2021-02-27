@@ -28,7 +28,7 @@ function Profile() {
 
 
 
-  console.log(auth.currentUser.displayName);
+  // console.log(auth.currentUser.displayName);
   function setTasks() {
     API.getUserTasks().then((res) => {
       console.log(res);
