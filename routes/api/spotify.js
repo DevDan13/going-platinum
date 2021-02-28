@@ -14,22 +14,10 @@ router.route("/pause").put(spotifyController.songPause);
 router.route("/next").put(spotifyController.playNext);
 
 // "/api/Spotify/previous"
-router.route("/previous").put(spotifyController.playPrevious);
-
-// "/api/Spotify/"
-router.route("/genre-seeds").get(spotifyController.getGenreSeeds);
+router.route("/previous").post(spotifyController.playPrevious);
 
 // "/api/Spotify/create-playlist"
 router.route("/create-playlist").post(spotifyController.createSpotifyPlaylist);
-
-// "/api/Spotify/get-playlist"
-router.route("/get-playlist").get(spotifyController.getSpotifyPlaylist);
-
-// "/api/Spotify/search-playlist"
-router.route("/search-playlist").get(spotifyController.searchSpotifyPlaylist);
-
-// "/api/Spotify/spotify-categories"
-router.route("/spotify-categories").get(spotifyController.getSpotifyCategories);
 
 // "/api/Spotify/get-recommendations"
 router
@@ -44,6 +32,11 @@ router.route("/tokens/:code").get(spotifyController.getTokens);
 
 // "/api/Spotify/get-artist/:artist"
 router.route("/get-artist/:artist").get(spotifyController.getArtist);
+
+// "/api/Spotify/queue/:track"
+router.route("/queue/:track").post(spotifyController.addTrackToQueue);
+// "/api/Spotify/get-current-song"
+router.route("/get-current-song").get(spotifyController.getUserCurrentSong);
 
 //Template for further addtions
 // // "/api/Spotify/"

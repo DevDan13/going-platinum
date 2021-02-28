@@ -38,6 +38,7 @@
     "react-scroll": "^1.8.1",
     "request": "^2.88.2",
     "spotify-web-api-node": "^5.0.2",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "xmlhttprequest": "^1.8.0"
   }
 }
