@@ -15,13 +15,10 @@ class UserProvider extends Component {
     });
   };
 
-  updateUser = (userObj) => {
-    this.setState({ user: {...this.state.user, ...userObj}})
-  }
 
   render() {
     return (
-      <UserContext.Provider value={{user: this.state.user, updateUser: this.updateUser}}>
+      <UserContext.Provider value={this.state.user}>
         {this.props.children}
       </UserContext.Provider>
     );
