@@ -45,9 +45,9 @@ export default {
   },
 
   //Users Tasks Routes
-  getUserTasks: function () {
-    return axios.get("/api/user/task");
-  },
+  // getUserTasks: function () {
+  //   return axios.get("/api/user/");
+  // },
   postUserTasks: function (taskData) {
     return axios.post("/api/user/task", taskData);
   },
@@ -79,4 +79,7 @@ export default {
   deleteUser: function (id) {
     return axios.delete("/api/user", id);
   },
+  populate: function (id) {
+    return axios.get("/api/user/" + id);
+  }
 };

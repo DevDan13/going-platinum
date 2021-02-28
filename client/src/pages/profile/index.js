@@ -5,7 +5,6 @@ import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
-import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index";
 import MusicPlayer from "../../components/MusicPlayer/index";
 import PlayerPulse from "../../components/PlayerPulse/index";
@@ -29,10 +28,12 @@ function Profile() {
   console.log(user);
 
   function setTasks() {
-    API.getUserTasks().then((res) => {
-      if (res) {
+    const id = user.uid;
+    API.populate(id).then((res) => {
+      console.log(res);
+      if (res.data.tasks) {
         let taskIDs = [];
-        res.data.forEach((task) => {
+        res.data.tasks.forEach((task) => {
           taskIDs.push(task._id);
         });
 
@@ -109,13 +110,13 @@ function Profile() {
     }
   };
 
-  const handleUser = () => {
-    API.createUser({
-      name: user.displayName,
-      email: user.email,
-      firebaseId: user.uid,
-    });
-  };
+  // const handleUser = () => {
+  //   API.createUser({
+  //     name: user.displayName,
+  //     email: user.email,
+  //     firebaseId: user.uid,
+  //   });
+  // };
 
   //Changes Checked State and Updates Play through Spotify API
   // const setToPlay = () => {
