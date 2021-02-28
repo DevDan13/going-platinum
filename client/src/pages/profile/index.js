@@ -23,7 +23,7 @@ function Profile() {
   const [playing, setPlaying] = useState(false);
   const [currentlyPlaying, setCurrentlyPlaying] = useState({});
 
-  const user = auth.currentUser;
+  const user = useContext(UserContext);
   console.log(user);
 
   function setTasks() {
@@ -87,6 +87,8 @@ function Profile() {
             duration: formData[1].duration,
             playlistName: formData[1].playlistName,
             tracks: newTracks,
+            user: user.uid
+            
           }).then(() => {
             setTasks();
           });

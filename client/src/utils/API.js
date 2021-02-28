@@ -49,7 +49,7 @@ export default {
   //   return axios.get("/api/user/");
   // },
   postUserTasks: function (taskData) {
-    return axios.post("/api/user/task", taskData);
+    return axios.post("/api/task", taskData);
   },
   updateUserTasks: function (id) {
     return axios.put("/api/user/task/" + id);
