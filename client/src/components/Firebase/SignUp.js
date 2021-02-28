@@ -90,7 +90,7 @@ const SignUp = () => {
             <FcGoogle />
             Sign Up with Google
           </button> */}
-        <GoogleBtn></GoogleBtn>
+        <GoogleBtn>Sign up with Google</GoogleBtn>
         </Grid>
 
         <a

@@ -101,7 +101,7 @@ const SignIn = () => {
           
           Sign in with Google
         </button> */}
-      <GoogleBtn></GoogleBtn>
+      <GoogleBtn>Sign in with Google</GoogleBtn>
       </Grid>
 
 

@@ -1,7 +1,7 @@
 import { FcGoogle } from "react-icons/fc";
 import "./style.css";
 
-function GoogleBtn() {
+function GoogleBtn(props) {
   return (
     <div align="center">
       <a
@@ -11,7 +11,7 @@ function GoogleBtn() {
         rel="nofollow noopener"
       >
         <FcGoogle style={{ paddingRight: 5, paddingTop: 0 }} />
-        Sign in with Google
+        {props.children}
         <br></br>
       </a>
     </div>
