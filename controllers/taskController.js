@@ -1,13 +1,21 @@
 const db = require("../models");
 
 module.exports = {
+  // createTask: function (req, res) {
+  //   db.Task.create(req.body)
+  //     .then((dbUser) => {
+  //       res.json(dbUser);
+  //     })
+  //     .catch((err) => res.status(422).json(err));
   createTask: function (req, res) {
     db.Task.create(req.body)
-      .then((dbUser) => {
-        res.json(dbUser);
-      })
-      .catch((err) => res.status(422).json(err));
-  },
+  .then(dbUser => {
+    res.json(dbUser);
+  })
+  .catch(err => {
+    res.json(err);
+  });
+},
   updateTask: function (req, res) {
     db.Task.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))

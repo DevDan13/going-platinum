@@ -3,7 +3,8 @@ const taskController = require("../../controllers/taskController");
 
 router
   .route("/")
-  .post(taskController.createTask);
+  .post(taskController.createTask)
+
 
 
   
@@ -12,6 +13,7 @@ router
   .get(taskController.findAllUserTasks)
   .put(taskController.updateTask)
   .delete(taskController.removeTask)
+  .post(taskController.createTask)
   .get(taskController.findTaskById);
 
 module.exports = router;

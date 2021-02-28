@@ -7,10 +7,7 @@ const taskSchema = new Schema({
   duration: { type: Number, required: false },
   playlistName: { type: String },
   tracks: { type: Array },
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  },
+  user: { type: String, required: true  },
 
 });
 
