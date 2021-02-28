@@ -109,13 +109,13 @@ function Profile() {
     }
   };
 
-  const handleUser = () => {
-    API.createUser({
-      name: user.displayName,
-      email: user.email,
-      firebaseId: user.uid,
-    });
-  };
+  // const handleUser = () => {
+  //   API.createUser({
+  //     name: user.displayName,
+  //     email: user.email,
+  //     firebaseId: user.uid,
+  //   });
+  // };
 
   //Changes Checked State and Updates Play through Spotify API
   // const setToPlay = () => {
