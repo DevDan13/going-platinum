@@ -151,7 +151,7 @@ function Profile() {
         <Grid item xs={12} md={5}>
           <Panel>
             <Grid item xs={12}>
-              <h2 id="activity-h2">Activities</h2>
+              <h2 className="profile-h2">Activities</h2>
             </Grid>
 
             <Grid
@@ -216,7 +216,7 @@ function Profile() {
         {/* The music player panel */}
         <Grid item xs={12} md={5}>
           <Panel>
-            <div id="sign-up-div"></div>
+          <h2 className="profile-h2">Music Player</h2>
             <MusicPlayer
               setToPlay={setToPlay}
               setToPause={setToPause}

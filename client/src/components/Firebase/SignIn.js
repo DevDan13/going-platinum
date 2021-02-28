@@ -86,7 +86,7 @@ const SignIn = () => {
       {/* <br></br> */}
 
       <Grid style={{position: "absolute", right: 40, top: 220}} item xs={12}>
-        <Link to="passwordReset" variant="body2">
+        <Link to="passwordReset" variant="body2" style={{color: "pink"}}>
           Forgot password?{" "}
         </Link>
       </Grid>
