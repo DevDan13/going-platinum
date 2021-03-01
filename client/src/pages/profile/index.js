@@ -5,37 +5,35 @@ import API from "../../utils/API";
 import Panel from "../../components/Panel/index";
 import Header from "../../components/Header/index";
 import Accordion from "../../components/Accordion/index";
+// import tasks from "../../utils/task-json.js";
 import Footer from "../../components/Footer/index";
 import MusicPlayer from "../../components/MusicPlayer/index";
 import PlayerPulse from "../../components/PlayerPulse/index";
 import LinePulse from "../../components/LinePulse/index";
 import Zoom from "@material-ui/core/Zoom";
-import { Link, animateScroll as scroll } from "react-scroll";
 import "./profile.css";
 import { UserContext } from "../../providers/UserProvider";
 import NewTaskAccordion from "../../components/NewTaskAccordion";
 import Playlist from "../../components/Playlist";
-import { auth } from "../../firebase";
 
 function Profile() {
   const [tasksState, setTasksState] = React.useState({});
   const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
   const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
   const [playing, setPlaying] = useState(false);
-  const [currentlyPlaying, setCurrentlyPlaying] = useState({});
 
-  const user = auth.currentUser();
+  const user = useContext(UserContext);
   console.log(user);
 
   function setTasks() {
-    const id = user.uid;
-    API.populate(id).then((res) => {
+    API.getUserTasks().then((res) => {
       console.log(res);
-      if (res.data.tasks) {
+      if (res) {
         let taskIDs = [];
-        res.data.tasks.forEach((task) => {
+        res.data.forEach((task) => {
           taskIDs.push(task._id);
         });
+        console.log("RES.Data", taskIDs);
 
         setTasksState({
           ...tasksState,
@@ -44,28 +42,13 @@ function Profile() {
       }
     });
   }
-  //Init tasks and Auth token
+
   useEffect(() => {
-    const code = window.location.href.split("=");
-    if (code[1]) {
-      console.log("code=", code[1]);
-      API.getTokens(code[1]);
-    }
     setTasks();
-    getUserCurrentSong();
   }, []);
 
-  const getUserCurrentSong = () => {
-    API.getUserCurrentSong().then((res) => {
-      console.log(res.data);
-      setCurrentlyPlaying({ ...currentlyPlaying, song: res.data });
-    });
-  };
-
-  //Accordion form Submit to Add Task to DB
   const addTask = (formData) => {
-    console.log(formData);
-    //Returns Tracks from user information
+    console.log("formdata", formData);
     try {
       API.getSpotifyRecommendations(0.5, 50, formData[0]).then((data) => {
         console.log("data", data.data.tracks);
@@ -73,14 +56,14 @@ function Profile() {
         for (let i = 0; i < 20; i++) {
           let track = {
             name: data.data.tracks[i].name,
-            songURI: data.data.tracks[i].uri,
+            songID: data.data.tracks[i].id,
             artists: data.data.tracks[i].artists,
             duraiton_ms: data.data.tracks[i].duration_ms,
           };
 
           newTracks.push(track);
         }
-        //Post user to DB
+        console.log("NEW TRACKS", newTracks);
         try {
           API.postUserTasks({
             name: formData[1].taskName,
@@ -89,6 +72,7 @@ function Profile() {
             playlistName: formData[1].playlistName,
             tracks: newTracks,
           }).then(() => {
+            console.log("DONE POST");
             setTasks();
           });
         } catch (err) {
@@ -96,57 +80,40 @@ function Profile() {
         }
       });
     } catch (error) {
-      console.log(error);
+      console.log("API ERROR", error);
     }
   };
-  //Deletes tasks from DB on Delete Btn Click
   const deleteTask = (id) => {
     try {
       API.deleteUserTasks(id).then((res) => {
+        console.log(res);
         setTasks();
       });
     } catch (error) {
       console.log(error);
     }
+    console.log("End");
   };
 
-  // const handleUser = () => {
-  //   API.createUser({
-  //     name: user.displayName,
-  //     email: user.email,
-  //     firebaseId: user.uid,
-  //   });
-  // };
-
-  //Changes Checked State and Updates Play through Spotify API
-  // const setToPlay = () => {
-  //   setChecked((prev) => !prev);
-  //   API.songPlay();
-  //   return setPlaying(true);
-  // };
-
-  //Pause Song from Spotify API call
-  // const setToPause = () => {
-  //   API.songPause();
-  //   setChecked((prev) => !prev);
-  //   return setPlaying(false);
-  // };
-
-  const setNext = () => {};
-  //Init Playlist that will play by Setting current Playlist Tracks
-  const playPlaylists = (tracks) => {
-    try {
-      tracks.forEach((track) => {
-        API.addTrackToQueue(track.songURI);
-      });
-    } catch {
-      return;
-    }
-
-    // API.addTrackToQueue;
+  const handleUser = () => {
+    API.createUser({
+      name: user.displayName,
+      email: user.email,
+      firebaseId: user.uid,
+    });
   };
 
-  // This code adjusts the motion media depending on the viewport size
+  const setToPlay = () => {
+    setChecked((prev) => !prev);
+    return setPlaying(true);
+  };
+
+  const setToPause = () => {
+    setChecked((prev) => !prev);
+    return setPlaying(false);
+  };
+
+  // This code adjusts the motion media depending on the viewport size =======
   const updateMedia = () => {
     setDesktop(window.innerWidth > 962);
     setPlayerPulse(window.innerWidth > 1500);
@@ -156,19 +123,25 @@ function Profile() {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   });
+  // =========================================================================
 
-  const testBtn = () => {
-    API.getUserCurrentSong().then((res) => {
-      console.log(res.data);
-      setCurrentlyPlaying({ ...currentlyPlaying, song: res.data });
-    });
-  };
+  // Spotify test code =======================================================
+
+  useEffect(() => {
+    const code = window.location.href.split("=");
+    if (code[1]) {
+      console.log("code=", code[1]);
+      API.getTokens(code[1]);
+    }
+  }, []);
+  //=========================================================================
+
   const [checked, setChecked] = useState(false);
 
   return (
     <div className="img">
       <Header />
-      <button onClick={testBtn}>test</button>
+      <button onClick={handleUser}>test</button>
       <Grid
         style={{ display: "flex", justifyContent: "center", marginTop: 45 }}
         container
@@ -184,28 +157,6 @@ function Profile() {
               className="accordion-div"
               style={{ overflowY: "scroll", height: "100%" }}
             >
-              {/* This code block is intended for the signup/login page. 
-              When the user clicks "here", it will scroll to the bottom where the signup panel will be 
-              -----------------------------------------------------------------------------------------*/}
-              {/* 
-              <p style={{ color: "white" }}>
-                New user? Sign up{" "}
-                <Link
-                  to="sign-up-div"
-                  smooth="easeInOutExpo"
-                  duration={750}
-                  delay={250}
-                  ignoreCancelEvents={false}
-                >
-                  <a style={{ color: "rgb(207, 104, 104)" }} href="#">
-                    here
-                  </a>
-                  !
-                </Link>
-              </p> */}
-
-              {/* ------------------------------------------------------------------------------------ */}
-
               {/* Dynamically generated accordions */}
               <Grid item xs={9}>
                 <NewTaskAccordion className="accordion" onSubmit={addTask} />
@@ -217,7 +168,6 @@ function Profile() {
                         className="accordion"
                         task={task}
                         delBtn={deleteTask}
-                        playBtn={playPlaylists}
                       ></Accordion>
                     </Grid>
                   ))
@@ -258,27 +208,8 @@ function Profile() {
           <Panel>
             <div id="sign-up-div"></div>
             <MusicPlayer
-              image={
-                currentlyPlaying.song
-                  ? currentlyPlaying.song.album.images[1].url
-                  : null
-              }
-              setPrevious={() => {
-                API.playPrevious();
-              }}
-              setNext={() => {
-                API.playNext();
-              }}
-              setToPlay={() => {
-                setChecked((prev) => !prev);
-                API.songPlay();
-                return setPlaying(true);
-              }}
-              setToPause={() => {
-                API.songPause();
-                setChecked((prev) => !prev);
-                return setPlaying(false);
-              }}
+              setToPlay={setToPlay}
+              setToPause={setToPause}
             ></MusicPlayer>
           </Panel>
         </Grid>
