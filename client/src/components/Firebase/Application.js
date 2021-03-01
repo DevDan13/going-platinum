@@ -11,6 +11,7 @@ import Profile from "../../pages/profile/index";
 import LoginForm from "../../pages/Login/Login";
 import React, { useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";
+import Setting404 from "../../pages/Setting404/index"
 
 function Application() {
   const user = useContext(UserContext);
@@ -37,6 +38,7 @@ function Application() {
         )
         }
         {/* //404 here */}
+        <Route  path="*" component={Setting404} />
       </Switch>
     </Router>
   );
