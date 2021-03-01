@@ -17,7 +17,7 @@ import Playlist from "../../components/Playlist";
 import {auth} from "../../firebase";
 
 function Profile() {
-  const [tasksState, setTasksState] = React.useState({});
+  const [tasksState, setTasksState] = useState([]);
   const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
   const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
   const [playing, setPlaying] = useState(false);
@@ -29,10 +29,11 @@ function Profile() {
   function setTasks() {
     const id = user.uid;
     API.getUserTasks(id).then((res) => {
-      console.log(res.data);
-      // if (res.data.tasks) {
+      console.log(res.data[0].name);
+      setTasksState({tasks: res.data});
+      // if (res) {
       //   let taskIDs = [];
-      //   res.data.tasks.forEach((task) => {
+      //   res.data.forEach((task) => {
       //     taskIDs.push(task._id);
       //   });
 
@@ -45,13 +46,17 @@ function Profile() {
   }
   //Init tasks and Auth token
   useEffect(() => {
+
     const code = window.location.href.split("=");
     if (code[1]) {
       console.log("code=", code[1]);
       API.getTokens(code[1]);
     }
+
     setTasks();
+
     getUserCurrentSong();
+
   }, []);
 
   const getUserCurrentSong = () => {
@@ -189,18 +194,9 @@ function Profile() {
               <Grid item xs={9}>
                 <NewTaskAccordion className="accordion" onSubmit={addTask} />
               </Grid>
-              {tasksState.tasks
-                ? tasksState.tasks.map((task, i) => (
-                    <Grid item xs={10} key={i}>
-                      <Accordion
-                        className="accordion"
-                        task={task}
-                        delBtn={deleteTask}
-                        playBtn={playPlaylists}
-                      ></Accordion>
-                    </Grid>
-                  ))
-                : null}
+              <h1
+              style={{color: "white"}}
+              >{tasksState.tasks[0].name}</h1>
             </Grid>
           </Panel>
         </Grid>

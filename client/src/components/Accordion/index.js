@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import MuiAccordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
@@ -14,6 +14,7 @@ import Divider from "@material-ui/core/Divider";
 // import clsx from "clsx";
 // import RadioButtons from "../../components/RadioButtons";
 import API from "../../utils/API";
+import { UserContext } from "../../providers/UserProvider";
 // import Playlist from "../Playlist";
 import "./style.css";
 
@@ -80,8 +81,10 @@ const Accordion = withStyles({
 
 export default function ControlledAccordions({ task, delBtn, playBtn }) {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-  const [taskState, setTaskState] = React.useState({});
+  const [expanded, setExpanded] = useState(false);
+  const [taskState, setTaskState] = useState({});
+  const user = useContext(UserContext);
+
   // const [artistState, setArtists] = React.useState([]);
   // const [artistArrayState, setArtistArray] = React.useState([]);
   // const [playlistState, setPlaylistState] = React.useState({
@@ -94,11 +97,13 @@ export default function ControlledAccordions({ task, delBtn, playBtn }) {
   };
 
   useEffect(() => {
-    getTask(task);
+    getTask();
   }, []);
-  const getTask = (taskID) => {
-    API.getTaskById(taskID).then((res) => {
-      //Get Task Set State
+
+  const getTask = () => {
+  const id = user.uid;
+  API.getUserTasks(id).then((res) => {
+    console.log(res.data);
       setTaskState({
         ...taskState,
         task: res.data,
@@ -143,18 +148,8 @@ export default function ControlledAccordions({ task, delBtn, playBtn }) {
             justify="space-between"
             alignItems="flex-start"
           >
-            <h1>{taskState.task ? taskState.task.playlistName : null}</h1>
-            {taskState.task
-              ? taskState.task.tracks.map((track, i) => {
-                  return (
-                    <Grid item key={i}>
-                      <p>
-                        {track.name} - by {track.artists[0].name}
-                      </p>
-                    </Grid>
-                  );
-                })
-              : null}
+            <h1>test</h1>
+            
           </Grid>
         </AccordionDetails>
         <Divider />
