@@ -1,11 +1,11 @@
+// import SignIn from "./SignIn";
+// import SignUp from "./SignUp";
+// import ProfilePage from "./ProfilePage";
+// import Login from "../../pages/Login/Login";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
-import ProfilePage from "./ProfilePage";
 import Settings from "../../pages/Settings";
 import PasswordReset from "./PasswordReset";
 import Home from "../../pages/Home/Home";
-import Login from "../../pages/Login/Login";
 import Profile from "../../pages/profile/index";
 import LoginForm from "../../pages/Login/Login";
 import Profile404 from "../../pages/Profile404/index";
@@ -15,6 +15,7 @@ import Setting404 from "../../pages/Setting404/index";
 
 function Application() {
   const user = useContext(UserContext);
+
   return (
     <Router>
       <Switch>
