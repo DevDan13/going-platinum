@@ -13,9 +13,10 @@ import API from "../../utils/API";
 import { UserContext } from "../../providers/UserProvider";
 import { useContext } from "react";
 
+
 function Home() {
-  const user = useContext(UserContext);
-  console.log(user);
+const user = useContext(UserContext);
+console.log(user);
 
   //testing feature
   const testBtn = () => {
@@ -31,6 +32,7 @@ function Home() {
       firebaseId: user.uid,
     });
   };
+  
 
   const getPlaylist = () => {
     API.getArtist("Eminem").then((res) => {
@@ -60,18 +62,17 @@ function Home() {
         <video className="video" autoPlay="autoplay" loop="loop" muted>
           <source src={Spotify} type="video/mp4" />
         </video>
+        
+          <Grid container>
+            <Grid id="logo-div" item xs={12} sm={8} md={9} lg={10}>
+              <h1 className="logo"><AlbumIcon fontSize="large" style={{marginRight: 10, color: "#E5E4E2"}}></AlbumIcon>Going Platinum</h1>
+            </Grid>
 
-        <Grid container>
-          <Grid id="logo-div" item xs={12} sm={8} md={9} lg={10}>
-            <h1 className="logo">
-              <AlbumIcon fontSize="large"></AlbumIcon>Going Platinum
-            </h1>
+            <Grid className="start-button-div" item xs={12} sm={4} md={3} lg={2}>
+              <Btn  />
+            </Grid>
           </Grid>
-
-          <Grid className="start-button-div" item xs={12} sm={4} md={3} lg={2}>
-            <Btn />
-          </Grid>
-        </Grid>
+      
 
         <Grid container style={{ display: "flex", justifyContent: "center" }}>
           <Grid item xs={12}>

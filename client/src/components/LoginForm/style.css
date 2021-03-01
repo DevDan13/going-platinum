@@ -10,11 +10,11 @@
 
 @media screen and (min-width: 1300px) {
   #signin-div {
-    padding-left: 200px;
+    padding-left: 100px;
   }
 
   #signup-div {
-    padding-right: 200px;
+    padding-right: 100px;
   }
 }
 
@@ -30,11 +30,11 @@
 
 @media screen and (min-width: 964px) and (max-width: 1300px) {
   #signin-div {
-    padding-left: 100px;
+    padding-left: 0;
   }
 
   #signup-div {
-    padding-right: 100px;
+    padding-right: 0;
   }
 }
 
