@@ -22,10 +22,15 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-  
+
   findAllUser: function (req, res) {
     db.User.find({})
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
-  }, 
+  },
+  getTaskbyUserID: function (req, res) {
+    db.Task.find({ user: req.params.id })
+      .then((dbUser) => res.json(dbUser))
+      .catch((err) => res.status(422).json(err));
+  },
 };

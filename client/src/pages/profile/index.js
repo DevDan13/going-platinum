@@ -14,7 +14,7 @@ import "./profile.css";
 import { UserContext } from "../../providers/UserProvider";
 import NewTaskAccordion from "../../components/NewTaskAccordion";
 import Playlist from "../../components/Playlist";
-import {auth} from "../../firebase";
+import { auth } from "../../firebase";
 
 function Profile() {
   const [tasksState, setTasksState] = useState([]);
@@ -26,24 +26,30 @@ function Profile() {
   const user = useContext(UserContext);
   console.log(user);
 
-  function setTasks() {
+  const setTasks = () => {
+    // //User Version
     const id = user.uid;
-    API.getUserTasks(id).then((res) => {
-      console.log(res.data[0].name);
-      setTasksState({tasks: res.data});
-      // if (res) {
-      //   let taskIDs = [];
-      //   res.data.forEach((task) => {
-      //     taskIDs.push(task._id);
-      //   });
 
-      //   setTasksState({
-      //     ...tasksState,
-      //     tasks: taskIDs,
-      //   });
-      // }
-    });
-  }
+    //DemoVersion
+    API.getTasksByUserId(id)
+      .then((res) => {
+        console.log(res);
+        if (res.data) {
+          let taskIDs = [];
+          res.data.forEach((task) => {
+            taskIDs.push(task._id);
+          });
+          console.log("taskids", taskIDs);
+          return taskIDs;
+        }
+      })
+      .then((taskIDs) => {
+        setTasksState({
+          ...tasksState,
+          tasks: taskIDs,
+        });
+      });
+  };
   //Init tasks and Auth token
   useEffect(() => {
 
@@ -68,34 +74,50 @@ function Profile() {
 
   //Accordion form Submit to Add Task to DB
   const addTask = (formData) => {
-    console.log(formData);
+    console.log("FormData: ", formData);
+    let artistIds = formData[0].map((artist) => {
+      return artist.id;
+    });
+    console.log("Artist Ids", artistIds);
+
     //Returns Tracks from user information
     try {
-      API.getSpotifyRecommendations(0.5, 50, formData[0]).then((data) => {
-        console.log("data", data.data.tracks);
+      API.getSpotifyRecommendations(formData[2], 50, artistIds).then((data) => {
+        //Get duration Request from User
+        //Add total duration until the req is reached
+        let length = data.data.tracks.length;
+        let durationMAX = formData[1].duration * 60000;
+        let totalDuration = 0;
         let newTracks = [];
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < length; i++) {
+          totalDuration = totalDuration + data.data.tracks[i].duration_ms;
           let track = {
             name: data.data.tracks[i].name,
             songURI: data.data.tracks[i].uri,
             artists: data.data.tracks[i].artists,
-            duraiton_ms: data.data.tracks[i].duration_ms,
           };
-
-          newTracks.push(track);
+          if (durationMAX > totalDuration) {
+            console.log("ADDED position " + i);
+            newTracks.push(track);
+          } else {
+            break;
+          }
         }
+        console.log("END OF FOR LOOP");
+        console.log(newTracks);
         //Post user to DB
         try {
           API.postUserTasks({
             name: formData[1].taskName,
-            mood: formData[1].mood,
+            energy: formData[2],
             duration: formData[1].duration,
             playlistName: formData[1].playlistName,
             tracks: newTracks,
-            user: user.uid
-            
-          }).then(() => {
+            user: user.uid,
+          }).then((model) => {
             setTasks();
+            console.log("POSTED TASK");
+            console.log(model);
           });
         } catch (err) {
           console.log(err);
@@ -110,6 +132,7 @@ function Profile() {
     try {
       API.deleteUserTasks(id).then((res) => {
         setTasks();
+        console.log(res);
       });
     } catch (error) {
       console.log(error);
@@ -138,7 +161,6 @@ function Profile() {
   //   return setPlaying(false);
   // };
 
-  const setNext = () => {};
   //Init Playlist that will play by Setting current Playlist Tracks
   const playPlaylists = (tracks) => {
     try {
@@ -194,9 +216,18 @@ function Profile() {
               <Grid item xs={9}>
                 <NewTaskAccordion className="accordion" onSubmit={addTask} />
               </Grid>
-              <h1
-              style={{color: "white"}}
-              >{tasksState.tasks[0].name}</h1>
+              {tasksState.tasks
+                ? tasksState.tasks.map((task, i) => (
+                    <Grid item xs={10} key={i}>
+                      <Accordion
+                        className="accordion"
+                        task={task}
+                        delBtn={deleteTask}
+                        playBtn={playPlaylists}
+                      ></Accordion>
+                    </Grid>
+                  ))
+                : null}
             </Grid>
           </Panel>
         </Grid>
@@ -240,17 +271,21 @@ function Profile() {
               }
               setPrevious={() => {
                 API.playPrevious();
+                getUserCurrentSong();
               }}
               setNext={() => {
                 API.playNext();
+                getUserCurrentSong();
               }}
               setToPlay={() => {
                 setChecked((prev) => !prev);
                 API.songPlay();
+                getUserCurrentSong();
                 return setPlaying(true);
               }}
               setToPause={() => {
                 API.songPause();
+                getUserCurrentSong();
                 setChecked((prev) => !prev);
                 return setPlaying(false);
               }}
