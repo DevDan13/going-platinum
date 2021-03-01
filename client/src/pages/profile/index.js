@@ -25,7 +25,7 @@ function Profile() {
 
   const user = useContext(UserContext);
   // const user = auth.currentUser;
-  console.log(user);
+  console.log("Profile Page:", user);
 
   function setTasks() {
     API.getUserTasks().then((res) => {
@@ -50,7 +50,7 @@ function Profile() {
       API.getTokens(code[1]);
     }
     setTasks();
-    getUserCurrentSong();
+    // getUserCurrentSong();
   }, []);
 
   const getUserCurrentSong = () => {
@@ -64,23 +64,29 @@ function Profile() {
   const addTask = (formData) => {
     console.log("FormData: ", formData[1].duration * 60000);
 
-    const durationMAX = formData[1].duration * 60000;
-
     //Returns Tracks from user information
     try {
       API.getSpotifyRecommendations(0.5, 50, formData[0]).then((data) => {
         console.log("data", data.data.tracks);
-
+        //Get duration Request from User
+        let durationMAX = formData[1].duration * 60000;
+        //Add total duration until the req is reached
+        let totalDuration = 0;
         let newTracks = [];
         for (let i = 0; i < 20; i++) {
-          let track = {
-            name: data.data.tracks[i].name,
-            songURI: data.data.tracks[i].uri,
-            artists: data.data.tracks[i].artists,
-            duraiton_ms: data.data.tracks[i].duration_ms,
-          };
+          totalDuration = totalDuration + data.data.tracks[i.duration_ms];
+          if (totalDuration < durationMax) {
+            let track = {
+              name: data.data.tracks[i].name,
+              songURI: data.data.tracks[i].uri,
+              artists: data.data.tracks[i].artists,
+              duraiton_ms: data.data.tracks[i].duration_ms,
+            };
 
-          newTracks.push(track);
+            newTracks.push(track);
+          } else {
+            break;
+          }
         }
         //Post user to DB
         try {
@@ -134,7 +140,6 @@ function Profile() {
   //   return setPlaying(false);
   // };
 
-  const setNext = () => {};
   //Init Playlist that will play by Setting current Playlist Tracks
   const playPlaylists = (tracks) => {
     try {

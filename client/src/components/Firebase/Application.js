@@ -25,15 +25,15 @@ function Application() {
         <Route exact path="/passwordReset">
           <PasswordReset />
         </Route>
-        {user == null || user == undefined ? (
+        {user ? (
           // only user routes
-          <Route exact path="/profile" component={Profile404} /> //404 here
-        ) : (
-          // <Route exact path="/profile" component={Profile} />
           <>
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/settings" component={Settings} />
           </>
+        ) : (
+          // <Route exact path="/profile" component={Profile} />
+          <Route exact path="/profile" component={Profile404} /> //404 here
         )}
         {/* //404 here */}
       </Switch>
