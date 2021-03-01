@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { Link } from "react-router-dom";
-import { signInWithGoogle, auth, generateUserDocument } from "../../firebase"; 
-import "../loginForm/style.css";
+import {
+  signInWithGoogle,
+  auth,
+  generateUserDocument,
+  userContext,
+} from "../../firebase";
 import "./SignUp.css";
+
+
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -28,7 +34,7 @@ const SignUp = () => {
     setEmail("");
     setPassword("");
     setDisplayName("");
-  };
+  }
 
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
@@ -79,15 +85,15 @@ const SignUp = () => {
           <label>Password</label>
         </div>
         <button
-        onClick={() => {
-          signInWithGoogle();
-        }}
-      >
-        Sign Up with Google
-      </button>
+          onClick={() => {
+            signInWithGoogle();
+          }}
+        >
+          Sign Up with Google
+        </button>
         <a
           onClick={(event) => {
-            createUserWithEmailAndPasswordHandler(event, email, password);
+            createUserWithEmailAndPasswordHandler(event, email, password)
           }}
         >
           <span></span>
@@ -98,7 +104,7 @@ const SignUp = () => {
         </a>
       </form>
     </div>
-            /* <p className="text-center my-3">or</p>
+    /* <p className="text-center my-3">or</p>
         <button className="bg-red-500 hover:bg-red-600 w-full py-2 text-white">
           Sign In with Google
         </button>

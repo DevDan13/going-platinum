@@ -6,16 +6,17 @@ module.exports = {
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
   },
+
   populateTask: function (req, res) {
     db.User.findById(req.params.id)
       .populate("tasks")
-      .then(dbUser => {
+      .then((dbUser) => {
         res.json(dbUser);
       })
-      .catch(err => {
+      .catch((err) => {
         res.json(err);
       });
-    },
+  },
 
   createUser: function (req, res) {
     db.User.create(req.body)
@@ -31,6 +32,17 @@ module.exports = {
     db.User.findById({ _id: req.params.id })
       .then((dbModel) => dbModel.remove())
       .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+
+  findAllUser: function (req, res) {
+    db.User.find({})
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+  getTaskbyUserID: function (req, res) {
+    db.Task.find({ user: req.params.id })
+      .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
   },
 };

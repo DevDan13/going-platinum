@@ -8,10 +8,10 @@ router.use("/Spotify", spotifyRoutes);
 //user routes
 router.use("/user", userRoutes);
 // //task routes
-// router.use("/task", taskRoutes);
+router.use("/task", taskRoutes);
 
-router.use(function(req, res) {
-    res.sendFile(path.join(__dirname, "../../client/public/index.html"));
-  });
-  
+router.use(function (req, res) {
+  res.sendFile(path.join(__dirname, "../../client/build/index.html"));
+});
+
 module.exports = router;

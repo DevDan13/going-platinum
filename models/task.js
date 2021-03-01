@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
   name: { type: String, required: true },
-  mood: { type: String, required: true },
+  energy: { type: String, required: true },
   duration: { type: Number, required: false },
   playlistName: { type: String },
   tracks: { type: Array },
-
+  user: { type: String, required: true },
 });
 
 const Task = mongoose.model("Task", taskSchema);
