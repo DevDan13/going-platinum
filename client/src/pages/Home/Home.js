@@ -7,15 +7,15 @@ import Btn from "../../components/Btn/index";
 import Spotify from "../../components/video/spotify.mp4";
 import Grid from "@material-ui/core/Grid";
 import "./home.css";
+import AlbumIcon from "@material-ui/icons/Album";
 import Header from "../../components/Header/index";
 import API from "../../utils/API";
 import { UserContext } from "../../providers/UserProvider";
 import { useContext } from "react";
 
-
 function Home() {
-const user = useContext(UserContext);
-console.log(user);
+  const user = useContext(UserContext);
+  console.log(user);
 
   //testing feature
   const testBtn = () => {
@@ -31,7 +31,6 @@ console.log(user);
       firebaseId: user.uid,
     });
   };
-  
 
   const getPlaylist = () => {
     API.getArtist("Eminem").then((res) => {
@@ -61,17 +60,18 @@ console.log(user);
         <video className="video" autoPlay="autoplay" loop="loop" muted>
           <source src={Spotify} type="video/mp4" />
         </video>
-        
-          <Grid container>
-            <Grid id="logo-div" item xs={12} sm={8} md={9} lg={10}>
-              <h1 className="logo">Going Platinum</h1>
-            </Grid>
 
-            <Grid className="start-button-div" item xs={12} sm={4} md={3} lg={2}>
-              <Btn  />
-            </Grid>
+        <Grid container>
+          <Grid id="logo-div" item xs={12} sm={8} md={9} lg={10}>
+            <h1 className="logo">
+              <AlbumIcon fontSize="large"></AlbumIcon>Going Platinum
+            </h1>
           </Grid>
-      
+
+          <Grid className="start-button-div" item xs={12} sm={4} md={3} lg={2}>
+            <Btn />
+          </Grid>
+        </Grid>
 
         <Grid container style={{ display: "flex", justifyContent: "center" }}>
           <Grid item xs={12}>

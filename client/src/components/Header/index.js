@@ -2,9 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-// import Typography from "@material-ui/core/Typography";
+import AlbumIcon from "@material-ui/icons/Album";
 import IconButton from "@material-ui/core/IconButton";
-// import HeadsetIcon from "@material-ui/icons/Headset";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -15,9 +14,9 @@ import "./style.css";
 const useStyles = makeStyles((theme) => ({
   appBar: {
     background: "transparent",
-    [theme.breakpoints.down('sm')]: {
-      backgroundColor: 'black',
-    }
+    [theme.breakpoints.down("sm")]: {
+      backgroundColor: "black",
+    },
   },
   title: {
     flexGrow: 1,
@@ -64,7 +63,9 @@ export default function MenuAppBar() {
                     : "nav-link"
                 }
               >
-                <h1 className="logo">Going Platinum</h1>
+                <h1 className="logo">
+                  <AlbumIcon></AlbumIcon>Going Platinum
+                </h1>
               </Link>
             </Grid>
 
