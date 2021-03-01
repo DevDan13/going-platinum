@@ -65,7 +65,7 @@ console.log(user);
         
           <Grid container>
             <Grid id="logo-div" item xs={12} sm={8} md={9} lg={10}>
-              <h1 className="logo"><AlbumIcon fontSize="large" style={{marginRight: 10, color: "#E5E4E2"}}></AlbumIcon>Going Platinum</h1>
+              <h1 className="logo"><AlbumIcon fontSize="large" style={{marginRight: 10}}></AlbumIcon>Going Platinum</h1>
             </Grid>
 
             <Grid className="start-button-div" item xs={12} sm={4} md={3} lg={2}>

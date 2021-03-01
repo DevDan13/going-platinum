@@ -3,11 +3,6 @@
   justify-content: center;
 }
 
-#or {
-  color: white;
-  font-family: "Montserrat Subrayada";
-}
-
 @media screen and (min-width: 1300px) {
   #signin-div {
     padding-left: 100px;

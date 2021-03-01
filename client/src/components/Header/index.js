@@ -64,7 +64,7 @@ export default function MenuAppBar() {
                 }
               >
                 <h1 className="logo">
-                  <AlbumIcon></AlbumIcon>Going Platinum
+                  <AlbumIcon fontSize="large" style={{marginRight: 10}}></AlbumIcon>Going Platinum
                 </h1>
               </Link>
             </Grid>
