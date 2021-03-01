@@ -109,7 +109,7 @@ function Profile() {
             duration: formData[1].duration,
             playlistName: formData[1].playlistName,
             tracks: newTracks,
-            user: 1,
+            user: user.uid,
           }).then((model) => {
             setTasks();
             console.log("POSTED TASK");

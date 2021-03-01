@@ -33,7 +33,7 @@ function Application() {
             <Route exact path="/settings" component={Settings} />
           </>
         ) : (
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/profile" component={Profile404} />
         )}
         {/* //404 here */}
         <Route path="*" component={Setting404} />
