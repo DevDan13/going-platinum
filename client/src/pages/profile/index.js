@@ -28,19 +28,19 @@ function Profile() {
 
   function setTasks() {
     const id = user.uid;
-    API.populate(id).then((res) => {
-      console.log(res);
-      if (res.data.tasks) {
-        let taskIDs = [];
-        res.data.tasks.forEach((task) => {
-          taskIDs.push(task._id);
-        });
+    API.getUserTasks(id).then((res) => {
+      console.log(res.data);
+      // if (res.data.tasks) {
+      //   let taskIDs = [];
+      //   res.data.tasks.forEach((task) => {
+      //     taskIDs.push(task._id);
+      //   });
 
-        setTasksState({
-          ...tasksState,
-          tasks: taskIDs,
-        });
-      }
+      //   setTasksState({
+      //     ...tasksState,
+      //     tasks: taskIDs,
+      //   });
+      // }
     });
   }
   //Init tasks and Auth token
