@@ -57,6 +57,12 @@ export default {
   deleteUserTasks: function (id) {
     return axios.delete("/api/task/" + id);
   },
+  getTasks: function () {
+    return axios.get("/api/task/");
+  },
+  getTasksByUserId: function (userId) {
+    return axios.get("/api/user/tasks/" + userId);
+  },
   getTaskById: function (id) {
     return axios.get("/api/task/" + id);
   },
@@ -79,5 +85,4 @@ export default {
   deleteUser: function (id) {
     return axios.delete("/api/user/", id);
   },
-
 };

@@ -33,4 +33,10 @@ module.exports = {
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
   },
+  getTasks: function (req, res) {
+    db.Task.find()
+      .then((dbModel) => dbModel.remove())
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
 };

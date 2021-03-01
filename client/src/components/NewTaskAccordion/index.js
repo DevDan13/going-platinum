@@ -85,7 +85,6 @@ export default function ControlledAccordions({ task, onSubmit }) {
   const [playlistState, setPlaylistState] = React.useState({
     taskName: "",
     playlistName: "",
-    mood: "",
     duration: "",
   });
   const handleChange = (panel) => (event, isExpanded) => {
@@ -215,13 +214,16 @@ export default function ControlledAccordions({ task, onSubmit }) {
                           <Grid item key={i}>
                             <button
                               id={artist.id}
+                              data-name={artist.name}
                               onClick={(event) => {
                                 event.preventDefault();
-                                const btn = event.target.id;
-                                console.log(btn);
+                                const btnID = event.target.id;
+
+                                const btnName = event.target.dataset.name;
+
                                 setArtistArray((artistArrayState) => [
                                   ...artistArrayState,
-                                  btn,
+                                  { name: btnName, id: btnID },
                                 ]);
                                 console.log(artistArrayState);
                               }}
@@ -234,9 +236,9 @@ export default function ControlledAccordions({ task, onSubmit }) {
                 </Grid>
                 <Grid
                   container
-                  direction="row"
+                  direction="column"
                   justify="flex-start"
-                  alignItems="center"
+                  alignItems="left"
                 >
                   {artistArrayState.map((artist, i) => {
                     return (
@@ -248,20 +250,22 @@ export default function ControlledAccordions({ task, onSubmit }) {
                             );
                           }}
                         >
-                          <p>{artist} - </p>
+                          <div>
+                            <p>Remove - {artist.name} </p>
+                          </div>
                         </a>
                       </Grid>
                     );
                   })}
                 </Grid>
                 <Grid item className={classes.formLabels}>
-                  <label htmlFor="mood">Mood</label>
+                  <label htmlFor="energy">Energy</label>
                 </Grid>
                 <Grid item>
                   <RadioButtons></RadioButtons>
                 </Grid>
                 <Grid item className={classes.formLabels}>
-                  <label htmlFor="duration">Duration</label>
+                  <label htmlFor="duration">Duration (minutes) max 300</label>
                 </Grid>
                 <Grid item>
                   <input
@@ -277,15 +281,14 @@ export default function ControlledAccordions({ task, onSubmit }) {
                 </Grid>
                 <Grid item className={classes.formLabels}>
                   <button
-                    onClick={(event) => {
+                    onClick={async (event) => {
                       event.preventDefault();
 
                       console.log("playlistState", playlistState);
                       const radioBtns =
                         event.target.parentElement.previousSibling
                           .previousSibling.previousSibling.firstChild;
-
-                      let data = [artistArrayState, playlistState];
+                      let btnSelected;
 
                       for (
                         var i = 0, length = radioBtns.elements.length;
@@ -294,15 +297,15 @@ export default function ControlledAccordions({ task, onSubmit }) {
                       ) {
                         if (radioBtns.elements[i].checked) {
                           // Check what mood was clicked
-                          setPlaylistState({
-                            ...playlistState,
-                            mood: radioBtns.elements[i].value,
-                          });
-
+                          // setPlaylistState({
+                          //   ...playlistState,
+                          //   mood: radioBtns.elements[i].value,
+                          // });
+                          btnSelected = radioBtns.elements[i].value;
                           break;
                         }
                       }
-
+                      let data = [artistArrayState, playlistState, btnSelected];
                       onSubmit(data);
                     }}
                     type="submit"
