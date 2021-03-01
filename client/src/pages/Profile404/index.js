@@ -1,15 +1,17 @@
+import { useMediaQuery } from "@material-ui/core";
 import Slide from "@material-ui/core/Slide";
+import { useHistory } from "react-router-dom";
 import "./style.css";
 import "./style.scss";
 
 function Profile404() {
+  let history = useHistory();
+
   return (
     <div id="profile404-background">
       <div id="profile404-text">
-        <h1 style={{ fontFamily: "DotGothic16"}}>404</h1>
-        <h2 style={{ fontFamily: "DotGothic16"}}>
-          PAGE NOT FOUND.
-        </h2>
+        <h1 style={{ fontFamily: "DotGothic16" }}>404</h1>
+        <h2 style={{ fontFamily: "DotGothic16" }}>PAGE NOT FOUND.</h2>
         <p style={{ fontFamily: "DotGothic16", fontSize: 20 }}>
           Your page is in another castle!
         </p>
@@ -31,7 +33,12 @@ function Profile404() {
         </p>
       </div>
       <div id="pipe">
-        <a href="/login" class="eightbit-btn eightbit-btn--reset">Go Back</a>
+        <button
+          onClick={() => history.goBack()}
+          class="eightbit-btn eightbit-btn--reset"
+        >
+          Go Back
+        </button>
       </div>
     </div>
   );

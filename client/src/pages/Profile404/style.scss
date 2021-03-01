@@ -30,6 +30,7 @@ $reset-shadow-color: #8c2022;
 }
 
 .eightbit-btn {
+  
   background: $button-background;
   display: inline-block;
   position: relative;
@@ -41,6 +42,7 @@ $reset-shadow-color: #8c2022;
 
   &:hover,
   &:focus {
+    cursor: pointer;
     background: $sec-button-background;
     box-shadow: inset (-$shadow-width * 1.5) (-$shadow-width * 1.5) 0px 0px
       $shadow-color;
