@@ -78,7 +78,7 @@ const Accordion = withStyles({
   },
 })(MuiAccordion);
 
-export default function ControlledAccordions({ task, delBtn }) {
+export default function ControlledAccordions({ task, delBtn, playBtn }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [taskState, setTaskState] = React.useState({});
@@ -103,9 +103,7 @@ export default function ControlledAccordions({ task, delBtn }) {
         ...taskState,
         task: res.data,
       });
-      console.log("TASK STATE", res.data);
     });
-    console.log("OUTSIDE FUNCTION", taskState);
   };
 
   return (
@@ -161,6 +159,15 @@ export default function ControlledAccordions({ task, delBtn }) {
         </AccordionDetails>
         <Divider />
         <AccordionActions>
+          <button>Add to Spotify to Play</button>
+          <button
+            onClick={(event) => {
+              event.preventDefault();
+              playBtn(taskState.task.tracks);
+            }}
+          >
+            Play Playlist
+          </button>
           <button
             onClick={(event) => {
               event.preventDefault();

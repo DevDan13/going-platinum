@@ -15,6 +15,7 @@ import { useContext } from "react";
 
 function Home() {
 const user = useContext(UserContext);
+console.log(user);
 
   //testing feature
   const testBtn = () => {
@@ -23,10 +24,14 @@ const user = useContext(UserContext);
     });
   };
 
-  const userButton = () => {
-    console.log(user);
+  const handleUser = () => {
+    API.createUser({
+      name: user.displayName,
+      email: user.email,
+      firebaseId: user.uid,
+    });
   };
-
+  
 
   const getPlaylist = () => {
     API.getArtist("Eminem").then((res) => {
@@ -77,7 +82,8 @@ const user = useContext(UserContext);
             </h1>
           </Grid>
           <Grid item xs={12}>
-            <button onClick={userButton}>Test</button>
+            <button onClick={testBtn}>Test</button>
+            <button onClick={handleUser}>Test</button>
             <button onClick={getPlaylist}>playlist</button>
           </Grid>
         </Grid>

@@ -10,10 +10,13 @@
   }
 
   #login-title {
+    text-align: center;
+    font-family: "Concert One", cursive;
+    color: white;
     margin-top: 0;
-    padding-top: 75;
-    padding-bottom: 25;
-    font-size: 50;
+    padding-top: 35px;
+    padding-bottom: 15px;
+    font-size: 50px;
   }
 }
 

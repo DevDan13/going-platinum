@@ -27,16 +27,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MusicPlayer({setToPlay, setToPause}) {
+function MusicPlayer({ setToPlay, setToPause, image, setNext, setPrevious }) {
   const classes = useStyles();
 
   return (
     <Grid container id="music-player-div">
       <Grid container id="image-container">
         <Grid item xs={12} id="player-image">
-          <img src="https://via.placeholder.com/300" alt="placeholder"></img>
+          <img src={image} alt="placeholder"></img>
         </Grid>
-
 
         {/* PREVIOUS BUTTON */}
         <Grid container id="player-container">
@@ -45,6 +44,7 @@ function MusicPlayer({setToPlay, setToPause}) {
               className={classes.iconBtn}
               aria-label="skip-previous"
               // onclick = spotify api call to skip previous
+              onClick={setPrevious}
             >
               <SkipPreviousIcon
                 className={classes.icon}
@@ -52,7 +52,6 @@ function MusicPlayer({setToPlay, setToPause}) {
               ></SkipPreviousIcon>
             </IconButton>
           </Grid>
-
 
           {/* PLAY BUTTON */}
           <Grid item xs={2} className="player-button-div" id="play-btn">
@@ -69,7 +68,6 @@ function MusicPlayer({setToPlay, setToPause}) {
               ></PlayArrowIcon>
             </IconButton>
           </Grid>
-
 
           {/* PAUSE BUTTON */}
           <Grid item xs={2} className="player-button-div" id="play-btn">
@@ -88,7 +86,6 @@ function MusicPlayer({setToPlay, setToPause}) {
             </IconButton>
           </Grid>
 
-
           {/* SKIP BUTTON */}
           <Grid item xs={2} className="player-button-div">
             <IconButton
@@ -96,6 +93,7 @@ function MusicPlayer({setToPlay, setToPause}) {
               aria-label="skip-next"
               component="span"
               // onclick = spotify api call to skip next
+              onClick={setNext}
             >
               <SkipNextIcon
                 className={classes.icon}
@@ -103,7 +101,6 @@ function MusicPlayer({setToPlay, setToPause}) {
               ></SkipNextIcon>
             </IconButton>
           </Grid>
-
         </Grid>
       </Grid>
     </Grid>

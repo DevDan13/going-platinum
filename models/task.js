@@ -7,6 +7,7 @@ const taskSchema = new Schema({
   duration: { type: Number, required: false },
   playlistName: { type: String },
   tracks: { type: Array },
+  user: { type: String, required: true  },
 
 });
 
