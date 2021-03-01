@@ -45,20 +45,20 @@ export default {
   },
 
   //Users Tasks Routes
-  // getUserTasks: function () {
-  //   return axios.get("/api/user/");
-  // },
+  getUserTasks: function (id) {
+    return axios.get("/api/task/" + id);
+  },
   postUserTasks: function (taskData) {
-    return axios.post("/api/task", taskData);
+    return axios.post("/api/task/", taskData);
   },
   updateUserTasks: function (id) {
-    return axios.put("/api/user/task/" + id);
+    return axios.put("/api/task/" + id);
   },
   deleteUserTasks: function (id) {
-    return axios.delete("/api/user/task/" + id);
+    return axios.delete("/api/task/" + id);
   },
   getTaskById: function (id) {
-    return axios.get("/api/user/task/" + id);
+    return axios.get("/api/task/" + id);
   },
   addTrackToQueue: function (track) {
     return axios.post("/api/Spotify/queue/" + track);
@@ -68,18 +68,16 @@ export default {
 
   //User Routes
   createUser: function (userData) {
-    return axios.post("/api/user", userData);
+    return axios.post("/api/user/", userData);
   },
   getUser: function () {
-    return axios.get("/api/user");
+    return axios.get("/api/user/");
   },
   updateUser: function (id) {
-    return axios.get("/api/user", id);
+    return axios.get("/api/user/", id);
   },
   deleteUser: function (id) {
-    return axios.delete("/api/user", id);
+    return axios.delete("/api/user/", id);
   },
-  populate: function (id) {
-    return axios.get("/api/user/" + id);
-  }
+
 };
