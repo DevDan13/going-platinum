@@ -3,6 +3,7 @@
 // import ProfilePage from "./ProfilePage";
 // import Login from "../../pages/Login/Login";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Profile404 from "../../pages/Profile404/index"
 import Settings from "../../pages/Settings";
 import PasswordReset from "./PasswordReset";
 import Home from "../../pages/Home/Home";
@@ -31,10 +32,10 @@ function Application() {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/settings" component={Settings} />
           </>
-        ) : (
-          <Route exact path="/profile" component={Profile} />
-          // <Route exact path="/profile" component={Profile404} />
-        )}
+        ) :(
+          <Route exact path="/profile" component={Profile404} />
+        )
+        }
         {/* //404 here */}
       </Switch>
     </Router>
