@@ -71,6 +71,8 @@ function Profile() {
             duration: formData[1].duration,
             playlistName: formData[1].playlistName,
             tracks: newTracks,
+            user: user.uid
+            
           }).then(() => {
             console.log("DONE POST");
             setTasks();

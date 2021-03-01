@@ -29,7 +29,7 @@ module.exports = {
   },
   findAllUserTasks: function (req, res) {
     db.Task.find({
-      userId: req.params.id
+      user: req.params.id
     })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
