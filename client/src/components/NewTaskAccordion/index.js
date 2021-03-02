@@ -6,6 +6,7 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionActions from "@material-ui/core/AccordionActions";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import AddIcon from '@material-ui/icons/Add';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Grid from "@material-ui/core/Grid";
@@ -114,7 +115,7 @@ export default function ControlledAccordions({ task, onSubmit }) {
           id="panel1bh-header"
         >
           <div className={classes.bigColumn}>
-            <Typography id="heading">Create a New Task</Typography>
+            <Typography id="heading" style={{ textAlign: "center"}}><AddIcon fontSize="large" style = {{paddingBottom: 5}}></AddIcon>Create New Task</Typography>
           </div>
           {/* <div className={classes.column}>
             <Typography className={classes.secondaryHeading}>
@@ -131,13 +132,13 @@ export default function ControlledAccordions({ task, onSubmit }) {
                 justify="space-between"
                 alignItems="flex-start"
               >
-                <div
+                {/* <div
                   style={{
                     width: "100%",
                     paddingLeft: 10,
                     backgroundColor: "rgba(255, 255, 255, 0.1)",
                   }}
-                >
+                > */}
                   <Grid item lg={12} className={classes.formLabels}>
                     <label htmlFor="playlist-name">Task Name:</label>
                   </Grid>
@@ -216,7 +217,7 @@ export default function ControlledAccordions({ task, onSubmit }) {
                           });
                       }}
                     >
-                      Find Playlist
+                      Find Artists
                     </button>
                   </Grid>
                   <Grid
@@ -297,16 +298,16 @@ export default function ControlledAccordions({ task, onSubmit }) {
                       );
                     })}
                   </Grid>
-                </div>
+                {/* </div> */}
 
-                <div
+                {/* <div
                   style={{
                     width: "100%",
                     marginTop: 15,
                     paddingLeft: 10,
                     backgroundColor: "rgba(255, 255, 255, 0.1)",
                   }}
-                >
+                > */}
                   <Grid item className={classes.formLabels}>
                     <label htmlFor="energy" style={{ marginTop: 20 }}>
                       Energy Level:
@@ -316,9 +317,9 @@ export default function ControlledAccordions({ task, onSubmit }) {
                   <Grid item>
                     <RadioButtons></RadioButtons>
                   </Grid>
-                </div>
+                {/* </div> */}
 
-                <div
+                {/* <div
                   style={{
                     width: "100%",
                     marginTop: 15,
@@ -326,7 +327,7 @@ export default function ControlledAccordions({ task, onSubmit }) {
                     paddingLeft: 10,
                     backgroundColor: "rgba(255, 255, 255, 0.1)",
                   }}
-                >
+                > */}
                   <Grid item className={classes.formLabels}>
                     <label htmlFor="duration" style={{ marginTop: 20 }}>
                       Duration in minutes (Max. 300):
@@ -385,7 +386,7 @@ export default function ControlledAccordions({ task, onSubmit }) {
                       Generate Task
                     </button>
                   </Grid>
-                </div>
+                {/* </div> */}
               </Grid>
             </form>
           </div>
@@ -402,7 +403,7 @@ export default function ControlledAccordions({ task, onSubmit }) {
         </AccordionDetails>
         <Divider />
         <AccordionActions>
-          <button>Delete</button>
+          <button className="red-styled-button">Delete</button>
         </AccordionActions>
       </Accordion>
     </div>
