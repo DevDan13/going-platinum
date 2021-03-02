@@ -100,9 +100,9 @@ const SignIn = () => {
         <OverlayTrigger rootClose="click" trigger="click" placement="bottom" overlay={popover}>
           <a
             className="submit-button"
-            // onClick={(event) => {
-            //   signInWithEmailAndPasswordHandler(event, email, password);
-            // }}
+            onClick={(event) => {
+              signInWithEmailAndPasswordHandler(event, email, password);
+            }}
             type="submit"
           >
             <span></span>
@@ -114,7 +114,7 @@ const SignIn = () => {
         </OverlayTrigger>
       </form>
 
-      <Grid style={{ position: "absolute", right: 40, top: 220 }} item xs={12}>
+      <Grid style={{ position: "absolute", right: 40, top: 240 }} item xs={12}>
         <Link to="passwordReset" variant="body2" style={{ color: "pink" }}>
           Forgot password?{" "}
         </Link>
