@@ -6,8 +6,6 @@ import { signInWithGoogle, auth, generateUserDocument } from "../../firebase";
 import GoogleBtn from "../GoogleBtn/index";
 import "./SignUp.css";
 
-
-
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +30,7 @@ const SignUp = () => {
     setEmail("");
     setPassword("");
     setDisplayName("");
-  }
+  };
 
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
@@ -83,22 +81,18 @@ const SignUp = () => {
           <label>Password</label>
         </div>
 
-        <Grid style={{display: "flex", justifyContent: "center"}} item xs={12}>
-          {/* <button
-            onClick={() => {
-              signInWithGoogle();
-            }}
-          >
-            <FcGoogle />
-            Sign Up with Google
-          </button> */}
-        <GoogleBtn>Sign up with Google</GoogleBtn>
+        <Grid
+          style={{ display: "flex", justifyContent: "center" }}
+          item
+          xs={12}
+        >
+          <GoogleBtn>Sign up with Google</GoogleBtn>
         </Grid>
 
         <a
           className="submit-button"
           onClick={(event) => {
-            createUserWithEmailAndPasswordHandler(event, email, password)
+            createUserWithEmailAndPasswordHandler(event, email, password);
           }}
         >
           <span></span>
