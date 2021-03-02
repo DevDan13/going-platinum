@@ -1,4 +1,4 @@
-/* @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 *,
 *:before,
 *:after {
@@ -91,13 +91,13 @@ body {
   border-radius: 1px;
   border: 1px solid #ccc;
   font-family: inherit;
-} */
+}
 
 
 
 /* Btn */
 
-/* .btn-bubble {
+.btn-bubble {
   color: white;
   background-color: #77b11c;
   background-repeat: no-repeat;
@@ -132,4 +132,4 @@ body {
   border-radius: 20px;
   border: 0;
 }
- */
+

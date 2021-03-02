@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
-// import "./Reset.css"
+import "./Reset.css"
 // import ResetBtn from "../../components/Reset/"
 
 const PasswordReset = () => {
