@@ -274,7 +274,7 @@ function Profile() {
 
         {/* The music player panel */}
         <Grid item xs={12} md={5}>
-          <Panel>
+          <Panel style={{height: 500}}>
           <h2 className="profile-h2">Music Player</h2>
             <MusicPlayer
               image={
@@ -291,12 +291,14 @@ function Profile() {
                 getUserCurrentSong();
               }}
               setToPlay={() => {
+                setToPause(); //<--- Not sure why this works, but this function is purely for aesthetics
                 setChecked((prev) => !prev);
                 API.songPlay();
                 getUserCurrentSong();
                 return setPlaying(true);
               }}
               setToPause={() => {
+                setToPlay(); //<--- Not sure why this works, but this function is purely for aesthetics
                 API.songPause();
                 getUserCurrentSong();
                 setChecked((prev) => !prev);
