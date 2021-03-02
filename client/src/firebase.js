@@ -13,7 +13,7 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE,
   messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER,
   appId: process.env.REACT_APP_FIREBASE_APPID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT,
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -24,12 +24,15 @@ export const signInWithGoogle = () => {
 };
 
 export const logOut = () => {
-  auth.signOut().then(function() {
-    console.log('Signed Out');
-  }, function(error) {
-    console.error('Sign Out Error', error);
-  });
-}
+  auth.signOut().then(
+    function () {
+      console.log("Signed Out");
+    },
+    function (error) {
+      console.error("Sign Out Error", error);
+    }
+  );
+};
 export const generateUserDocument = async (user, additionalData) => {
   if (!user) return;
 
@@ -63,4 +66,3 @@ const getUserDocument = async (uid) => {
     console.error("Error fetching user", error);
   }
 };
-

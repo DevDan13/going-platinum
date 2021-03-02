@@ -1,57 +1,81 @@
 #profile404-background {
-    background-color: black;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-  }
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+#profile404-text {
+  color: white;
+  text-align: center;
+}
+
+#profile404-h1 {
+  font-family: "DotGothic16";
+  margin-bottom: 15px;
+}
+
+#profile404-h2 {
+  font-family: "DotGothic16";
+  margin-top: 0px;
+  margin-bottom: 45px;
+}
+
+#pipe {
+  background-image: url("https://github.com/Gavin56/images/blob/main/mario%20pipe%20cropped.jpg?raw=true");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+}
+
+/* Smaller screens */
+@media screen and (max-width: 600px) {
   #profile404-text {
-    text-align: center;
-    width: 300px;
-    color: white;
-  }
-  /* Smaller screens */
-  @media screen and (max-width: 600px) {
-    #profile404-text {
-      padding-bottom: 100px;
-      margin-bottom: 50px;
-    }
-    h1 {
-      margin-bottom: 0px;
-    }
-    h2 {
-      margin: 0px;
-    }
-    #goomba-div {
-      width: 200px;
-    }
-  }
-  /* Larger screens */
-  @media screen and (min-width: 600px) {
-    #profile404-text {
-      padding-top: 85px;
-    }
-    h1 {
-      margin-bottom: 15px;
-    }
-    h2 {
-      margin-top: 0px;
-      margin-bottom: 45px;
-    }
-    #goomba-div {
-      width: 300px;
-    }
+    padding-bottom: 100px;
+    margin-bottom: 50px;
   }
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  #profile404-h1 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 20px;
+  }
+
+  #profile404-h2 {
+    margin: 0px;
+    font-size: 20px;
+  }
+
+  #goomba-div {
+    width: 100px;
+  }
+
+  #pipe {
+    height: 175px;
+    width: 175px;
+  }
+}
+/* Larger screens */
+@media screen and (min-width: 600px) {
+  #profile404-text {
+    padding-top: 15px;
+  }
+  #profile404-h1 {
+    font-size: 55px;
+    margin-bottom: 15px;
+  }
+  #profile404-h2 {
+    margin-top: 0px;
+    margin-bottom: 45px;
+  }
+  #goomba-div {
+    width: 150px;
+  }
+
+  #pipe {
+    height: 250px;
+    width: 250px;
+  }
+}

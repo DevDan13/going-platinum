@@ -2,10 +2,10 @@
   border-radius: 20px;
 }
 
-#activity-h2 {
+.profile-h2 {
   text-align: center;
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
   font-family: "Montserrat Subrayada", sans-serif;
   color: white;
 }
