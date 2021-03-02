@@ -209,7 +209,7 @@ function Profile() {
         <Grid item xs={12} md={5}>
           <Panel>
             <Grid item xs={12}>
-              <h2 className="profile-h2">Activities</h2>
+              <h2 className="profile-h2">Tasks</h2>
             </Grid>
 
             <Grid

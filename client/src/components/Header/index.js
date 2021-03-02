@@ -112,12 +112,12 @@ export default function MenuAppBar() {
                   <Link
                   style={{textDecoration: "none", color: "black"}}
                     to="/passwordReset"
-                    className={
-                      window.location.pathname === "/" ||
-                      window.location.pathname === "/passwordReset"
-                        ? "nav-link active"
-                        : "nav-link"
-                    }
+                    // className={
+                    //   window.location.pathname === "/" ||
+                    //   window.location.pathname === "/passwordReset"
+                    //     ? "nav-link active"
+                    //     : "nav-link"
+                    // }
                   >
                     Reset password
                   </Link>

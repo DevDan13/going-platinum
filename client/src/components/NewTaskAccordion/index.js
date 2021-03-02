@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
   column: {
     flexBasis: "33.33%",
   },
+  bigColumn: {
+    flexBasis: "100%",
+  },
   internalColumn: { flexBasis: "100%", flexGrow: 1 },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
@@ -56,12 +59,18 @@ const useStyles = makeStyles((theme) => ({
   },
   formLabels: {
     paddingTop: "10px",
-    paddingBottom: "10px",
     position: "relative",
     fontSize: "20px",
   },
   formItems: {
+    marginBottom: 15,
     width: "200px",
+    borderStyle: "solid",
+    borderWidth: 3,
+    borderColor: "rgba(204, 162, 162)",
+    borderRadius: 7,
+    backgroundColor: "rgba(0,0,0,.5)",
+    color: "white",
   },
 }));
 
@@ -104,14 +113,14 @@ export default function ControlledAccordions({ task, onSubmit }) {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <div className={classes.column}>
-            <Typography id="heading">New Task</Typography>
+          <div className={classes.bigColumn}>
+            <Typography id="heading">Create a New Task</Typography>
           </div>
-          <div className={classes.column}>
+          {/* <div className={classes.column}>
             <Typography className={classes.secondaryHeading}>
               Task Settings
             </Typography>
-          </div>
+          </div> */}
         </AccordionSummary>
         <AccordionDetails className={classes.details}>
           <div className={classes.internalColumn}>
@@ -122,197 +131,261 @@ export default function ControlledAccordions({ task, onSubmit }) {
                 justify="space-between"
                 alignItems="flex-start"
               >
-                <Grid item lg={12} className={classes.formLabels}>
-                  <label htmlFor="playlist-name">Task Name</label>
-                </Grid>
-                <Grid item lg={12}>
-                  <input
-                    className={classes.formItems}
-                    name="task-name"
-                    onChange={(event) => {
-                      setPlaylistState({
-                        ...playlistState,
-                        taskName: event.target.value,
-                      });
-                    }}
-                  ></input>
-                </Grid>
-                <Grid item lg={12} className={classes.formLabels}>
-                  <label htmlFor="playlist-name">Playlist Name</label>
-                </Grid>
-                <Grid item lg={12}>
-                  <input
-                    className={classes.formItems}
-                    name="playlist-name"
-                    onChange={(event) => {
-                      setPlaylistState({
-                        ...playlistState,
-                        playlistName: event.target.value,
-                      });
-                    }}
-                  ></input>
-                </Grid>
-                <Grid item className={classes.formLabels}>
-                  <label htmlFor="artists">Artists</label>
-                </Grid>
-                <Grid item xs={9}>
-                  <input className={classes.formItems} name="artists"></input>
-                </Grid>
-                <Grid item xs={3}>
-                  <button
-                    onClick={(event) => {
-                      event.preventDefault();
-
-                      let search =
-                        event.target.parentElement.previousSibling.firstChild
-                          .value;
-
-                      console.log("search ", search);
-                      API.getArtist(search)
-                        .then((res) => {
-                          let items = res.data.artists.items;
-                          let searchedArtists = [];
-                          if (items[0]) {
-                            console.log(items[0]);
-                            searchedArtists.push(items[0]);
-                          } else {
-                            console.log("No Artists Available");
-                          }
-                          if (items[1]) {
-                            console.log(items[1]);
-                            searchedArtists.push(items[1]);
-                          }
-                          if (items[2]) {
-                            console.log(items[2]);
-                            searchedArtists.push(items[2]);
-                          }
-                          setArtists({
-                            ...artistState,
-                            artists: searchedArtists,
-                          });
-
-                          //items.id
-                        })
-                        .then(() => {
-                          console.log("State", artistState);
-                        });
-                    }}
-                  >
-                    Find
-                  </button>
-                </Grid>
-                <Grid
-                  container
-                  direction="row"
-                  justify="flex-start"
-                  alignItems="center"
+                <div
+                  style={{
+                    width: "100%",
+                    paddingLeft: 10,
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  }}
                 >
-                  {artistState.artists == null
-                    ? null
-                    : artistState.artists.map((artist, i) => {
-                        return (
-                          <Grid item key={i}>
-                            <button
-                              id={artist.id}
-                              data-name={artist.name}
-                              onClick={(event) => {
-                                event.preventDefault();
-                                const btnID = event.target.id;
+                  <Grid item lg={12} className={classes.formLabels}>
+                    <label htmlFor="playlist-name">Task Name:</label>
+                  </Grid>
+                  <Grid item lg={12}>
+                    <input
+                      className={classes.formItems}
+                      name="task-name"
+                      onChange={(event) => {
+                        setPlaylistState({
+                          ...playlistState,
+                          taskName: event.target.value,
+                        });
+                      }}
+                    ></input>
+                  </Grid>
+                  <Grid item lg={12} className={classes.formLabels}>
+                    <label htmlFor="playlist-name">Playlist Name:</label>
+                  </Grid>
+                  <Grid item lg={12}>
+                    <input
+                      className={classes.formItems}
+                      name="playlist-name"
+                      onChange={(event) => {
+                        setPlaylistState({
+                          ...playlistState,
+                          playlistName: event.target.value,
+                        });
+                      }}
+                    ></input>
+                  </Grid>
+                  <Grid item className={classes.formLabels}>
+                    <label htmlFor="artists">Artists:</label>
+                  </Grid>
+                  <Grid item xs={9}>
+                    <input className={classes.formItems} name="artists"></input>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <button
+                      className="styled-button"
+                      style={{ marginBottom: 25, fontSize: "18px" }}
+                      onClick={(event) => {
+                        event.preventDefault();
 
-                                const btnName = event.target.dataset.name;
+                        let search =
+                          event.target.parentElement.previousSibling.firstChild
+                            .value;
 
-                                setArtistArray((artistArrayState) => [
-                                  ...artistArrayState,
-                                  { name: btnName, id: btnID },
-                                ]);
-                                console.log(artistArrayState);
+                        console.log("search ", search);
+                        API.getArtist(search)
+                          .then((res) => {
+                            let items = res.data.artists.items;
+                            let searchedArtists = [];
+                            if (items[0]) {
+                              console.log(items[0]);
+                              searchedArtists.push(items[0]);
+                            } else {
+                              console.log("No Artists Available");
+                            }
+                            if (items[1]) {
+                              console.log(items[1]);
+                              searchedArtists.push(items[1]);
+                            }
+                            if (items[2]) {
+                              console.log(items[2]);
+                              searchedArtists.push(items[2]);
+                            }
+                            setArtists({
+                              ...artistState,
+                              artists: searchedArtists,
+                            });
+
+                            //items.id
+                          })
+                          .then(() => {
+                            console.log("State", artistState);
+                          });
+                      }}
+                    >
+                      Find Playlist
+                    </button>
+                  </Grid>
+                  <Grid
+                    container
+                    direction="row"
+                    justify="flex-start"
+                    alignItems="center"
+                  >
+                    {artistState.artists ? <p>Select:</p> : null}
+                    {artistState.artists == null
+                      ? null
+                      : artistState.artists.map((artist, i) => {
+                          return (
+                            <Grid
+                              item
+                              key={i}
+                              style={{
+                                backgroundColor: "rgba(0,0,0,.2)",
+                                width: "100%",
+                                display: "flex",
+                                justifyContent: "center",
+                                marginRight: 10,
+                                marginBottom: 10,
+                                borderRadius: 10,
                               }}
                             >
-                              {artist.name}
-                            </button>
-                          </Grid>
-                        );
-                      })}
-                </Grid>
-                <Grid
-                  container
-                  direction="column"
-                  justify="flex-start"
-                  alignItems="left"
-                >
-                  {artistArrayState.map((artist, i) => {
-                    return (
-                      <Grid item key={i}>
-                        <a
-                          onClick={() => {
-                            setArtistArray(
-                              artistArrayState.filter((e) => e !== artist)
-                            );
-                          }}
-                        >
-                          <div>
-                            <p>Remove - {artist.name} </p>
-                          </div>
-                        </a>
-                      </Grid>
-                    );
-                  })}
-                </Grid>
-                <Grid item className={classes.formLabels}>
-                  <label htmlFor="energy">Energy</label>
-                </Grid>
-                <Grid item>
-                  <RadioButtons></RadioButtons>
-                </Grid>
-                <Grid item className={classes.formLabels}>
-                  <label htmlFor="duration">Duration (minutes) max 300</label>
-                </Grid>
-                <Grid item>
-                  <input
-                    className={classes.formItems}
-                    name="duration"
-                    onChange={(event) => {
-                      setPlaylistState({
-                        ...playlistState,
-                        duration: event.target.value,
-                      });
-                    }}
-                  ></input>
-                </Grid>
-                <Grid item className={classes.formLabels}>
-                  <button
-                    onClick={async (event) => {
-                      event.preventDefault();
+                              <button
+                                style={{ marginRight: 5, marginBottom: 5 }}
+                                className="styled-button"
+                                id={artist.id}
+                                data-name={artist.name}
+                                onClick={(event) => {
+                                  event.preventDefault();
+                                  const btnID = event.target.id;
 
-                      console.log("playlistState", playlistState);
-                      const radioBtns =
-                        event.target.parentElement.previousSibling
-                          .previousSibling.previousSibling.firstChild;
-                      let btnSelected;
+                                  const btnName = event.target.dataset.name;
 
-                      for (
-                        var i = 0, length = radioBtns.elements.length;
-                        i < length;
-                        i++
-                      ) {
-                        if (radioBtns.elements[i].checked) {
-                          // Check what mood was clicked
-                          // setPlaylistState({
-                          //   ...playlistState,
-                          //   mood: radioBtns.elements[i].value,
-                          // });
-                          btnSelected = radioBtns.elements[i].value;
-                          break;
-                        }
-                      }
-                      let data = [artistArrayState, playlistState, btnSelected];
-                      onSubmit(data);
-                    }}
-                    type="submit"
+                                  setArtistArray((artistArrayState) => [
+                                    ...artistArrayState,
+                                    { name: btnName, id: btnID },
+                                  ]);
+                                  console.log(artistArrayState);
+                                }}
+                              >
+                                {artist.name}
+                              </button>
+                            </Grid>
+                          );
+                        })}
+                  </Grid>
+                  <Grid
+                    container
+                    direction="column"
+                    justify="flex-start"
+                    alignItems="left"
                   >
-                    Generate Task
-                  </button>
-                </Grid>
+                    {artistArrayState.map((artist, i) => {
+                      return (
+                        <Grid item key={i}>
+                          <a
+                            onClick={() => {
+                              setArtistArray(
+                                artistArrayState.filter((e) => e !== artist)
+                              );
+                            }}
+                          >
+                            <div>
+                              <p>
+                                 {artist.name} -{" "}
+                                <button className="red-styled-button">
+                                  {" "}
+                                  Remove{" "}
+                                </button>{" "}
+                              </p>
+                            </div>
+                          </a>
+                        </Grid>
+                      );
+                    })}
+                  </Grid>
+                </div>
+
+                <div
+                  style={{
+                    width: "100%",
+                    marginTop: 15,
+                    paddingLeft: 10,
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  }}
+                >
+                  <Grid item className={classes.formLabels}>
+                    <label htmlFor="energy" style={{ marginTop: 20 }}>
+                      Energy Level:
+                    </label>
+                  </Grid>
+
+                  <Grid item>
+                    <RadioButtons></RadioButtons>
+                  </Grid>
+                </div>
+
+                <div
+                  style={{
+                    width: "100%",
+                    marginTop: 15,
+                    paddingBottom: 15,
+                    paddingLeft: 10,
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  }}
+                >
+                  <Grid item className={classes.formLabels}>
+                    <label htmlFor="duration" style={{ marginTop: 20 }}>
+                      Duration in minutes (Max. 300):
+                    </label>
+                  </Grid>
+
+                  <Grid item>
+                    <input
+                      className={classes.formItems}
+                      name="duration"
+                      onChange={(event) => {
+                        setPlaylistState({
+                          ...playlistState,
+                          duration: event.target.value,
+                        });
+                      }}
+                    ></input>
+                  </Grid>
+
+                  <Grid item className={classes.formLabels}>
+                    <button
+                      className="styled-button"
+                      onClick={async (event) => {
+                        event.preventDefault();
+
+                        console.log("playlistState", playlistState);
+                        const radioBtns =
+                          event.target.parentElement.previousSibling
+                            .previousSibling.previousSibling.firstChild;
+                        let btnSelected;
+
+                        for (
+                          var i = 0, length = radioBtns.elements.length;
+                          i < length;
+                          i++
+                        ) {
+                          if (radioBtns.elements[i].checked) {
+                            // Check what mood was clicked
+                            // setPlaylistState({
+                            //   ...playlistState,
+                            //   mood: radioBtns.elements[i].value,
+                            // });
+                            btnSelected = radioBtns.elements[i].value;
+                            break;
+                          }
+                        }
+                        let data = [
+                          artistArrayState,
+                          playlistState,
+                          btnSelected,
+                        ];
+                        onSubmit(data);
+                      }}
+                      type="submit"
+                    >
+                      Generate Task
+                    </button>
+                  </Grid>
+                </div>
               </Grid>
             </form>
           </div>
