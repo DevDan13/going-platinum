@@ -8,6 +8,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import {logOut} from "../../firebase.js"
 import { Link } from "react-router-dom";
 import "./style.css";
 
@@ -33,6 +34,12 @@ export default function MenuAppBar() {
   // const handleChange = (event) => {
   //   setAuth(event.target.checked);
   // };
+
+  const handleLogout = () => {
+    logOut();
+    window.location.replace("/login")
+    return;
+  }
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -64,7 +71,11 @@ export default function MenuAppBar() {
                 }
               >
                 <h1 className="logo">
-                  <AlbumIcon fontSize="large" style={{marginRight: 10}}></AlbumIcon>Going Platinum
+                  <AlbumIcon
+                    fontSize="large"
+                    style={{ marginRight: 10 }}
+                  ></AlbumIcon>
+                  Going Platinum
                 </h1>
               </Link>
             </Grid>
@@ -99,20 +110,26 @@ export default function MenuAppBar() {
                 <MenuItem onClick={handleClose}>
                   {" "}
                   <Link
-                    to="/profile"
+                  style={{textDecoration: "none", color: "black"}}
+                    to="/passwordReset"
                     className={
                       window.location.pathname === "/" ||
-                      window.location.pathname === "/profile"
+                      window.location.pathname === "/passwordReset"
                         ? "nav-link active"
                         : "nav-link"
                     }
                   >
-                    Settings
+                    Reset password
                   </Link>
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  {" "}
-                  <Link
+                <hr style={{ marginTop: 5, marginBottom: 5}}></hr>
+                <MenuItem
+                  onClick={() => {
+                    handleLogout();
+                  }}
+                >
+                   {/* onClick={handleClose} */}
+                  {/* <Link
                     to="/login"
                     className={
                       window.location.pathname === "/" ||
@@ -120,9 +137,9 @@ export default function MenuAppBar() {
                         ? "nav-link active"
                         : "nav-link"
                     }
-                  >
-                    Login
-                  </Link>
+                  > */}
+                  Logout
+                  {/* </Link> */}
                 </MenuItem>
               </Menu>
             </Grid>

@@ -76,9 +76,7 @@ const SignIn = () => {
       </form>
 
       {/* <button
-        onClick={() => {
-          logOut();
-        }}
+
       >
         Signout
       </button> */}
