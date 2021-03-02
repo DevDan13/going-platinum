@@ -298,36 +298,17 @@ export default function ControlledAccordions({ task, onSubmit }) {
                       );
                     })}
                   </Grid>
-                {/* </div> */}
-
-                {/* <div
-                  style={{
-                    width: "100%",
-                    marginTop: 15,
-                    paddingLeft: 10,
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
-                  }}
-                > */}
+ 
                   <Grid item className={classes.formLabels}>
                     <label htmlFor="energy" style={{ marginTop: 20 }}>
                       Energy Level:
                     </label>
                   </Grid>
 
-                  <Grid item>
+                  <Grid>
                     <RadioButtons></RadioButtons>
                   </Grid>
-                {/* </div> */}
-
-                {/* <div
-                  style={{
-                    width: "100%",
-                    marginTop: 15,
-                    paddingBottom: 15,
-                    paddingLeft: 10,
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
-                  }}
-                > */}
+                
                   <Grid item className={classes.formLabels}>
                     <label htmlFor="duration" style={{ marginTop: 20 }}>
                       Duration in minutes (Max. 300):
