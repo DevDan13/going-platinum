@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import API from "../../utils/API";
@@ -8,6 +9,14 @@ import {
   generateUserDocument,
   userContext,
 } from "../../firebase";
+=======
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
+import { signInWithGoogle, auth, generateUserDocument } from "../../firebase";
+import GoogleBtn from "../GoogleBtn/index";
+>>>>>>> 4973e4bf3797db56124aae0f56eb6161dada460e
 import "./SignUp.css";
 
 
@@ -105,14 +114,21 @@ const SignUp = () => {
           />
           <label>Password</label>
         </div>
-        <button
-          onClick={() => {
-            signInWithGoogle();
-          }}
-        >
-          Sign Up with Google
-        </button>
+
+        <Grid style={{display: "flex", justifyContent: "center"}} item xs={12}>
+          {/* <button
+            onClick={() => {
+              signInWithGoogle();
+            }}
+          >
+            <FcGoogle />
+            Sign Up with Google
+          </button> */}
+        <GoogleBtn>Sign up with Google</GoogleBtn>
+        </Grid>
+
         <a
+          className="submit-button"
           onClick={(event) => {
             createUserWithEmailAndPasswordHandler(event, email, password)
           }}

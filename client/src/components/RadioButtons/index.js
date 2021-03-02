@@ -7,35 +7,35 @@ import FormControl from "@material-ui/core/FormControl";
 export default function FormControlLabelPlacement() {
   return (
     <FormControl component="fieldset">
-      <RadioGroup row aria-label="position" name="position" defaultValue="top">
+      <RadioGroup row aria-label="position" name="position" defaultValue="">
         <FormControlLabel
-          value="top"
+          value="0.1"
           control={<Radio color="primary" />}
-          label="Top"
+          label="Low"
           labelPlacement="top"
         />
         <FormControlLabel
-          value="Medium"
+          value="0.3"
+          control={<Radio color="primary" />}
+          label="Medium-Low"
+          labelPlacement="top"
+        />
+        <FormControlLabel
+          value="0.5"
           control={<Radio color="primary" />}
           label="Medium"
           labelPlacement="top"
         />
         <FormControlLabel
-          value="Fast"
+          value="0.7"
           control={<Radio color="primary" />}
-          label="Fast"
+          label="Medium-High"
           labelPlacement="top"
         />
         <FormControlLabel
-          value="Sad"
+          value="1"
           control={<Radio color="primary" />}
-          label="Sad"
-          labelPlacement="top"
-        />
-        <FormControlLabel
-          value="Happy"
-          control={<Radio color="primary" />}
-          label="Happy"
+          label="High"
           labelPlacement="top"
         />
       </RadioGroup>

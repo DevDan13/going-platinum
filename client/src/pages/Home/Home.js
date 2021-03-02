@@ -7,6 +7,7 @@ import Btn from "../../components/Btn/index";
 import Spotify from "../../components/video/spotify.mp4";
 import Grid from "@material-ui/core/Grid";
 import "./home.css";
+import AlbumIcon from "@material-ui/icons/Album";
 import Header from "../../components/Header/index";
 import API from "../../utils/API";
 import { UserContext } from "../../providers/UserProvider";
@@ -64,7 +65,7 @@ console.log(user);
         
           <Grid container>
             <Grid id="logo-div" item xs={12} sm={8} md={9} lg={10}>
-              <h1 className="logo">Going Platinum</h1>
+              <h1 className="logo"><AlbumIcon fontSize="large" style={{marginRight: 10}}></AlbumIcon>Going Platinum</h1>
             </Grid>
 
             <Grid className="start-button-div" item xs={12} sm={4} md={3} lg={2}>
