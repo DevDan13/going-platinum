@@ -45,9 +45,9 @@ export default {
   },
 
   //Users Tasks Routes
-  // getUserTasks: function () {
-  //   return axios.get("/api/user/");
-  // },
+  getUserTasks: function () {
+    return axios.get("/api/user/");
+  },
   postUserTasks: function (taskData) {
     return axios.post("/api/task", taskData);
   },
