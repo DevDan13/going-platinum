@@ -215,7 +215,7 @@ function Profile() {
   return (
     <div className="img">
       <Header />
-      <button onClick={testBtn}>test</button>
+      {/* <button onClick={testBtn}>test</button> */}
       <Grid
         style={{ display: "flex", justifyContent: "center", marginTop: 45 }}
         container
