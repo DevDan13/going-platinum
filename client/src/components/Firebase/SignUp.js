@@ -1,18 +1,15 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import API from "../../utils/API";
-import { UserContext } from "../../providers/UserProvider";
 import {
   signInWithGoogle,
   auth,
   generateUserDocument,
-  userContext,
 } from "../../firebase";
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
 import Grid from "@material-ui/core/Grid";
-import { signInWithGoogle, auth, generateUserDocument } from "../../firebase";
+
 import GoogleBtn from "../GoogleBtn/index";
 import "./SignUp.css";
 
