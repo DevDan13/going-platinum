@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState, useContext } from "react";
-=======
 import React, { useState } from "react";
->>>>>>> ae1eae2e6d6483fe8f56c178a6e4934edc0e0680
 import { Link, useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import {
@@ -11,13 +7,9 @@ import {
   generateUserDocument,
 } from "../../firebase";
 /* eslint-disable jsx-a11y/anchor-is-valid */
-<<<<<<< HEAD
-import Grid from "@material-ui/core/Grid";
-=======
 
 import Grid from "@material-ui/core/Grid";
 
->>>>>>> ae1eae2e6d6483fe8f56c178a6e4934edc0e0680
 import GoogleBtn from "../GoogleBtn/index";
 import "./SignUp.css";
 
