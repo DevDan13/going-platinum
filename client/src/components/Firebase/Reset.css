@@ -5,34 +5,39 @@
   box-sizing: border-box;
 }
 
-body {
+/* body {
   min-height: 100vh;
   font-family: "Raleway", sans-serif;
-}
+} */
 
-.container {
+/* .forgot{
+  font-family: 'Raleway', sans-serif;
+
+} */
+
+.container-main {
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-.container:hover .top:before, .container:hover .top:after,
-.container:hover .bottom:before,
-.container:hover .bottom:after, .container:active .top:before, .container:active .top:after,
-.container:active .bottom:before,
-.container:active .bottom:after {
+.container-main:hover .top:before, .container-main:hover .top:after,
+.container-main:hover .bottom-reset:before,
+.container-main:hover .bottom-reset:after, .container-main:active .top:before, .container-main:active .top:after,
+.container-main:active .bottom-reset:before,
+.container-main:active .bottom-reset:after {
   margin-left: 200px;
   transform-origin: -200px 50%;
   transition-delay: 0s;
 }
-.container:hover .center, .container:active .center {
+.container-main:hover .center-reset, .container-main:active .center-reset {
   opacity: 1;
   transition-delay: 0.2s;
 }
 
 .top:before, .top:after,
-.bottom:before,
-.bottom:after {
+.bottom-reset:before,
+.bottom-reset:after {
   content: "";
   display: block;
   position: absolute;
@@ -57,16 +62,16 @@ body {
   background: #ecaf81;
 }
 
-.bottom:before {
+.bottom-reset:before {
   transform: rotate(-45deg);
   background: #60b8d4;
 }
-.bottom:after {
+.bottom-reset:after {
   transform: rotate(-135deg);
   background: #3745b5;
 }
 
-.center {
+.center-reset {
   position: absolute;
   width: 400px;
   height: 400px;
@@ -84,7 +89,7 @@ body {
   transition-delay: 0s;
   color: #333;
 }
-.center input {
+.center-reset input {
   width: 100%;
   padding: 15px;
   margin: 5px;
