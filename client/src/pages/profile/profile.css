@@ -37,6 +37,11 @@
   justify-content: center;
 }
 
+iframe {
+  margin-left: 150px;
+  margin-top: 20px;
+}
+
 @media screen and (min-width: 964px) {
   .img{
     background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
@@ -57,6 +62,7 @@
     display: flex;
     justify-content: center;
   }
+
 }
 
 @media screen and (max-width: 960px) {
@@ -73,5 +79,10 @@
     padding-bottom: 20px;
     display: flex;
     justify-content: center;
+  }
+
+  iframe {
+    margin-left: 35px;
+    margin-top: 20px;
   }
 }

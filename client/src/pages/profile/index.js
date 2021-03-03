@@ -290,6 +290,7 @@ function Profile() {
         <Grid item xs={12} md={5}>
           <Panel style={{ height: 500 }}>
             <h2 className="profile-h2">Music Player</h2>
+            <Grid>
             <iframe
               src={`https://open.spotify.com/embed/playlist/${newPlaylist}`}
               width="300"
@@ -298,6 +299,7 @@ function Profile() {
               allowtransparency="true"
               allow="encrypted-media"
             ></iframe>
+            </Grid>
 
             {/* <MusicPlayer
               image={
