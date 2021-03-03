@@ -88,21 +88,20 @@ const PasswordReset = () => {
             {error}
           </div>
         )}
-
-        <div className="container" onclick="onclick">
+        <div className="container-main" onclick="onclick">
           <div className="top"></div>
-          <div className="bottom"></div>
-          <div className="center">
-            <h2>Forgot Password!</h2>
+          <div className="bottom-reset"></div>
+          <div className="center-reset">
+            <h2 className="forgot">Forgot Password!</h2>
             <input type="email" placeholder="Your e-mail" name="userEmail" id="userEmail" value={email} onChange={onChangeHandler} />
             <button onClick={sendResetEmail}
-            className="btn btn-bubble">Send</button>
+              className="btn btn-bubble">Send</button>
             <h2>&nbsp;</h2>
             <Link
-        to="/login"
-        // className="my-2 text-blue-700 hover:text-blue-800 text-center block"
-      >
-         Try Again
+              to="/login"
+            // className="my-2 text-blue-700 hover:text-blue-800 text-center block"
+            >
+              Try Again
          </Link>
           </div>
         </div>
