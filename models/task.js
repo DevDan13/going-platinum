@@ -8,6 +8,7 @@ const taskSchema = new Schema({
   playlistName: { type: String },
   tracks: { type: Array },
   user: { type: String, required: true },
+  spotifyId: { type: String }
 });
 
 const Task = mongoose.model("Task", taskSchema);

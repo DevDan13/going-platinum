@@ -1,25 +1,10 @@
-<<<<<<< HEAD
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import API from "../../utils/API";
-import { UserContext } from "../../providers/UserProvider";
-import {
-  signInWithGoogle,
-  auth,
-  generateUserDocument,
-  userContext,
-} from "../../firebase";
-=======
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
 import { signInWithGoogle, auth, generateUserDocument } from "../../firebase";
+import Grid from "@material-ui/core/Grid";
 import GoogleBtn from "../GoogleBtn/index";
->>>>>>> 4973e4bf3797db56124aae0f56eb6161dada460e
 import "./SignUp.css";
-
-
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -28,7 +13,7 @@ const SignUp = () => {
   const [error, setError] = useState(null);
 
   let history = useHistory();
-  
+
   const createUserWithEmailAndPasswordHandler = async (
     event,
     email,
@@ -36,17 +21,16 @@ const SignUp = () => {
   ) => {
     event.preventDefault();
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      ).then((result) => {
-        console.log(result);
-        API.createUser({
-          email: result.user.email,
-          name: displayName,
-          firebaseId: result.user.uid,
-        }).then(history.push("/profile"));
-      });
+      const { user } = await auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((result) => {
+          console.log(result);
+          API.createUser({
+            email: result.user.email,
+            name: displayName,
+            firebaseId: result.user.uid,
+          }).then(history.push("/profile"));
+        });
       generateUserDocument(user, { displayName });
     } catch (error) {
       setError("Error Signing up with email and password");
@@ -54,7 +38,7 @@ const SignUp = () => {
     setEmail("");
     setPassword("");
     setDisplayName("");
-  }
+  };
 
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
@@ -66,8 +50,6 @@ const SignUp = () => {
       setDisplayName(value);
     }
   };
-
-
 
   // const handleUser =  () => {
   //   API.createUser({
@@ -115,7 +97,11 @@ const SignUp = () => {
           <label>Password</label>
         </div>
 
-        <Grid style={{display: "flex", justifyContent: "center"}} item xs={12}>
+        <Grid
+          style={{ display: "flex", justifyContent: "center" }}
+          item
+          xs={12}
+        >
           {/* <button
             onClick={() => {
               signInWithGoogle();
@@ -124,13 +110,19 @@ const SignUp = () => {
             <FcGoogle />
             Sign Up with Google
           </button> */}
-        <GoogleBtn>Sign up with Google</GoogleBtn>
+          <GoogleBtn
+            onClick={() => {
+              signInWithGoogle();
+            }}
+          >
+            Sign up with Google
+          </GoogleBtn>
         </Grid>
 
         <a
           className="submit-button"
           onClick={(event) => {
-            createUserWithEmailAndPasswordHandler(event, email, password)
+            createUserWithEmailAndPasswordHandler(event, email, password);
           }}
         >
           <span></span>
@@ -138,7 +130,7 @@ const SignUp = () => {
           <span></span>
           <span></span>
           Sign Up
-          </a>
+        </a>
       </form>
     </div>
     /* <p className="text-center my-3">or</p>

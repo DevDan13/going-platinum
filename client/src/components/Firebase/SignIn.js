@@ -75,15 +75,15 @@ const SignIn = () => {
         </a>
       </form>
 
-      {/* <button
+      <button
         onClick={() => {
           logOut();
         }}
       >
         Signout
-      </button> */}
+      </button> 
 
-      {/* <br></br> */}
+      {/* <br></br>
 
       <Grid style={{position: "absolute", right: 40, top: 220}} item xs={12}>
         <Link to="passwordReset" variant="body2" style={{color: "pink"}}>
@@ -101,8 +101,11 @@ const SignIn = () => {
           
           Sign in with Google
         </button> */}
-      <GoogleBtn>Sign in with Google</GoogleBtn>
-      </Grid>
+      <GoogleBtn
+                onClick={() => {
+                  signInWithGoogle();
+                }}
+      >Sign in with Google</GoogleBtn>
 
 
     </div>
