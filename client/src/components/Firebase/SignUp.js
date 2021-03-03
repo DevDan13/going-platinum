@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import { auth, generateUserDocument } from "../../firebase";
-/* eslint-disable jsx-a11y/anchor-is-valid */
-
 import Grid from "@material-ui/core/Grid";
-
 import GoogleBtn from "../GoogleBtn/index";
 import "./SignUp.css";
 
@@ -105,17 +102,7 @@ const SignUp = () => {
           item
           xs={12}
         >
-          {/* <button
-            onClick={() => {
-              signInWithGoogle();
-            }}
-          >
-            <FcGoogle />
-            Sign Up with Google
-          </button> */}
-          <GoogleBtn>
-            Sign up with Google
-          </GoogleBtn>
+          <GoogleBtn>Sign up with Google</GoogleBtn>
         </Grid>
 
         <a

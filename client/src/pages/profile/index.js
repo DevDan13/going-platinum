@@ -221,7 +221,7 @@ function Profile() {
         <Grid item xs={12} md={5}>
           <Panel>
             <Grid item xs={12}>
-              <h2 className="profile-h2">Activities</h2>
+              <h2 className="profile-h2">Tasks</h2>
             </Grid>
 
             <Grid
@@ -285,8 +285,8 @@ function Profile() {
 
         {/* The music player panel */}
         <Grid item xs={12} md={5}>
-          <Panel>
-            <h2 className="profile-h2">Music Player</h2>
+          <Panel style={{height: 500}}>
+          <h2 className="profile-h2">Music Player</h2>
             <iframe src={`https://open.spotify.com/embed/playlist/${newPlaylist}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
             {/* <MusicPlayer
@@ -304,12 +304,14 @@ function Profile() {
                 getUserCurrentSong();
               }}
               setToPlay={() => {
+                setPulseToPause(); //<--- Not sure why this works, but this function is purely for aesthetics
                 setChecked((prev) => !prev);
                 API.songPlay();
                 getUserCurrentSong();
                 return setPlaying(true);
               }}
               setToPause={() => {
+                setPulseToPlay(); //<--- Not sure why this works, but this function is purely for aesthetics
                 API.songPause();
                 getUserCurrentSong();
                 setChecked((prev) => !prev);
