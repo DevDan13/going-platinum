@@ -170,7 +170,7 @@ export default function ControlledAccordions({
               playlistBtn(taskState.task.playlistName, taskState.task.tracks, taskState.task._id);
             }}
           >
-            Create Playlist
+            Add Playlist to Spotify
           </button>
           <button
             onClick={(event) => {
@@ -180,7 +180,7 @@ export default function ControlledAccordions({
           >
             Play Playlist
           </button>
-          <button
+          {/* <button
             onClick={(event) => {
               event.preventDefault();
               console.log("updated");
@@ -188,7 +188,7 @@ export default function ControlledAccordions({
             }}
           >
             Update
-          </button>
+          </button> */}
           <button
             onClick={(event) => {
               event.preventDefault();

@@ -27,6 +27,19 @@ function Profile() {
   const user = useContext(UserContext);
   console.log(user);
 
+  //Init tasks and Auth token
+  useEffect(() => {
+
+    const code = window.location.href.split("=");
+    if (code[1]) {
+      console.log("code=", code[1]);
+      API.getTokens(code[1]);
+    }
+
+    setTasks();
+
+  }, []);
+
   const setTasks = () => {
     // //User Version
     const id = user.uid;
@@ -51,20 +64,12 @@ function Profile() {
         });
       });
   };
-  //Init tasks and Auth token
-  useEffect(() => {
 
-    const code = window.location.href.split("=");
-    if (code[1]) {
-      console.log("code=", code[1]);
-      API.getTokens(code[1]);
-    }
-
-    setTasks();
-
-  }, []);
-
-
+  const testBtn = () => {
+    API.getAuthentication().then((res) => {
+      window.location.replace(res.data);
+    });
+  };
 
   //Accordion form Submit to Add Task to DB
   const addTask = (formData) => {
@@ -134,23 +139,15 @@ function Profile() {
     }
   };
 
-  // const handleUser = () => {
-  //   API.createUser({
-  //     name: user.displayName,
-  //     email: user.email,
-  //     firebaseId: user.uid,
-  //   });
+  // const setToPlay = () => {
+  //   setChecked(true);
+  //   return setPlaying(true);
   // };
 
-  const setToPlay = () => {
-    setChecked(true);
-    return setPlaying(true);
-  };
-
-  const setToPause = () => {
-    setChecked(false);
-    return setPlaying(false);
-  };
+  // const setToPause = () => {
+  //   setChecked(false);
+  //   return setPlaying(false);
+  // };
   //Changes Checked State and Updates Play through Spotify API
   // const setToPlay = () => {
   //   setChecked((prev) => !prev);
@@ -182,12 +179,12 @@ function Profile() {
     return () => window.removeEventListener("resize", updateMedia);
   });
 
-  const testBtn = () => {
-    API.getUserCurrentSong().then((res) => {
-      console.log(res.data);
-      setCurrentlyPlaying({ ...currentlyPlaying, song: res.data });
-    });
-  };
+  // const testBtn = () => {
+  //   API.getUserCurrentSong().then((res) => {
+  //     console.log(res.data);
+  //     setCurrentlyPlaying({ ...currentlyPlaying, song: res.data });
+  //   });
+  // };
 
   const createPlaylist = async (name, array, id) => {
 
@@ -215,7 +212,8 @@ function Profile() {
   return (
     <div className="img">
       <Header />
-      <button onClick={testBtn}>test</button>
+      <button
+      onClick={testBtn}>Spotify</button>
       <Grid
         style={{ display: "flex", justifyContent: "center", marginTop: 45 }}
         container
