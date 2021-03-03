@@ -113,6 +113,15 @@ const SignIn = () => {
           </a>
         </OverlayTrigger>
       </form>
+      <button
+        onClick={() => {
+          logOut();
+        }}
+      >
+        Signout
+      </button> 
+
+      {/* <br></br>
 
       <Grid style={{ position: "absolute", right: 40, top: 240 }} item xs={12}>
         <Link to="passwordReset" variant="body2" style={{ color: "pink" }}>
@@ -127,6 +136,23 @@ const SignIn = () => {
       >
         <GoogleBtn>Sign in with Google</GoogleBtn>
       </Grid>
+      <Grid style={{display: "flex", justifyContent: "center", paddingTop: 70}}item xs={12}>
+        
+        {/* <button
+          onClick={() => {
+            signInWithGoogle();
+          }}
+        >
+          
+          Sign in with Google
+        </button> */}
+      <GoogleBtn
+                onClick={() => {
+                  signInWithGoogle();
+                }}
+      >Sign in with Google</GoogleBtn>
+
+
     </div>
 
     // <Grid container>

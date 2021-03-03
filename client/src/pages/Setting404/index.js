@@ -1,4 +1,5 @@
 import "./style.css";
+import { Link } from "react-router-dom";
 
 
 
@@ -6,16 +7,22 @@ import "./style.css";
 
 
 function Setting404() {
-   
+
     return (
-            <div className="container-404">
+        <div className="container-404">
             <div className="wrapper">
                 <div className="TextHolder">
                     <div className="Texts">
                         <div className="FourOhFour">404</div>
                         <div className="Maybe">GUH.. Maybe.. We have <span>PROBLEMS HERE</span></div>
                         <div className="Bad">MY BAD this page couldn't be found.</div>
-                        <div className="Return">RETURN HOME</div>
+                        {/* <div className="Return">RETURN HOME</div> */}
+                        <Link
+                            to="/"
+                        className="Return"
+                        >
+                            RETURN HOME
+                        </Link>
                     </div>
                 </div>
                 <div className="Body">
