@@ -45,13 +45,8 @@ export default {
   },
 
   //Users Tasks Routes
-<<<<<<< HEAD
-  getUserTasks: function () {
-    return axios.get("/api/user/");
-=======
   getUserTasks: function (id) {
     return axios.get("/api/task/" + id);
->>>>>>> 4973e4bf3797db56124aae0f56eb6161dada460e
   },
   postUserTasks: function (taskData) {
     return axios.post("/api/task/", taskData);
@@ -81,8 +76,8 @@ export default {
   createUser: function (userData) {
     return axios.post("/api/user/", userData);
   },
-  getUser: function () {
-    return axios.get("/api/user/");
+  getUser: function (id) {
+    return axios.get("/api/user/" + id);
   },
   updateUser: function (id) {
     return axios.get("/api/user/", id);

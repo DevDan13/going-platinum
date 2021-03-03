@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import API from "../../utils/API";
-import { UserContext } from "../../providers/UserProvider";
 import {
   signInWithGoogle,
   auth,

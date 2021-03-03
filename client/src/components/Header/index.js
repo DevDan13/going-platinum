@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState ,useEffect ,useContext} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -9,6 +9,8 @@ import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../providers/UserProvider";
+import API from "../../utils/API";
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,8 +29,11 @@ const useStyles = makeStyles((theme) => ({
 export default function MenuAppBar() {
   const classes = useStyles();
   // const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [name, setName] = useState("");
   const open = Boolean(anchorEl);
+
+  const user = useContext(UserContext);
 
   // const handleChange = (event) => {
   //   setAuth(event.target.checked);
@@ -41,6 +46,17 @@ export default function MenuAppBar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  useEffect(() => {
+    handleUser()
+  },[])
+
+  const handleUser = () => {
+    API.getUser(user.uid).then((res) => {
+      console.log(res);
+      setName(res.data.name);
+    })
+  }
 
   return (
     <div className="header">
@@ -67,6 +83,10 @@ export default function MenuAppBar() {
                   <AlbumIcon fontSize="large" style={{marginRight: 10}}></AlbumIcon>Going Platinum
                 </h1>
               </Link>
+              <div className="userWelcome" style={{display:"flex", justifyContent:"center"}}>
+                <h1 className="logo" fontSize="large">Welcome {name} </h1>
+              </div>
+              
             </Grid>
 
             <Grid item xs={2} md={1}>
