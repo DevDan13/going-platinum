@@ -1,30 +1,46 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import {logOut} from "../../firebase";
+import { logOut } from "../../firebase";
+import { UserContext } from "../../providers/UserProvider";
 
-import "./btn.css"
-
+import "./btn.css";
 
 function Btn() {
-    const history = useHistory();
-    const routeChange = () => {
-        let path = "/login";
-        history.push(path)
+  const history = useHistory();
+  const user = useContext(UserContext);
+
+  const routeChange = () => {
+    if (user) {
+      let path = "/profile";
+      history.push(path);
+    } else {
+      let path = "/login";
+      history.push(path);
     }
-    return (
-        <div>    
-        <button type="button" className="btn-start" id="Generate" onClick={routeChange}>Get Started</button>
+  };
 
+  return (
+    <div>
       <button
-      onClick={() => {
-        logOut();
-      }}
-    >
-      Signout
-    </button> 
+        type="button"
+        className="btn-start"
+        id="Generate"
+        onClick={routeChange}
+      >
+        Get Started
+      </button>
+      <button
+        type="button"
+        className="btn-start"
+        id="Generate"
+        onClick={() => {
+          logOut();
+        }}
+      >
+        Signout
+      </button>
     </div>
-    )
+  );
 }
-
 
 export default Btn;

@@ -101,7 +101,7 @@
 
 
 /* Btn */
-/* 
+
 .btn-bubble {
   color: white;
   background-color: #77b11c;
@@ -120,7 +120,7 @@
     background-position: 88% -247%, -18% -286%, 71% -325%, 32% -199%, 30% -199%, 14% -31%, 85% -266%, 2% -14%, 17% -354%, 106% -194%, 70% -74%;
     box-shadow: inset 0 -6.5em 0 #0072c4;
   }
-}
+} 
 
 @keyframes bubbles {
   100% {
@@ -136,5 +136,4 @@
   padding: 1em 2em;
   border-radius: 20px;
   border: 0;
-} */
- 
+}

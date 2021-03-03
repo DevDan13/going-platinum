@@ -87,13 +87,7 @@ export default function ControlledAccordions({
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [taskState, setTaskState] = React.useState({});
-  // const [artistState, setArtists] = React.useState([]);
-  // const [artistArrayState, setArtistArray] = React.useState([]);
-  // const [playlistState, setPlaylistState] = React.useState({
-  //   playlistName: "",
-  //   mood: "",
-  //   duration: "",
-  // });
+
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
