@@ -6,6 +6,7 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionActions from "@material-ui/core/AccordionActions";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import AddIcon from "@material-ui/icons/Add";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Grid from "@material-ui/core/Grid";
@@ -36,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
   column: {
     flexBasis: "33.33%",
   },
+  bigColumn: {
+    flexBasis: "100%",
+  },
   internalColumn: { flexBasis: "100%", flexGrow: 1 },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
@@ -56,12 +60,18 @@ const useStyles = makeStyles((theme) => ({
   },
   formLabels: {
     paddingTop: "10px",
-    paddingBottom: "10px",
     position: "relative",
     fontSize: "20px",
   },
   formItems: {
-    width: "200px",
+    marginBottom: 15,
+    maxWidth: "75%",
+    borderStyle: "solid",
+    borderWidth: 3,
+    borderColor: "rgba(204, 162, 162)",
+    borderRadius: 7,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    color: "white",
   },
 }));
 
@@ -69,10 +79,11 @@ const useStyles = makeStyles((theme) => ({
 const Accordion = withStyles({
   root: {
     // background: "rgba(204, 162, 162)",
+
     borderStyle: "solid",
     borderWidth: 1,
     borderColor: "rgba(204, 162, 162)",
-    background: "#2b2b2b;",
+    background: "rgba(250,250,250,0.1)",
     color: "white",
   },
 })(MuiAccordion);
@@ -104,14 +115,17 @@ export default function ControlledAccordions({ task, onSubmit }) {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <div className={classes.column}>
-            <Typography id="heading">New Task</Typography>
+          <div className={classes.bigColumn}>
+            <Typography id="heading" style={{ textAlign: "center" }}>
+              <AddIcon fontSize="large" style={{ paddingBottom: 5 }}></AddIcon>
+              Create New Task
+            </Typography>
           </div>
-          <div className={classes.column}>
+          {/* <div className={classes.column}>
             <Typography className={classes.secondaryHeading}>
               Task Settings
             </Typography>
-          </div>
+          </div> */}
         </AccordionSummary>
         <AccordionDetails className={classes.details}>
           <div className={classes.internalColumn}>
@@ -122,8 +136,24 @@ export default function ControlledAccordions({ task, onSubmit }) {
                 justify="space-between"
                 alignItems="flex-start"
               >
+                {/* <div
+                  style={{
+                    width: "100%",
+                    paddingLeft: 10,
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  }}
+                > */}
+                {/* <div
+                  style={{
+                    fontSize: 16,
+                    backgroundColor: "rgba(250,250,250,.1)",
+                    width: "100%",
+                    padding: 10,
+                    borderRadius: 5,
+                  }}
+                > */}
                 <Grid item lg={12} className={classes.formLabels}>
-                  <label htmlFor="playlist-name">Task Name</label>
+                  <label htmlFor="playlist-name">Task Name:</label>
                 </Grid>
                 <Grid item lg={12}>
                   <input
@@ -138,7 +168,7 @@ export default function ControlledAccordions({ task, onSubmit }) {
                   ></input>
                 </Grid>
                 <Grid item lg={12} className={classes.formLabels}>
-                  <label htmlFor="playlist-name">Playlist Name</label>
+                  <label htmlFor="playlist-name">Playlist Name:</label>
                 </Grid>
                 <Grid item lg={12}>
                   <input
@@ -153,13 +183,15 @@ export default function ControlledAccordions({ task, onSubmit }) {
                   ></input>
                 </Grid>
                 <Grid item className={classes.formLabels}>
-                  <label htmlFor="artists">Artists</label>
+                  <label htmlFor="artists">Artists:</label>
                 </Grid>
                 <Grid item xs={9}>
                   <input className={classes.formItems} name="artists"></input>
                 </Grid>
                 <Grid item xs={3}>
                   <button
+                    className="styled-button"
+                    style={{ marginBottom: 25, fontSize: "18px" }}
                     onClick={(event) => {
                       event.preventDefault();
 
@@ -198,21 +230,38 @@ export default function ControlledAccordions({ task, onSubmit }) {
                         });
                     }}
                   >
-                    Find
+                    Find Artists
                   </button>
                 </Grid>
+                {/* </div> */}
+
                 <Grid
                   container
                   direction="row"
                   justify="flex-start"
                   alignItems="center"
                 >
+                  {artistState.artists ? <p>Select:</p> : null}
                   {artistState.artists == null
                     ? null
                     : artistState.artists.map((artist, i) => {
                         return (
-                          <Grid item key={i}>
+                          <Grid
+                            item
+                            key={i}
+                            style={{
+                              backgroundColor: "rgba(0,0,0,.2)",
+                              width: "100%",
+                              display: "flex",
+                              justifyContent: "center",
+                              marginRight: 10,
+                              marginBottom: 10,
+                              borderRadius: 10,
+                            }}
+                          >
                             <button
+                              style={{ marginRight: 5, marginBottom: 5 }}
+                              className="styled-button"
                               id={artist.id}
                               data-name={artist.name}
                               onClick={(event) => {
@@ -251,22 +300,53 @@ export default function ControlledAccordions({ task, onSubmit }) {
                           }}
                         >
                           <div>
-                            <p>Remove - {artist.name} </p>
+                            <p>
+                              {artist.name} -{" "}
+                              <button className="red-styled-button">
+                                {" "}
+                                Remove{" "}
+                              </button>{" "}
+                            </p>
                           </div>
                         </a>
                       </Grid>
                     );
                   })}
                 </Grid>
+
+                {/* <div
+                  style={{
+                    marginTop: 15,
+                    backgroundColor: "rgba(250,250,250,.1)",
+                    width: "100%",
+                    padding: 10,
+                    borderRadius: 5,
+                  }}
+                > */}
                 <Grid item className={classes.formLabels}>
-                  <label htmlFor="energy">Energy</label>
+                  <label htmlFor="energy">Energy Level:</label>
                 </Grid>
-                <Grid item>
+
+                <Grid>
                   <RadioButtons></RadioButtons>
                 </Grid>
+                {/* </div> */}
+
+                {/* <div
+                  style={{
+                    marginTop: 15,
+                    backgroundColor: "rgba(250,250,250,.1)",
+                    width: "100%",
+                    padding: 10,
+                    borderRadius: 5,
+                  }}
+                > */}
                 <Grid item className={classes.formLabels}>
-                  <label htmlFor="duration">Duration (minutes) max 300</label>
+                  <label htmlFor="duration">
+                    Duration in minutes (Max. 300):
+                  </label>
                 </Grid>
+
                 <Grid item>
                   <input
                     className={classes.formItems}
@@ -279,15 +359,20 @@ export default function ControlledAccordions({ task, onSubmit }) {
                     }}
                   ></input>
                 </Grid>
+
                 <Grid item className={classes.formLabels}>
                   <button
+                    className="styled-button"
                     onClick={async (event) => {
                       event.preventDefault();
 
                       console.log("playlistState", playlistState);
+
                       const radioBtns =
                         event.target.parentElement.previousSibling
                           .previousSibling.previousSibling.firstChild;
+
+                      console.log("Radio buttons div: ", radioBtns);
                       let btnSelected;
 
                       for (
@@ -313,6 +398,7 @@ export default function ControlledAccordions({ task, onSubmit }) {
                     Generate Task
                   </button>
                 </Grid>
+                {/* </div> */}
               </Grid>
             </form>
           </div>
@@ -327,10 +413,10 @@ export default function ControlledAccordions({ task, onSubmit }) {
             </Typography>
           </div> */}
         </AccordionDetails>
-        <Divider />
-        <AccordionActions>
-          <button>Delete</button>
-        </AccordionActions>
+        {/* <Divider /> */}
+        {/* <AccordionActions>
+          <button className="red-styled-button">Delete</button>
+        </AccordionActions> */}
       </Accordion>
     </div>
   );

@@ -73,7 +73,7 @@ const Accordion = withStyles({
     borderStyle: "solid",
     borderWidth: 1,
     borderColor: "rgba(204, 162, 162)",
-    background: "#2b2b2b;",
+    background: "rgba(0,0,0,0.1)",
     color: "white",
   },
 })(MuiAccordion);
@@ -131,13 +131,13 @@ export default function ControlledAccordions({
             control={<Checkbox style={{ color: "rgba(204, 162, 162)" }} />}
           />
           <div className={classes.column}>
-            <Typography id="heading">
+            <Typography id="heading" style={{ fontSize: 20 }}>
               {taskState.task ? taskState.task.name : null}
             </Typography>
           </div>
           <div className={classes.column}>
             <Typography className={classes.secondaryHeading}>
-              Playlist Settings
+              Task Info
             </Typography>
           </div>
         </AccordionSummary>
@@ -148,23 +148,48 @@ export default function ControlledAccordions({
             justify="space-between"
             alignItems="flex-start"
           >
-            <h1>{taskState.task ? taskState.task.playlistName : null}</h1>
-            {taskState.task
-              ? taskState.task.tracks.map((track, i) => {
-                  return (
-                    <Grid item key={i}>
-                      <p>
-                        {track.name} - by {track.artists[0].name}
-                      </p>
-                    </Grid>
-                  );
-                })
-              : null}
+            <p
+              style={{
+                fontSize: 20,
+                backgroundColor: "rgba(250,250,250,.1)",
+                borderRadius: 10,
+                width: "100%",
+                padding: 5,
+              }}
+            >
+              Playlist Name:{" "}
+              {taskState.task ? taskState.task.playlistName : null}
+            </p>
+            <div
+              style={{
+                fontSize: 16,
+                backgroundColor: "rgba(250,250,250,.1)",
+                width: "100%",
+                padding: 10,
+                borderRadius: 5,
+              }}
+            >
+              {taskState.task ? (
+                <p style={{ fontSize: 20 }}>Your songs:</p>
+              ) : null}
+              {taskState.task
+                ? taskState.task.tracks.map((track, i) => {
+                    return (
+                      <Grid item key={i}>
+                        <p style={{ fontSize: 16 }}>
+                          {track.name} - by {track.artists[0].name}
+                        </p>
+                      </Grid>
+                    );
+                  })
+                : null}
+            </div>
           </Grid>
         </AccordionDetails>
         <Divider />
         <AccordionActions>
           <button
+            className="styled-button"
             onClick={(event) => {
               event.preventDefault();
               playlistBtn(taskState.task.playlistName, taskState.task.tracks, taskState.task._id);
@@ -181,6 +206,7 @@ export default function ControlledAccordions({
             Play Playlist
           </button>
           <button
+            className="red-styled-button"
             onClick={(event) => {
               event.preventDefault();
               console.log("updated");

@@ -37,7 +37,7 @@ function Application() {
           <Route exact path="/profile" component={Profile404} />
         )}
         {/* //404 here */}
-        <Route path="*" component={Setting404} />
+        {/* <Route path="*" component={Setting404} /> */}
       </Switch>
     </Router>
   );
