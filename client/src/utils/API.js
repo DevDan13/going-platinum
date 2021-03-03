@@ -18,9 +18,14 @@ export default {
   getGenreSeeds: function () {
     return axios.get("/api/Spotify/genre-seeds");
   },
-  createSpotifyPlaylist: function () {
-    return axios.post("/api/Spotify/create-playlist");
+  createSpotifyPlaylist: function (name) {
+    return axios.post("/api/Spotify/create-playlist/" + name);
   },
+
+  addTracksToPlaylist: function (name, array) {
+    return axios.post("/api/Spotify/add-tracks/" + name , array);
+  },
+
   getSpotifyRecommendations: function (energy, popularity, artists) {
     return axios.get(
       "/api/Spotify/get-recommendations/" +
@@ -44,6 +49,10 @@ export default {
     return axios.get("/api/Spotify/get-current-song");
   },
 
+  getSpotifyPlaylist: function () {
+    return axios.get("/api/Spotify/get-playlist");
+  },
+
   //Users Tasks Routes
   getUserTasks: function (id) {
     return axios.get("/api/task/" + id);
@@ -51,10 +60,10 @@ export default {
   postUserTasks: function (taskData) {
     return axios.post("/api/task/", taskData);
   },
-  updateUserTasks: function (id) {
-    return axios.put("/api/task/" + id);
+  updateUserTasks: function (id, body) {
+    return axios.put("/api/task/" + id, body);
   },
-  deleteUserTasks: function (id) {
+    deleteUserTasks: function (id) {
     return axios.delete("/api/task/" + id);
   },
   getTasks: function () {

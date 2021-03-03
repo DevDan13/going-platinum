@@ -17,7 +17,14 @@ router.route("/next").put(spotifyController.playNext);
 router.route("/previous").post(spotifyController.playPrevious);
 
 // "/api/Spotify/create-playlist"
-router.route("/create-playlist").post(spotifyController.createSpotifyPlaylist);
+router.route("/create-playlist/:playlistName").post(spotifyController.createSpotifyPlaylist);
+
+// "/api/Spotify/add-tracks"
+router.route("/add-tracks/:playlistId").post(spotifyController.addTracks);
+
+//  "/api/Spotify/get-playlist"
+router.route("/get-playlist").get(spotifyController.getPlaylist);
+
 
 // "/api/Spotify/get-recommendations"
 router

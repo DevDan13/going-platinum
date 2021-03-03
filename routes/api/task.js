@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const taskController = require("../../controllers/taskController");
 
-router.route("/").post(taskController.createTask);
+router.route("/")
+.post(taskController.createTask);
 
 router
   .route("/:id")
