@@ -15,6 +15,7 @@ export default function FormControlLabelPlacement() {
             control={<Radio color="primary" />}
             label="1 (Low)"
             labelPlacement="top"
+            style={{color:"white"}}
           />
         </Grid>
         <Grid item xs={12} sm={2}>

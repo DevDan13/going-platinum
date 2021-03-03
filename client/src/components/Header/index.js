@@ -8,8 +8,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import {logOut} from "../../firebase.js"
-import { Link } from "react-router-dom";
+import { logOut } from "../../firebase.js";
+import { Link, useHistory } from "react-router-dom";
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MenuAppBar() {
   const classes = useStyles();
+  const history = useHistory();
+
   // const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -35,9 +37,13 @@ export default function MenuAppBar() {
   //   setAuth(event.target.checked);
   // };
 
-  const handleLogout = () => {
-    logOut();
-    window.location.replace("/login")
+  async function handleLogout() {
+    try {
+      await logOut();
+      history.push("/login");
+    } catch (e) {
+      alert(e.message);
+    }
     return;
   }
 
@@ -73,7 +79,7 @@ export default function MenuAppBar() {
                 <h1 className="logo">
                   <AlbumIcon
                     fontSize="large"
-                    style={{ marginRight: 10 }}
+                    style={{ marginRight: 10, marginBottom: 10 }}
                   ></AlbumIcon>
                   Going Platinum
                 </h1>
@@ -110,7 +116,7 @@ export default function MenuAppBar() {
                 <MenuItem onClick={handleClose}>
                   {" "}
                   <Link
-                  style={{textDecoration: "none", color: "black"}}
+                    style={{ textDecoration: "none", color: "black" }}
                     to="/passwordReset"
                     // className={
                     //   window.location.pathname === "/" ||
@@ -122,24 +128,13 @@ export default function MenuAppBar() {
                     Reset password
                   </Link>
                 </MenuItem>
-                <hr style={{ marginTop: 5, marginBottom: 5}}></hr>
+                <hr style={{ marginTop: 5, marginBottom: 5 }}></hr>
                 <MenuItem
                   onClick={() => {
                     handleLogout();
                   }}
                 >
-                   {/* onClick={handleClose} */}
-                  {/* <Link
-                    to="/login"
-                    className={
-                      window.location.pathname === "/" ||
-                      window.location.pathname === "/login"
-                        ? "nav-link active"
-                        : "nav-link"
-                    }
-                  > */}
                   Logout
-                  {/* </Link> */}
                 </MenuItem>
               </Menu>
             </Grid>

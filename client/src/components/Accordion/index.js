@@ -73,7 +73,7 @@ const Accordion = withStyles({
     borderStyle: "solid",
     borderWidth: 1,
     borderColor: "rgba(204, 162, 162)",
-    background: "#2b2b2b",
+    background: "rgba(0,0,0,0.1)",
     color: "white",
   },
 })(MuiAccordion);

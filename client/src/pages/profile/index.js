@@ -143,12 +143,12 @@ function Profile() {
   //   });
   // };
 
-  const setToPlay = () => {
+  const setPulseToPlay = () => {
     setChecked(true);
     return setPlaying(true);
   };
 
-  const setToPause = () => {
+  const setPulseToPause = () => {
     setChecked(false);
     return setPlaying(false);
   }
@@ -291,14 +291,14 @@ function Profile() {
                 getUserCurrentSong();
               }}
               setToPlay={() => {
-                setToPause(); //<--- Not sure why this works, but this function is purely for aesthetics
+                setPulseToPause(); //<--- Not sure why this works, but this function is purely for aesthetics
                 setChecked((prev) => !prev);
                 API.songPlay();
                 getUserCurrentSong();
                 return setPlaying(true);
               }}
               setToPause={() => {
-                setToPlay(); //<--- Not sure why this works, but this function is purely for aesthetics
+                setPulseToPlay(); //<--- Not sure why this works, but this function is purely for aesthetics
                 API.songPause();
                 getUserCurrentSong();
                 setChecked((prev) => !prev);
