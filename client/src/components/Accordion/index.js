@@ -188,7 +188,7 @@ export default function ControlledAccordions({
               );
             }}
           >
-            Create on Spotify and Select
+            Create on Spotify and Play
           </button>
           <button
             className="styled-button"
@@ -197,7 +197,7 @@ export default function ControlledAccordions({
               playBtn(taskState.task.spotifyId);
             }}
           >
-            Select
+            Play
           </button>
           <button
             className="red-styled-button"
