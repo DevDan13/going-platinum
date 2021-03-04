@@ -1,0 +1,139 @@
+/* @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* body {
+  min-height: 100vh;
+  font-family: "Raleway", sans-serif;
+} */
+
+.forgot{
+  font-family: 'Raleway', sans-serif;
+
+}
+
+.container-main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.container-main:hover .top:before, .container-main:hover .top:after,
+.container-main:hover .bottom-reset:before,
+.container-main:hover .bottom-reset:after, .container-main:active .top:before, .container-main:active .top:after,
+.container-main:active .bottom-reset:before,
+.container-main:active .bottom-reset:after {
+  margin-left: 200px;
+  transform-origin: -200px 50%;
+  transition-delay: 0s;
+}
+.container-main:hover .center-reset, .container-main:active .center-reset {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.top:before, .top:after,
+.bottom-reset:before,
+.bottom-reset:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 200vmax;
+  height: 200vmax;
+  top: 50%;
+  left: 50%;
+  margin-top: -100vmax;
+  transform-origin: 0 50%;
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+  z-index: 10;
+  opacity: 0.65;
+  transition-delay: 0.2s;
+}
+
+.top:before {
+  transform: rotate(45deg);
+  background: #e46569;
+}
+.top:after {
+  transform: rotate(135deg);
+  background: #ecaf81;
+}
+
+.bottom-reset:before {
+  transform: rotate(-45deg);
+  background: #60b8d4;
+}
+.bottom-reset:after {
+  transform: rotate(-135deg);
+  background: #3745b5;
+}
+
+.center-reset {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+  transition-delay: 0s;
+  color: #333;
+}
+.center-reset input {
+  width: 100%;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 1px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+
+
+/* Btn */
+
+.btn-bubble {
+  color: white;
+  background-color: #77b11c;
+  background-repeat: no-repeat;
+}
+.btn-bubble:hover, .btn-bubble:focus {
+  -webkit-animation: bubbles 1s forwards ease-out;
+          animation: bubbles 1s forwards ease-out;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 30%, #eeeeff 60%, #eeeeff 65%, rgba(0, 0, 0, 0) 70%) 95% 115% / 1.17em 1.17em, radial-gradient(circle at center, rgba(0, 0, 0, 0) 30%, #eeeeff 60%, #eeeeff 65%, rgba(0, 0, 0, 0) 70%) -10% 122% / 0.67em 0.67em, radial-gradient(circle at center, rgba(0, 0, 0, 0) 30%, #eeeeff 60%, #eeeeff 65%, rgba(0, 0, 0, 0) 70%) 80% 92% / 0.79em 0.79em, radial-gradient(circle at center, rgba(0, 0, 0, 0) 30%, #eeeeff 60%, #eeeeff 65%, rgba(0, 0, 0, 0) 70%) 23% 113% / 1.19em 1.19em, radial-gradient(circle at center, rgba(0, 0, 0, 0) 30%, #eeeeff 60%, #eeeeff 65%, rgba(0, 0, 0, 0) 70%) 23% 138% / 0.86em 0.86em, radial-gradient(circle at center, rgba(0, 0, 0, 0) 30%, #eeeeff 60%, #eeeeff 65%, rgba(0, 0, 0, 0) 70%) 19% 126% / 1.1em 1.1em, radial-gradient(circle at center, rgba(0, 0, 0, 0) 30%, #eeeeff 60%, #eeeeff 65%, rgba(0, 0, 0, 0) 70%) 87% 97% / 1.1em 1.1em, radial-gradient(circle at center, rgba(0, 0, 0, 0) 30%, #eeeeff 60%, #eeeeff 65%, rgba(0, 0, 0, 0) 70%) -8% 147% / 0.75em 0.75em, radial-gradient(circle at center, rgba(0, 0, 0, 0) 30%, #eeeeff 60%, #eeeeff 65%, rgba(0, 0, 0, 0) 70%) 25% 129% / 0.84em 0.84em, radial-gradient(circle at center, rgba(0, 0, 0, 0) 30%, #eeeeff 60%, #eeeeff 65%, rgba(0, 0, 0, 0) 70%) 104% 150% / 0.88em 0.88em, radial-gradient(circle at center, rgba(0, 0, 0, 0) 30%, #eeeeff 60%, #eeeeff 65%, rgba(0, 0, 0, 0) 70%) 70% 100% / 0.54em 0.54em;
+  background-color: #77b11c;
+  background-repeat: no-repeat;
+}
+
+@-webkit-keyframes bubbles {
+  100% {
+    background-position: 88% -247%, -18% -286%, 71% -325%, 32% -199%, 30% -199%, 14% -31%, 85% -266%, 2% -14%, 17% -354%, 106% -194%, 70% -74%;
+    box-shadow: inset 0 -6.5em 0 #0072c4;
+  }
+} 
+
+@keyframes bubbles {
+  100% {
+    background-position: 88% -247%, -18% -286%, 71% -325%, 32% -199%, 30% -199%, 14% -31%, 85% -266%, 2% -14%, 17% -354%, 106% -194%, 70% -74%;
+    box-shadow: inset 0 -6.5em 0 #0072c4;
+  }
+}
+
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 1em 2em;
+  border-radius: 20px;
+  border: 0;
+}

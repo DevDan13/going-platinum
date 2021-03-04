@@ -30,16 +30,18 @@
   }
 
   #login-title {
-    background-color: rgb(172, 89, 89);
-    border: 1px solid black;
+    text-align: center;
+    background-color: black;
+    /* border: 1px solid black; */
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 40px;
+    margin-top: 0;
   }
 }
 
 /* General */
 #login-title {
-  color: "white";
+  color: white;
   font-family: "Concert One";
 }

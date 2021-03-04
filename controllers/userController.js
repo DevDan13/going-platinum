@@ -2,22 +2,10 @@ const db = require("../models");
 
 module.exports = {
   findById: function (req, res) {
-    db.User.findById(req.params.id)
+    db.User.findOne({firebaseId: req.params.id})
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
   },
-
-  populateTask: function (req, res) {
-    db.User.findById(req.params.id)
-      .populate("tasks")
-      .then((dbUser) => {
-        res.json(dbUser);
-      })
-      .catch((err) => {
-        res.json(err);
-      });
-  },
-
   createUser: function (req, res) {
     db.User.create(req.body)
       .then((dbModel) => res.json(dbModel))

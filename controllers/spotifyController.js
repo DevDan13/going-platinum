@@ -70,15 +70,17 @@ module.exports = {
       }
     );
   },
-  createSpotifyPlaylist: function () {
+  createSpotifyPlaylist: function (req, res) {
     spotifyApi
-      .createPlaylist("My playlist", {
+      .createPlaylist(req.params.playlistName, {
         description: "My description",
         public: true,
       })
       .then(
         function (data) {
           console.log("Created playlist!");
+          console.log(data)
+          res.send(data);
         },
         function (err) {
           console.log("Something went wrong!", err);
@@ -175,4 +177,28 @@ module.exports = {
       }
     );
   },
+
+  getPlaylist: function (req, res) {
+    spotifyApi.getPlaylist('5ieJqeLJjjI8iJWaxeBLuK')
+  .then(function(data) {
+    console.log('Some information about this playlist', data.body);
+    res.send(data.body)
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+},
+
+addTracks: function (req, res) {
+  spotifyApi.addTracksToPlaylist(req.params.playlistId, req.body
+ )
+  .then(function(data) {
+    console.log('Added tracks to playlist!');
+    console.log(data);
+    res.send(data);
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+}
+
+
 };

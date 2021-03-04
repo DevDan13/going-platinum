@@ -23,7 +23,6 @@ html {
       /* height: 100vh; */
       min-height: 100vh;
     }
-
   }
 
 /* #login-title {
@@ -76,7 +75,7 @@ left: 0;
   .login-box {
     width: 100%;
     max-width: 330px;
-    height: 420px;
+    height: 480px;
     margin: 15px 0;
   }
   .img {
@@ -134,7 +133,7 @@ left: 0;
 }
 
 /* "Submit" text on button */
-.login-box form a {
+.login-box form .submit-button {
   position: absolute;
   display: inline-block;
   padding: 10px 20px;
@@ -152,7 +151,7 @@ left: 0;
 }
 
 /* Button background on hover */
-.login-box a:hover {
+.login-box .submit-button:hover {
   cursor: pointer;
   background: rgb(207, 104, 104);
   color: #fff;
@@ -319,7 +318,7 @@ left: 0;
 }
 
 /* "Submit" text on button */
-.login-box-2 form a {
+.login-box-2 form .submit-button {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -334,7 +333,7 @@ left: 0;
 }
 
 /* Button background on hover */
-.login-box-2 a:hover {
+.login-box-2 .submit-button:hover {
   background: rgb(207, 104, 104);
   color: #fff;
   border-radius: 5px;
@@ -344,13 +343,13 @@ left: 0;
               0 0 100px rgb(207, 104, 104);
 }
 
-.login-box-2 a span {
+.login-box-2 .submit-button span {
   position: absolute;
   display: block;
 }
 
 /* Button outline top */
-.login-box-2 a span:nth-child(1) {
+.login-box-2 .submit-button span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -369,7 +368,7 @@ left: 0;
 }
 
  /* Button outline right */
-.login-box-2 a span:nth-child(2) {
+.login-box-2 .submit-button span:nth-child(2) {
   top: -100%;
   right: 0;
   width: 2px;
@@ -389,7 +388,7 @@ left: 0;
 }
 
  /* Button outline bottom*/
-.login-box-2 a span:nth-child(3) {
+.login-box-2 .submit-button span:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -409,7 +408,7 @@ left: 0;
 }
 
  /* Button outline left */
-.login-box-2 a span:nth-child(4) {
+.login-box-2 .submit-button span:nth-child(4) {
   bottom: -100%;
   left: 0;
   width: 2px;

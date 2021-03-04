@@ -8,7 +8,7 @@ router
   //create new user
   .post(userController.createUser);
 
-router.route("/:id").get(userController.populateTask);
+router.route("/:id").get(userController.findById);
 
 router.route("/tasks/:id").get(userController.getTaskbyUserID);
 

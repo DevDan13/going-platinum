@@ -1,20 +1,18 @@
-import React, { useState} from "react";
-import { Link } from "react-router-dom";
-import {
-  signInWithGoogle,
-  auth,
-  generateUserDocument,
-  userContext,
-} from "../../firebase";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import API from "../../utils/API";
+import { auth, generateUserDocument } from "../../firebase";
+import Grid from "@material-ui/core/Grid";
+import GoogleBtn from "../GoogleBtn/index";
 import "./SignUp.css";
-
-
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState(null);
+
+  let history = useHistory();
 
   const createUserWithEmailAndPasswordHandler = async (
     event,
@@ -23,10 +21,16 @@ const SignUp = () => {
   ) => {
     event.preventDefault();
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
+      const { user } = await auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((result) => {
+          console.log(result);
+          API.createUser({
+            email: result.user.email,
+            name: displayName,
+            firebaseId: result.user.uid,
+          }).then(history.push("/profile"));
+        });
       generateUserDocument(user, { displayName });
     } catch (error) {
       setError("Error Signing up with email and password");
@@ -34,7 +38,7 @@ const SignUp = () => {
     setEmail("");
     setPassword("");
     setDisplayName("");
-  }
+  };
 
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
@@ -46,6 +50,14 @@ const SignUp = () => {
       setDisplayName(value);
     }
   };
+
+  // const handleUser =  () => {
+  //   API.createUser({
+  //     email: email,
+  //     name: displayName || null,
+  //     // firebaseId: user.uid,
+  //   }).then(history.push("/profile"));
+  // };
 
   return (
     <div className="login-box">
@@ -84,16 +96,19 @@ const SignUp = () => {
           />
           <label>Password</label>
         </div>
-        <button
-          onClick={() => {
-            signInWithGoogle();
-          }}
+
+        <Grid
+          style={{ display: "flex", justifyContent: "center" }}
+          item
+          xs={12}
         >
-          Sign Up with Google
-        </button>
+          <GoogleBtn>Sign up with Google</GoogleBtn>
+        </Grid>
+
         <a
+          className="submit-button"
           onClick={(event) => {
-            createUserWithEmailAndPasswordHandler(event, email, password)
+            createUserWithEmailAndPasswordHandler(event, email, password);
           }}
         >
           <span></span>
