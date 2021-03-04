@@ -17,7 +17,7 @@ import Playlist from "../../components/Playlist";
 import { auth } from "../../firebase";
 
 function Profile() {
-  const [tasksState, setTasksState] = useState([]);
+  const [tasksState, setTasksState] = useState();
   const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
   const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
   const [playing, setPlaying] = useState(false);
@@ -34,16 +34,27 @@ function Profile() {
       console.log("code=", code[1]);
       API.getTokens(code[1]);
     }
-
     setTasks();
   }, []);
 
-  const setTasks = async () => {
+  //Deletes tasks from DB on Delete Btn Click
+  const deleteTask = (id) => {
+    API.deleteUserTasks(id)
+      .then((res) => {
+        setTasksState();
+        setTasks();
+      })
+      .then(() => {
+        initAccordion();
+      });
+  };
+
+  const setTasks = () => {
     // //User Version
     const id = user.uid;
 
     //DemoVersion
-  let taskIDs = await API.getTasksByUserId(id)
+  API.getTasksByUserId(id)
       .then((res) => {
         let taskIDs = [];
         console.log("taskids", res);
@@ -55,13 +66,9 @@ function Profile() {
         }
         return taskIDs;
       })
-      
-       await setTasksState({
-          ...tasksState,
-          tasks: taskIDs,
-        });
-        
-        await initAccordian();
+      .then((taskIDs) => {
+        setTasksState(taskIDs);
+      });
   };
 
   const spotifyTokenBtn = () => {
@@ -126,14 +133,6 @@ function Profile() {
       console.log(error);
     }
   };
-  //Deletes tasks from DB on Delete Btn Click
-  const deleteTask = (id) => {
-      API.deleteUserTasks(id).then((res) => {
-        setTasks();
-        console.log("delete", res);
-      });
-  };
-
 
   //Init Playlist that will play by Setting current Playlist Tracks
   const playPlaylists = (spotifyId) => {
@@ -150,13 +149,6 @@ function Profile() {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   });
-
-  // const testBtn = () => {
-  //   API.getUserCurrentSong().then((res) => {
-  //     console.log(res.data);
-  //     setCurrentlyPlaying({ ...currentlyPlaying, song: res.data });
-  //   });
-  // };
 
   const createPlaylist = async (name, array, id) => {
     let playlist = await API.createSpotifyPlaylist(name);
@@ -179,25 +171,22 @@ function Profile() {
     setNewPlaylist(playlist.data.body.id);
   };
 
-const initAccordian = () => {
-  return ( tasksState.tasks
-    ? tasksState.tasks.map((task, i) => (
-        <Grid item xs={10} key={i}>
-          <Accordion
-            className="accordion"
-            task={task}
-            delBtn={deleteTask}
-            playBtn={playPlaylists}
-            playlistBtn={createPlaylist}
-          ></Accordion>
-        </Grid>
-      ))
-    : null
-  )
- }
- 
-
   const [checked, setChecked] = useState(false);
+
+  const initAccordion = () => {
+    const accordion = tasksState.map((task, i) => (
+      <Grid item xs={10} key={i}>
+        <Accordion
+          className="accordion"
+          task={task}
+          delBtn={deleteTask}
+          playBtn={playPlaylists}
+          playlistBtn={createPlaylist}
+        ></Accordion>
+      </Grid>
+    ));
+    return accordion;
+  };
 
   return (
     <div className="img">
@@ -229,7 +218,7 @@ const initAccordian = () => {
               <Grid item xs={9}>
                 <NewTaskAccordion className="accordion" onSubmit={addTask} />
               </Grid>
-              {initAccordian()}
+              {tasksState ? initAccordion() : null}
             </Grid>
           </Panel>
         </Grid>
@@ -272,45 +261,15 @@ const initAccordian = () => {
           <Panel style={{ height: 500 }}>
             <h2 className="profile-h2">Music Player</h2>
             <Grid>
-            <iframe
-              src={`https://open.spotify.com/embed/playlist/${newPlaylist}`}
-              width="300"
-              height="380"
-              frameborder="0"
-              allowtransparency="true"
-              allow="encrypted-media"
-            ></iframe>
+              <iframe
+                src={`https://open.spotify.com/embed/playlist/${newPlaylist}`}
+                width="300"
+                height="380"
+                frameborder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+              ></iframe>
             </Grid>
-
-            {/* <MusicPlayer
-              image={
-                currentlyPlaying.song
-                  ? currentlyPlaying.song.album.images[1].url
-                  : null
-              }
-              setPrevious={() => {
-                API.playPrevious();
-                getUserCurrentSong();
-              }}
-              setNext={() => {
-                API.playNext();
-                getUserCurrentSong();
-              }}
-              setToPlay={() => {
-                setPulseToPause(); //<--- Not sure why this works, but this function is purely for aesthetics
-                setChecked((prev) => !prev);
-                API.songPlay();
-                getUserCurrentSong();
-                return setPlaying(true);
-              }}
-              setToPause={() => {
-                setPulseToPlay(); //<--- Not sure why this works, but this function is purely for aesthetics
-                API.songPause();
-                getUserCurrentSong();
-                setChecked((prev) => !prev);
-                return setPlaying(false);
-              }}
-            ></MusicPlayer> */}
           </Panel>
         </Grid>
       </Grid>
