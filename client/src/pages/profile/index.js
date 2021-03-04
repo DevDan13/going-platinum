@@ -41,7 +41,7 @@ function Profile() {
   const deleteTask = (id) => {
     API.deleteUserTasks(id)
       .then((res) => {
-       setTasksState()
+        setTasksState();
         setTasks();
       })
       .then(() => {
@@ -185,7 +185,6 @@ function Profile() {
         ></Accordion>
       </Grid>
     ));
-    console.log(accordion);
     return accordion;
   };
 

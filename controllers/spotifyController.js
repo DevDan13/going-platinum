@@ -73,13 +73,13 @@ module.exports = {
   createSpotifyPlaylist: function (req, res) {
     spotifyApi
       .createPlaylist(req.params.playlistName, {
-        description: "My description",
+        description: "",
         public: true,
       })
       .then(
         function (data) {
           console.log("Created playlist!");
-          console.log(data)
+          console.log(data);
           res.send(data);
         },
         function (err) {
@@ -118,6 +118,7 @@ module.exports = {
       "user-read-email",
       "user-modify-playback-state",
       "user-read-currently-playing",
+      "playlist-modify-public",
     ];
 
     // Create the authorization URL
@@ -179,26 +180,27 @@ module.exports = {
   },
 
   getPlaylist: function (req, res) {
-    spotifyApi.getPlaylist('5ieJqeLJjjI8iJWaxeBLuK')
-  .then(function(data) {
-    console.log('Some information about this playlist', data.body);
-    res.send(data.body)
-  }, function(err) {
-    console.log('Something went wrong!', err);
-  });
-},
+    spotifyApi.getPlaylist("5ieJqeLJjjI8iJWaxeBLuK").then(
+      function (data) {
+        console.log("Some information about this playlist", data.body);
+        res.send(data.body);
+      },
+      function (err) {
+        console.log("Something went wrong!", err);
+      }
+    );
+  },
 
-addTracks: function (req, res) {
-  spotifyApi.addTracksToPlaylist(req.params.playlistId, req.body
- )
-  .then(function(data) {
-    console.log('Added tracks to playlist!');
-    console.log(data);
-    res.send(data);
-  }, function(err) {
-    console.log('Something went wrong!', err);
-  });
-}
-
-
+  addTracks: function (req, res) {
+    spotifyApi.addTracksToPlaylist(req.params.playlistId, req.body).then(
+      function (data) {
+        console.log("Added tracks to playlist!");
+        console.log(data);
+        res.send(data);
+      },
+      function (err) {
+        console.log("Something went wrong!", err);
+      }
+    );
+  },
 };
