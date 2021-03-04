@@ -14,6 +14,8 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [showPopover1, setShowPopover1] = useState(false);
+  const [popover1Text, setPopover1Text] = useState("");
 
   let history = useHistory();
 
@@ -21,8 +23,24 @@ const SignIn = () => {
     event.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
-      .then(history.push("/profile"))
+      .then(() => history.push("/profile"))
       .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+
+        if (errorCode === "auth/wrong-password") {
+          setPopover1Text("Invalid password.");
+          setShowPopover1(true);
+        } else if (errorCode === "auth/user-not-found") {
+          setPopover1Text("User not found.");
+          setShowPopover1(true);
+        } else if (errorCode === "auth/invalid-email") {
+          setPopover1Text("Invalid email.");
+          setShowPopover1(true);
+        } else {
+          alert(errorMessage);
+        }
+
         setError("Error signing in with password and email!");
         console.error("Error signing in with password and email", error);
       });
@@ -38,11 +56,17 @@ const SignIn = () => {
     }
   };
 
+  auth.onAuthStateChanged(function (currentUser) {
+    if (currentUser) {
+      history.push("/profile");
+    }
+  });
+
   const popover = (
     <Popover
       id="popover-basic"
       style={{
-        marginTop: 10,
+        marginTop: 50,
         borderWidth: 1,
         borderColor: "white",
         borderStyle: "solid",
@@ -60,7 +84,7 @@ const SignIn = () => {
       <Popover.Content
         style={{ backgroundColor: "rgba(181, 45, 45, 0.85)", color: "white" }}
       >
-        The information you entered is incorrect.
+        {popover1Text}
       </Popover.Content>
     </Popover>
   );
@@ -95,7 +119,12 @@ const SignIn = () => {
             required
           />
           <label>Password</label>
-          <Link to="passwordReset" variant="body2" style={{ color: "pink" }}>
+          <Link
+            id="forgot-password"
+            to="passwordReset"
+            variant="body2"
+            style={{ color: "pink" }}
+          >
             Forgot password?{" "}
           </Link>
         </div>
@@ -105,6 +134,7 @@ const SignIn = () => {
           trigger="click"
           placement="bottom"
           overlay={popover}
+          show={showPopover1}
         >
           <a
             className="submit-button"
@@ -121,33 +151,20 @@ const SignIn = () => {
           </a>
         </OverlayTrigger>
       </form>
-      {/* <br></br>
 
- 
       <Grid
-        style={{ display: "flex", justifyContent: "center", paddingTop: 70 }}
+        style={{ display: "flex", justifyContent: "center", paddingTop: 75 }}
         item
         xs={12}
       >
-        <GoogleBtn>Sign in with Google</GoogleBtn>
-      </Grid>
-      <Grid style={{display: "flex", justifyContent: "center", paddingTop: 70}}item xs={12}>
-        
-        {/* <button
+        <GoogleBtn
           onClick={() => {
             signInWithGoogle();
           }}
         >
-          
           Sign in with Google
-        </button> */}
-      <GoogleBtn
-        onClick={() => {
-          signInWithGoogle();
-        }}
-      >
-        Sign in with Google
-      </GoogleBtn>
+        </GoogleBtn>
+      </Grid>
     </div>
 
     // <Grid container>
