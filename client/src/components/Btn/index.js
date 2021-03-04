@@ -29,16 +29,6 @@ function Btn() {
       >
         Get Started
       </button>
-      <button
-        type="button"
-        className="btn-start"
-        id="Generate"
-        onClick={() => {
-          logOut();
-        }}
-      >
-        Signout
-      </button>
     </div>
   );
 }
