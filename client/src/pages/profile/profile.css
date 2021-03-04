@@ -77,7 +77,7 @@
 }
 
 @media screen and (min-width: 964px) {
-  .img{
+  .profile-img{
     background-image: url("https://wallpapershome.com/images/pages/pic_h/23188.jpg");
     height: 100vh;
     background-repeat: no-repeat;

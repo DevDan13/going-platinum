@@ -201,7 +201,7 @@ function Profile() {
   };
 
   return (
-    <div className="img">
+    <div className="profile-img">
       <Header />
       <div id="spotify-login-div">
         {spotifyBtnState ? (
@@ -243,7 +243,7 @@ function Profile() {
 
         {/* The moving stuff in the middle of the page */}
         <Grid item xs={12} md={1}>
-          <Zoom in={checked}>
+          <Zoom in="true">
             <div id="motion-div">
               
               {isDesktop ? (
