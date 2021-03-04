@@ -88,7 +88,7 @@ const PasswordReset = () => {
             {error}
           </div>
         )}
-        <div className="container-main" onclick="onclick">
+        <div className="container-main" onClick="onclick">
           <div className="top"></div>
           <div className="bottom-reset"></div>
           <div className="center-reset">

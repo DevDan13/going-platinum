@@ -150,14 +150,15 @@ export default function ControlledAccordions({
           >
             <p
               style={{
-                fontSize: 20,
+                fontFamily: 'Bebas Neue',
+                textAlign: "center",
+                fontSize: 28,
                 backgroundColor: "rgba(250,250,250,.1)",
                 borderRadius: 10,
                 width: "100%",
                 padding: 5,
               }}
             >
-              Playlist Name:{" "}
               {taskState.task ? taskState.task.playlistName : null}
             </p>
             <div
@@ -206,7 +207,7 @@ export default function ControlledAccordions({
             Play Playlist
           </button>
           <button
-            className="red-styled-button"
+            className="styled-button"
             onClick={(event) => {
               event.preventDefault();
               console.log("updated");
@@ -216,6 +217,7 @@ export default function ControlledAccordions({
             Update
           </button>
           <button
+          className="red-styled-button"
             onClick={(event) => {
               event.preventDefault();
               delBtn(taskState.task._id);
