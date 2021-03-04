@@ -13,7 +13,7 @@ import Grid from "@material-ui/core/Grid";
 // import Chip from "@material-ui/core/Chip";
 import Divider from "@material-ui/core/Divider";
 // import clsx from "clsx";
-import RadioButtons from "../../components/RadioButtons";
+import RadioButtons from "../RadioButtons";
 import "./style.css";
 import API from "../../utils/API";
 

@@ -17,7 +17,7 @@ import Playlist from "../../components/Playlist";
 import { auth } from "../../firebase";
 
 function Profile() {
-  const [tasksState, setTasksState] = useState([]);
+  const [tasksState, setTasksState] = useState();
   const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
   const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
   const [playing, setPlaying] = useState(false);
@@ -35,9 +35,20 @@ function Profile() {
       console.log("code=", code[1]);
       API.getTokens(code[1]);
     }
-
     setTasks();
   }, []);
+
+  //Deletes tasks from DB on Delete Btn Click
+  const deleteTask = (id) => {
+    API.deleteUserTasks(id)
+      .then((res) => {
+        setTasksState();
+        setTasks();
+      })
+      .then(() => {
+        initAccordion();
+      });
+  };
 
   const setTasks = () => {
     // //User Version
@@ -57,10 +68,7 @@ function Profile() {
         }
       })
       .then((taskIDs) => {
-        setTasksState({
-          ...tasksState,
-          tasks: taskIDs,
-        });
+        setTasksState(taskIDs);
       });
   };
 
@@ -136,40 +144,6 @@ function Profile() {
       console.log(error);
     }
   };
-  //Deletes tasks from DB on Delete Btn Click
-  const deleteTask = (id) => {
-    try {
-      API.deleteUserTasks(id).then((res) => {
-        setTasks();
-        console.log(res);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  // const setToPlay = () => {
-  //   setChecked(true);
-  //   return setPlaying(true);
-  // };
-
-  // const setToPause = () => {
-  //   setChecked(false);
-  //   return setPlaying(false);
-  // };
-  //Changes Checked State and Updates Play through Spotify API
-  // const setToPlay = () => {
-  //   setChecked((prev) => !prev);
-  //   API.songPlay();
-  //   return setPlaying(true);
-  // };
-
-  //Pause Song from Spotify API call
-  // const setToPause = () => {
-  //   API.songPause();
-  //   setChecked((prev) => !prev);
-  //   return setPlaying(false);
-  // };
 
   //Init Playlist that will play by Setting current Playlist Tracks
   const playPlaylists = (spotifyId) => {
@@ -186,13 +160,6 @@ function Profile() {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   });
-
-  // const testBtn = () => {
-  //   API.getUserCurrentSong().then((res) => {
-  //     console.log(res.data);
-  //     setCurrentlyPlaying({ ...currentlyPlaying, song: res.data });
-  //   });
-  // };
 
   const createPlaylist = async (name, array, id) => {
     let playlist = await API.createSpotifyPlaylist(name);
@@ -216,6 +183,21 @@ function Profile() {
   };
 
   const [checked, setChecked] = useState(false);
+
+  const initAccordion = () => {
+    const accordion = tasksState.map((task, i) => (
+      <Grid item xs={10} key={i}>
+        <Accordion
+          className="accordion"
+          task={task}
+          delBtn={deleteTask}
+          playBtn={playPlaylists}
+          playlistBtn={createPlaylist}
+        ></Accordion>
+      </Grid>
+    ));
+    return accordion;
+  };
 
   return (
     <div className="img">
@@ -253,19 +235,7 @@ function Profile() {
               <Grid item xs={9}>
                 <NewTaskAccordion className="accordion" onSubmit={addTask} />
               </Grid>
-              {tasksState.tasks
-                ? tasksState.tasks.map((task, i) => (
-                    <Grid item xs={10} key={i}>
-                      <Accordion
-                        className="accordion"
-                        task={task}
-                        delBtn={deleteTask}
-                        playBtn={playPlaylists}
-                        playlistBtn={createPlaylist}
-                      ></Accordion>
-                    </Grid>
-                  ))
-                : null}
+              {tasksState ? initAccordion() : null}
             </Grid>
           </Panel>
         </Grid>
@@ -317,36 +287,6 @@ function Profile() {
                 allow="encrypted-media"
               ></iframe>
             </Grid>
-
-            {/* <MusicPlayer
-              image={
-                currentlyPlaying.song
-                  ? currentlyPlaying.song.album.images[1].url
-                  : null
-              }
-              setPrevious={() => {
-                API.playPrevious();
-                getUserCurrentSong();
-              }}
-              setNext={() => {
-                API.playNext();
-                getUserCurrentSong();
-              }}
-              setToPlay={() => {
-                setPulseToPause(); //<--- Not sure why this works, but this function is purely for aesthetics
-                setChecked((prev) => !prev);
-                API.songPlay();
-                getUserCurrentSong();
-                return setPlaying(true);
-              }}
-              setToPause={() => {
-                setPulseToPlay(); //<--- Not sure why this works, but this function is purely for aesthetics
-                API.songPause();
-                getUserCurrentSong();
-                setChecked((prev) => !prev);
-                return setPlaying(false);
-              }}
-            ></MusicPlayer> */}
           </Panel>
         </Grid>
       </Grid>
