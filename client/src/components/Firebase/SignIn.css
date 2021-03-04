@@ -3,6 +3,12 @@ html {
   height: 100%;
 }
 
+#forgot-password {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
 /* body {
   margin:0;
   padding:0;
