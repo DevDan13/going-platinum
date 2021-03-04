@@ -209,14 +209,16 @@ function Profile() {
   return (
     <div className="img">
       <Header />
-      <button
-        type="button"
-        className="btn-start"
-        id="Generate"
-        onClick={spotifyTokenBtn}
-      >
-        Spotify Login
-      </button>
+      <div id="spotify-login-div">
+        <button
+          type="button"
+          className="spotify-login-btn"
+          id="Generate"
+          onClick={spotifyTokenBtn}
+        >
+          Spotify Login
+        </button>
+      </div>
       <Grid
         style={{ display: "flex", justifyContent: "center", marginTop: 45 }}
         container
@@ -290,15 +292,15 @@ function Profile() {
         <Grid item xs={12} md={5}>
           <Panel style={{ height: 500 }}>
             <h2 className="profile-h2">Music Player</h2>
-            <Grid>
-            <iframe
-              src={`https://open.spotify.com/embed/playlist/${newPlaylist}`}
-              width="300"
-              height="380"
-              frameborder="0"
-              allowtransparency="true"
-              allow="encrypted-media"
-            ></iframe>
+            <Grid id="iframe-div" item xs={12}>
+              <iframe
+                src={`https://open.spotify.com/embed/playlist/${newPlaylist}`}
+                width="300"
+                height="380"
+                frameborder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+              ></iframe>
             </Grid>
 
             {/* <MusicPlayer

@@ -94,7 +94,7 @@ export default function MenuAppBar() {
                 <h1 className="logo">
                   <AlbumIcon
                     fontSize="large"
-                    style={{ marginRight: 10, marginBottom: 10 }}
+                    style={{ marginRight: 10, marginBottom: 10, }}
                   ></AlbumIcon>
                   Going Platinum
                 </h1>

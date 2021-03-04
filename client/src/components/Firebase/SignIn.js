@@ -95,7 +95,7 @@ const SignIn = () => {
             required
           />
           <label>Password</label>
-          <Link to="passwordReset" variant="body2" style={{ color: "pink" }}>
+          <Link id="forgot-password" to="passwordReset" variant="body2" style={{ color: "pink" }}>
             Forgot password?{" "}
           </Link>
         </div>
@@ -121,33 +121,20 @@ const SignIn = () => {
           </a>
         </OverlayTrigger>
       </form>
-      {/* <br></br>
 
- 
       <Grid
-        style={{ display: "flex", justifyContent: "center", paddingTop: 70 }}
+        style={{ display: "flex", justifyContent: "center", paddingTop: 75 }}
         item
         xs={12}
       >
-        <GoogleBtn>Sign in with Google</GoogleBtn>
-      </Grid>
-      <Grid style={{display: "flex", justifyContent: "center", paddingTop: 70}}item xs={12}>
-        
-        {/* <button
+        <GoogleBtn
           onClick={() => {
             signInWithGoogle();
           }}
         >
-          
           Sign in with Google
-        </button> */}
-      <GoogleBtn
-        onClick={() => {
-          signInWithGoogle();
-        }}
-      >
-        Sign in with Google
-      </GoogleBtn>
+        </GoogleBtn>
+      </Grid>
     </div>
 
     // <Grid container>
