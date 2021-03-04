@@ -34,7 +34,8 @@ function Application() {
             <Route exact path="/settings" component={Settings} />
           </>
         ) : (
-          <Route exact path="/profile" component={Profile404} />
+          // <Route exact path="/profile" component={Profile404} />
+          null
         )}
         {/* //404 here */}
         {/* <Route path="*" component={Setting404} /> */}
