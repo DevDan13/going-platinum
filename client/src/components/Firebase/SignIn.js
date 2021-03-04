@@ -38,6 +38,12 @@ const SignIn = () => {
     }
   };
 
+  auth.onAuthStateChanged(function(currentUser) {
+    if (currentUser) {
+      history.push("/profile")
+    } 
+  });
+
   const popover = (
     <Popover
       id="popover-basic"
