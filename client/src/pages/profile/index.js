@@ -38,29 +38,30 @@ function Profile() {
     setTasks();
   }, []);
 
-  const setTasks = () => {
+  const setTasks = async () => {
     // //User Version
     const id = user.uid;
 
     //DemoVersion
-    API.getTasksByUserId(id)
+  let taskIDs = await API.getTasksByUserId(id)
       .then((res) => {
-        console.log(res);
+        let taskIDs = [];
+        console.log("taskids", res);
         if (res.data) {
-          let taskIDs = [];
           res.data.forEach((task) => {
             taskIDs.push(task._id);
           });
-          console.log("taskids", taskIDs);
-          return taskIDs;
+          console.log(taskIDs);
         }
+        return taskIDs;
       })
-      .then((taskIDs) => {
-        setTasksState({
+      
+       await setTasksState({
           ...tasksState,
           tasks: taskIDs,
         });
-      });
+        
+        await initAccordian();
   };
 
   const spotifyTokenBtn = () => {
@@ -127,38 +128,12 @@ function Profile() {
   };
   //Deletes tasks from DB on Delete Btn Click
   const deleteTask = (id) => {
-    try {
       API.deleteUserTasks(id).then((res) => {
         setTasks();
-        console.log(res);
+        console.log("delete", res);
       });
-    } catch (error) {
-      console.log(error);
-    }
   };
 
-  // const setToPlay = () => {
-  //   setChecked(true);
-  //   return setPlaying(true);
-  // };
-
-  // const setToPause = () => {
-  //   setChecked(false);
-  //   return setPlaying(false);
-  // };
-  //Changes Checked State and Updates Play through Spotify API
-  // const setToPlay = () => {
-  //   setChecked((prev) => !prev);
-  //   API.songPlay();
-  //   return setPlaying(true);
-  // };
-
-  //Pause Song from Spotify API call
-  // const setToPause = () => {
-  //   API.songPause();
-  //   setChecked((prev) => !prev);
-  //   return setPlaying(false);
-  // };
 
   //Init Playlist that will play by Setting current Playlist Tracks
   const playPlaylists = (spotifyId) => {
@@ -204,6 +179,24 @@ function Profile() {
     setNewPlaylist(playlist.data.body.id);
   };
 
+const initAccordian = () => {
+  return ( tasksState.tasks
+    ? tasksState.tasks.map((task, i) => (
+        <Grid item xs={10} key={i}>
+          <Accordion
+            className="accordion"
+            task={task}
+            delBtn={deleteTask}
+            playBtn={playPlaylists}
+            playlistBtn={createPlaylist}
+          ></Accordion>
+        </Grid>
+      ))
+    : null
+  )
+ }
+ 
+
   const [checked, setChecked] = useState(false);
 
   return (
@@ -236,19 +229,7 @@ function Profile() {
               <Grid item xs={9}>
                 <NewTaskAccordion className="accordion" onSubmit={addTask} />
               </Grid>
-              {tasksState.tasks
-                ? tasksState.tasks.map((task, i) => (
-                    <Grid item xs={10} key={i}>
-                      <Accordion
-                        className="accordion"
-                        task={task}
-                        delBtn={deleteTask}
-                        playBtn={playPlaylists}
-                        playlistBtn={createPlaylist}
-                      ></Accordion>
-                    </Grid>
-                  ))
-                : null}
+              {initAccordian()}
             </Grid>
           </Panel>
         </Grid>

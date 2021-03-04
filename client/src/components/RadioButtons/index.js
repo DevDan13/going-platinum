@@ -47,7 +47,7 @@ export default function FormControlLabelPlacement() {
         </Grid>
         <Grid item xs={12} sm={3}>
           <FormControlLabel
-            value="1"
+            value=".9"
             control={<Radio color="primary" />}
             label="5 (High)"
             labelPlacement="top"

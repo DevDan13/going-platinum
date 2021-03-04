@@ -185,7 +185,7 @@ export default function ControlledAccordions({
           <button
             className="styled-button"
             onClick={(event) => {
-              event.preventDefault();
+              event.stopPropagation();
               playlistBtn(
                 taskState.task.playlistName,
                 taskState.task.tracks,
@@ -198,7 +198,7 @@ export default function ControlledAccordions({
           <button
             className="styled-button"
             onClick={(event) => {
-              event.preventDefault();
+              event.stopPropagation();
               playBtn(taskState.task.spotifyId);
             }}
           >
@@ -206,8 +206,9 @@ export default function ControlledAccordions({
           </button>
           <button
             className="red-styled-button"
+            aria-label="task._id"
             onClick={(event) => {
-              event.preventDefault();
+              event.stopPropagation();
               delBtn(taskState.task._id);
             }}
           >
