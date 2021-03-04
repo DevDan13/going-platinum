@@ -21,6 +21,7 @@ function Profile() {
   const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
   const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
   const [playing, setPlaying] = useState(false);
+  const [spotifyBtnState, setSpotifyBtnState] = useState(false);
   const [currentlyPlaying, setCurrentlyPlaying] = useState({});
   const [newPlaylist, setNewPlaylist] = useState("");
 
@@ -68,6 +69,16 @@ function Profile() {
       window.location.replace(res.data);
     });
   };
+
+  // async function handleSpotifyLogin() {
+  //   try{
+  //     await spotifyTokenBtn();
+  //     setSpotifyBtnState(true);
+  //   } catch (e) {
+  //     alert(e.message);
+  //   }
+  //   return;
+  // }
 
   //Accordion form Submit to Add Task to DB
   const addTask = (formData) => {
@@ -210,14 +221,18 @@ function Profile() {
     <div className="img">
       <Header />
       <div id="spotify-login-div">
-        <button
-          type="button"
-          className="spotify-login-btn"
-          id="Generate"
-          onClick={spotifyTokenBtn}
-        >
-          Spotify Login
-        </button>
+        {spotifyBtnState ? (
+          <button className="spotify-login-btn-disabled">Logged In</button>
+        ) : (
+          <button
+            type="button"
+            className="spotify-login-btn"
+            id="Generate"
+            onClick={spotifyTokenBtn}
+          >
+            Spotify Login
+          </button>
+        )}
       </div>
       <Grid
         style={{ display: "flex", justifyContent: "center", marginTop: 45 }}

@@ -6,6 +6,18 @@
   text-align: center;
 }
 
+.spotify-login-btn-disabled {
+  background-color: transparent;
+  border-radius: 2em;
+  border: 0.2em solid rgb(132, 214, 160);
+  color: rgb(88, 88, 88);
+  padding: 0.7em 1.5em;
+  margin: 3px;
+  margin-top: 0.75em;
+  font-size: 20px;
+  background-color: rgb(132, 214, 160);
+}
+
 .spotify-login-btn {
   background-color: transparent;
   border-radius: 2em;
