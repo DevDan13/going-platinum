@@ -6,6 +6,7 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionActions from "@material-ui/core/AccordionActions";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Grid from "@material-ui/core/Grid";
@@ -188,16 +189,16 @@ export default function ControlledAccordions({
               );
             }}
           >
-            Add Playlist to Spotify
+            Create on Spotify and Play
           </button>
           <button
-            className="styled-button"
+            className="green-styled-button"
             onClick={(event) => {
               event.preventDefault();
               playBtn(taskState.task.spotifyId);
             }}
           >
-            Play Playlist
+            <PlayArrowIcon ></PlayArrowIcon>
           </button>
           <button
             className="red-styled-button"
