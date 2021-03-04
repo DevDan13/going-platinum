@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import API from "../../utils/API";
-import {
-  signInWithGoogle,
-  auth,
-  generateUserDocument,
-} from "../../firebase";
-/* eslint-disable jsx-a11y/anchor-is-valid */
-
+import { auth, generateUserDocument } from "../../firebase";
 import Grid from "@material-ui/core/Grid";
-
 import GoogleBtn from "../GoogleBtn/index";
 import "./SignUp.css";
 
@@ -20,7 +13,7 @@ const SignUp = () => {
   const [error, setError] = useState(null);
 
   let history = useHistory();
-  
+
   const createUserWithEmailAndPasswordHandler = async (
     event,
     email,
@@ -28,17 +21,16 @@ const SignUp = () => {
   ) => {
     event.preventDefault();
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      ).then((result) => {
-        console.log(result);
-        API.createUser({
-          email: result.user.email,
-          name: displayName,
-          firebaseId: result.user.uid,
-        }).then(history.push("/profile"));
-      });
+      const { user } = await auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((result) => {
+          console.log(result);
+          API.createUser({
+            email: result.user.email,
+            name: displayName,
+            firebaseId: result.user.uid,
+          }).then(history.push("/profile"));
+        });
       generateUserDocument(user, { displayName });
     } catch (error) {
       setError("Error Signing up with email and password");
@@ -58,8 +50,6 @@ const SignUp = () => {
       setDisplayName(value);
     }
   };
-
-
 
   // const handleUser =  () => {
   //   API.createUser({
@@ -126,7 +116,7 @@ const SignUp = () => {
           <span></span>
           <span></span>
           Sign Up
-          </a>
+        </a>
       </form>
     </div>
     /* <p className="text-center my-3">or</p>

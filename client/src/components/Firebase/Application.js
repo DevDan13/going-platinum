@@ -20,7 +20,7 @@ function Application() {
     <Router>
       <Switch>
         {/* // these are routes for both */}
-        <Route exact path={["/", "/callback"]} component={Home} />
+        <Route exact path={["/"]} component={Home} />
         <Route exact path="/login">
           <LoginForm />
         </Route>
@@ -30,7 +30,7 @@ function Application() {
         {user ? (
           // only user routes
           <>
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path={["/profile", "/callback"]}component={Profile} />
             <Route exact path="/settings" component={Settings} />
           </>
         ) : (

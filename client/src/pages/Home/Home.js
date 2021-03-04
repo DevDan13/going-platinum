@@ -19,27 +19,27 @@ const user = useContext(UserContext);
 console.log(user);
 
   //testing feature
-  const testBtn = () => {
-    API.getAuthentication().then((res) => {
-      window.location.replace(res.data);
-    });
-  };
+  // const testBtn = () => {
+  //   API.getAuthentication().then((res) => {
+  //     window.location.replace(res.data);
+  //   });
+  // };
 
-  const handleUser = () => {
-    API.createUser({
-      name: user.displayName,
-      email: user.email,
-      firebaseId: user.uid,
-    });
-  };
+  // const handleUser = () => {
+  //   API.createUser({
+  //     name: user.displayName,
+  //     email: user.email,
+  //     firebaseId: user.uid,
+  //   });
+  // };
   
 
-  const getPlaylist = () => {
-    API.getArtist("Eminem").then((res) => {
-      console.log(res.data);
-      //items.id
-    });
-  };
+  // const getPlaylist = () => {
+  //   API.getArtist("Eminem").then((res) => {
+  //     console.log(res.data);
+  //     //items.id
+  //   });
+  // };
   // const testToken = () => {
   //   const code = window.location.href.split("=");
   //   if (code[1]) {
@@ -82,11 +82,11 @@ console.log(user);
               everything.
             </h1>
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <button onClick={testBtn}>Test</button>
             <button onClick={handleUser}>Test</button>
             <button onClick={getPlaylist}>playlist</button>
-          </Grid>
+          </Grid> */}
         </Grid>
       </div>
     </div>

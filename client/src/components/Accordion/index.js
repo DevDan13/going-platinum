@@ -87,13 +87,7 @@ export default function ControlledAccordions({
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [taskState, setTaskState] = React.useState({});
-  // const [artistState, setArtists] = React.useState([]);
-  // const [artistArrayState, setArtistArray] = React.useState([]);
-  // const [playlistState, setPlaylistState] = React.useState({
-  //   playlistName: "",
-  //   mood: "",
-  //   duration: "",
-  // });
+
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -192,12 +186,17 @@ export default function ControlledAccordions({
             className="styled-button"
             onClick={(event) => {
               event.preventDefault();
-              playlistBtn(taskState.task.playlistName, taskState.task.tracks, taskState.task._id);
+              playlistBtn(
+                taskState.task.playlistName,
+                taskState.task.tracks,
+                taskState.task._id
+              );
             }}
           >
-            Create Playlist
+            Add Playlist to Spotify
           </button>
           <button
+            className="styled-button"
             onClick={(event) => {
               event.preventDefault();
               playBtn(taskState.task.spotifyId);
@@ -207,15 +206,6 @@ export default function ControlledAccordions({
           </button>
           <button
             className="red-styled-button"
-            onClick={(event) => {
-              event.preventDefault();
-              console.log("updated");
-              API.updateUserTasks(taskState.task._id);
-            }}
-          >
-            Update
-          </button>
-          <button
             onClick={(event) => {
               event.preventDefault();
               delBtn(taskState.task._id);
