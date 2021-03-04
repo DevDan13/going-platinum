@@ -4,6 +4,8 @@ import API from "../../utils/API";
 import { auth, generateUserDocument } from "../../firebase";
 import Grid from "@material-ui/core/Grid";
 import GoogleBtn from "../GoogleBtn/index";
+import Popover from "react-bootstrap/Popover";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import "./SignUp.css";
 
 const SignUp = () => {
@@ -11,6 +13,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState(null);
+  const [showPopover2, setShowPopover2] = useState(false);
+  const [popover2Text, setPopover2Text] = useState("");
 
   let history = useHistory();
 
@@ -33,7 +37,21 @@ const SignUp = () => {
         });
       generateUserDocument(user, { displayName });
     } catch (error) {
-      setError("Error Signing up with email and password");
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      
+      if (errorCode === "auth/email-already-in-use") {
+        setPopover2Text("Email already in use.");
+        setShowPopover2(true);
+      } else if (errorCode === "auth/invalid-email") {
+        setPopover2Text("Invalid email.");
+        setShowPopover2(true);
+      } else if (errorCode === "auth/weak-password") {
+        setPopover2Text("The password is too weak.");
+        setShowPopover2(true);
+      } else {
+        alert(errorMessage);
+      }
     }
     setEmail("");
     setPassword("");
@@ -58,6 +76,33 @@ const SignUp = () => {
   //     // firebaseId: user.uid,
   //   }).then(history.push("/profile"));
   // };
+
+  const popover = (
+    <Popover
+      id="popover-basic"
+      style={{
+        marginTop: 50,
+        borderWidth: 1,
+        borderColor: "white",
+        borderStyle: "solid",
+      }}
+    >
+      <Popover.Title
+        as="h3"
+        style={{
+          backgroundColor: "rgba(150, 32, 32, 0.85)",
+          color: "white",
+        }}
+      >
+        Alert
+      </Popover.Title>
+      <Popover.Content
+        style={{ backgroundColor: "rgba(181, 45, 45, 0.85)", color: "white" }}
+      >
+        {popover2Text}
+      </Popover.Content>
+    </Popover>
+  );
 
   return (
     <div className="login-box">
@@ -104,6 +149,14 @@ const SignUp = () => {
         >
           <GoogleBtn>Sign up with Google</GoogleBtn>
         </Grid>
+        
+        <OverlayTrigger
+          rootClose="click"
+          trigger="click"
+          placement="bottom"
+          overlay={popover}
+          show={showPopover2}
+        >
 
         <a
           className="submit-button"
@@ -117,6 +170,7 @@ const SignUp = () => {
           <span></span>
           Sign Up
         </a>
+        </OverlayTrigger>
       </form>
     </div>
     /* <p className="text-center my-3">or</p>

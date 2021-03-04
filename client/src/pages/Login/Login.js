@@ -1,6 +1,7 @@
 import React from "react";
-import LoginForm from "../../components/loginForm/Form";
+import LoginForm from "../../components/LoginForm/Form";
 import AlbumIcon from "@material-ui/icons/Album";
+
 import "./style.css";
 
 function Login() {

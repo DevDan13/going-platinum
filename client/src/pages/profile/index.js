@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Grid from "@material-ui/core/Grid";
 import React, { useEffect, useState, useContext } from "react";
@@ -20,7 +21,8 @@ function Profile() {
   const [tasksState, setTasksState] = useState();
   const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
   const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
+  const [spotifyBtnState, setSpotifyBtnState] = useState(false);
   const [currentlyPlaying, setCurrentlyPlaying] = useState({});
   const [newPlaylist, setNewPlaylist] = useState("");
 
@@ -76,6 +78,16 @@ function Profile() {
       window.location.replace(res.data);
     });
   };
+
+  // async function handleSpotifyLogin() {
+  //   try{
+  //     await spotifyTokenBtn();
+  //     setSpotifyBtnState(true);
+  //   } catch (e) {
+  //     alert(e.message);
+  //   }
+  //   return;
+  // }
 
   //Accordion form Submit to Add Task to DB
   const addTask = (formData) => {
@@ -191,16 +203,22 @@ function Profile() {
   return (
     <div className="img">
       <Header />
-      <button
-        type="button"
-        className="btn-start"
-        id="Generate"
-        onClick={spotifyTokenBtn}
-      >
-        Spotify Login
-      </button>
+      <div id="spotify-login-div">
+        {spotifyBtnState ? (
+          <button className="spotify-login-btn-disabled">Logged In</button>
+        ) : (
+          <button
+            type="button"
+            className="spotify-login-btn"
+            id="Generate"
+            onClick={spotifyTokenBtn}
+          >
+            Spotify Login
+          </button>
+        )}
+      </div>
       <Grid
-        style={{ display: "flex", justifyContent: "center", marginTop: 45 }}
+        style={{ display: "flex", justifyContent: "center", marginTop: 25 }}
         container
       >
         <Grid item xs={12} md={5}>
@@ -227,6 +245,7 @@ function Profile() {
         <Grid item xs={12} md={1}>
           <Zoom in={checked}>
             <div id="motion-div">
+              
               {isDesktop ? (
                 <LinePulse playing={{ playing }}></LinePulse>
               ) : (
@@ -260,7 +279,7 @@ function Profile() {
         <Grid item xs={12} md={5}>
           <Panel style={{ height: 500 }}>
             <h2 className="profile-h2">Music Player</h2>
-            <Grid>
+            <Grid id="iframe-div" item xs={12}>
               <iframe
                 src={`https://open.spotify.com/embed/playlist/${newPlaylist}`}
                 width="300"
