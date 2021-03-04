@@ -14,7 +14,12 @@ function GoogleBtn(props) {
           signInWithGoogle();
         }}
       >
-        <FcGoogle style={{ paddingRight: 5, paddingTop: 0 }} />
+        <FcGoogle
+          onClick={() => {
+            signInWithGoogle();
+          }}
+          style={{ paddingRight: 5, paddingTop: 0 }}
+        />
         {props.children}
         <br></br>
       </a>

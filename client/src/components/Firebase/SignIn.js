@@ -40,7 +40,7 @@ const SignIn = () => {
 
   const popover = (
     <Popover
-      id="popover-basic"  
+      id="popover-basic"
       style={{
         marginTop: 10,
         borderWidth: 1,
@@ -95,9 +95,17 @@ const SignIn = () => {
             required
           />
           <label>Password</label>
+          <Link to="passwordReset" variant="body2" style={{ color: "pink" }}>
+            Forgot password?{" "}
+          </Link>
         </div>
 
-        <OverlayTrigger rootClose="click" trigger="click" placement="bottom" overlay={popover}>
+        <OverlayTrigger
+          rootClose="click"
+          trigger="click"
+          placement="bottom"
+          overlay={popover}
+        >
           <a
             className="submit-button"
             onClick={(event) => {
@@ -113,22 +121,9 @@ const SignIn = () => {
           </a>
         </OverlayTrigger>
       </form>
-      <button
-        onClick={() => {
-          logOut();
-        }}
-      >
-        Signout
-      </button> 
-
       {/* <br></br>
 
-      <Grid style={{ position: "absolute", right: 40, top: 240 }} item xs={12}>
-        <Link to="passwordReset" variant="body2" style={{ color: "pink" }}>
-          Forgot password?{" "}
-        </Link>
-      </Grid>
-
+ 
       <Grid
         style={{ display: "flex", justifyContent: "center", paddingTop: 70 }}
         item
@@ -147,12 +142,12 @@ const SignIn = () => {
           Sign in with Google
         </button> */}
       <GoogleBtn
-                onClick={() => {
-                  signInWithGoogle();
-                }}
-      >Sign in with Google</GoogleBtn>
-
-
+        onClick={() => {
+          signInWithGoogle();
+        }}
+      >
+        Sign in with Google
+      </GoogleBtn>
     </div>
 
     // <Grid container>

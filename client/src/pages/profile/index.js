@@ -27,6 +27,17 @@ function Profile() {
   const user = useContext(UserContext);
   console.log(user);
 
+  //Init tasks and Auth token
+  useEffect(() => {
+    const code = window.location.href.split("=");
+    if (code[1]) {
+      console.log("code=", code[1]);
+      API.getTokens(code[1]);
+    }
+
+    setTasks();
+  }, []);
+
   const setTasks = () => {
     // //User Version
     const id = user.uid;
@@ -51,20 +62,12 @@ function Profile() {
         });
       });
   };
-  //Init tasks and Auth token
-  useEffect(() => {
 
-    const code = window.location.href.split("=");
-    if (code[1]) {
-      console.log("code=", code[1]);
-      API.getTokens(code[1]);
-    }
-
-    setTasks();
-
-  }, []);
-
-
+  const spotifyTokenBtn = () => {
+    API.getAuthentication().then((res) => {
+      window.location.replace(res.data);
+    });
+  };
 
   //Accordion form Submit to Add Task to DB
   const addTask = (formData) => {
@@ -108,7 +111,7 @@ function Profile() {
             playlistName: formData[1].playlistName,
             tracks: newTracks,
             user: user.uid,
-            spotifyId: ""
+            spotifyId: "",
           }).then((model) => {
             setTasks();
             console.log("POSTED TASK");
@@ -134,23 +137,15 @@ function Profile() {
     }
   };
 
-  // const handleUser = () => {
-  //   API.createUser({
-  //     name: user.displayName,
-  //     email: user.email,
-  //     firebaseId: user.uid,
-  //   });
+  // const setToPlay = () => {
+  //   setChecked(true);
+  //   return setPlaying(true);
   // };
 
-  const setPulseToPlay = () => {
-    setChecked(true);
-    return setPlaying(true);
-  };
-
-  const setPulseToPause = () => {
-    setChecked(false);
-    return setPlaying(false);
-  };
+  // const setToPause = () => {
+  //   setChecked(false);
+  //   return setPlaying(false);
+  // };
   //Changes Checked State and Updates Play through Spotify API
   // const setToPlay = () => {
   //   setChecked((prev) => !prev);
@@ -167,8 +162,7 @@ function Profile() {
 
   //Init Playlist that will play by Setting current Playlist Tracks
   const playPlaylists = (spotifyId) => {
-  setNewPlaylist(spotifyId);
-      
+    setNewPlaylist(spotifyId);
   };
 
   // This code adjusts the motion media depending on the viewport size
@@ -182,15 +176,14 @@ function Profile() {
     return () => window.removeEventListener("resize", updateMedia);
   });
 
-  const testBtn = () => {
-    API.getUserCurrentSong().then((res) => {
-      console.log(res.data);
-      setCurrentlyPlaying({ ...currentlyPlaying, song: res.data });
-    });
-  };
+  // const testBtn = () => {
+  //   API.getUserCurrentSong().then((res) => {
+  //     console.log(res.data);
+  //     setCurrentlyPlaying({ ...currentlyPlaying, song: res.data });
+  //   });
+  // };
 
   const createPlaylist = async (name, array, id) => {
-
     let playlist = await API.createSpotifyPlaylist(name);
     console.log("playlist");
 
@@ -202,12 +195,13 @@ function Profile() {
     await API.addTracksToPlaylist(playlist.data.body.id, tracks);
     await console.log("tracksAdded");
 
-   await API.updateUserTasks(id, { spotifyId: playlist.data.body.id })
-   .then((res) => {
-     console.log(res);
-   })
+    await API.updateUserTasks(id, { spotifyId: playlist.data.body.id }).then(
+      (res) => {
+        console.log(res);
+      }
+    );
     //console.log("kevin"+);
-    setNewPlaylist(playlist.data.body.id)
+    setNewPlaylist(playlist.data.body.id);
   };
 
   const [checked, setChecked] = useState(false);
@@ -215,7 +209,14 @@ function Profile() {
   return (
     <div className="img">
       <Header />
-      {/* <button onClick={testBtn}>test</button> */}
+      <button
+        type="button"
+        className="btn-start"
+        id="Generate"
+        onClick={spotifyTokenBtn}
+      >
+        Spotify Login
+      </button>
       <Grid
         style={{ display: "flex", justifyContent: "center", marginTop: 45 }}
         container
@@ -287,9 +288,18 @@ function Profile() {
 
         {/* The music player panel */}
         <Grid item xs={12} md={5}>
-          <Panel style={{height: 500}}>
-          <h2 className="profile-h2">Music Player</h2>
-            <iframe src={`https://open.spotify.com/embed/playlist/${newPlaylist}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          <Panel style={{ height: 500 }}>
+            <h2 className="profile-h2">Music Player</h2>
+            <Grid>
+            <iframe
+              src={`https://open.spotify.com/embed/playlist/${newPlaylist}`}
+              width="300"
+              height="380"
+              frameborder="0"
+              allowtransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+            </Grid>
 
             {/* <MusicPlayer
               image={

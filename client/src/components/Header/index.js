@@ -33,7 +33,6 @@ export default function MenuAppBar() {
 
   // const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [name, setName] = useState("");
   const open = Boolean(anchorEl);
 
   const user = useContext(UserContext);
@@ -100,10 +99,7 @@ export default function MenuAppBar() {
                   Going Platinum
                 </h1>
               </Link>
-              {/* <div className="userWelcome" style={{display:"flex", justifyContent:"center"}}>
-                <h1 className="logo" fontSize="large">Welcome {name} </h1>
-              </div>
-               */}
+              
             </Grid>
 
             <Grid item xs={2} md={1}>
