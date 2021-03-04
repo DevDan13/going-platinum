@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Grid from "@material-ui/core/Grid";
 import React, { useEffect, useState, useContext } from "react";
