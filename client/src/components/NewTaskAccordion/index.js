@@ -288,6 +288,7 @@ export default function ControlledAccordions({ task, onSubmit }) {
                       const radioBtns =
                         event.target.parentElement.previousSibling
                           .previousSibling.previousSibling.firstChild;
+                      
                       let btnSelected;
 
                       for (

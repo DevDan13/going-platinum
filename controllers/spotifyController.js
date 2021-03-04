@@ -161,7 +161,7 @@ module.exports = {
         Authorization: "Bearer " + accessToken,
       },
     }).then((res) => {
-      console.log(`Axios Call completed: ${res}`);
+      console.log(`Axios Call completed`);
     });
   },
   getUserCurrentSong: function (req, res) {
