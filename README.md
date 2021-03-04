@@ -1,4 +1,4 @@
-# going-platinum
+# Going Platinum
 
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
 
@@ -8,8 +8,10 @@
 * [Usage](#usage)
 * [License](#license)
 * [Contributing](#contributing)
-* [test](#test)
+* [Test](#test)
 * [Questions](#Questions)
+* [Video](#Video)
+* [Images](#Images)
 
 ## Deployed Application
 
@@ -46,3 +48,15 @@ Christopher-Lamb, danrgenioa, DevDan13, Gaven56, and Ibramelias are the contribu
 Once the playlist is generated click the add to potify button to add the generated playlist to the your own Spotify account!  Going-Platinum allows the user to enchance their own Spotify experience by introducing them to new and familiar music while they work or play.  Of Course the playlists genreated from each individual task can be played within the app.  All that's left is to click the play playlist button to make the music player appear and click it's play, pause, next track, and previous track buttons.  Please note that a song will play only thirty seconds and not allow you to switch tracks unless you are signed in to a Spotify premium account.
 
 Please checkout our GitHub profiles [DevDan13](https://github.com/DevDan13) [Gavin56](https://github.com/Gavin56) [dargenioa](https://github.com/dargenioa) [Christopher-Lamb](https://github.com/Christopher-Lamb) and [Ibramelias](https://github.com/Ibramelias) for more of our work.
+
+## Video
+<img src="https://github.com/Gavin56/images/blob/main/Going%20Platinum.gif?raw=true" width="404" height="196"></img>
+
+## Images
+<p float="left">
+  <img src="https://github.com/Gavin56/images/blob/main/going-platinum-home.png?raw=true" width=400px>
+  <img src="https://github.com/Gavin56/images/blob/main/going-platinum-login.png?raw=true" width=400px>
+  <img src="https://github.com/Gavin56/images/blob/main/going-platinum-profile.png?raw=true" width=400px>
+  <img src="https://github.com/Gavin56/images/blob/main/going-platinum-reset-password.png?raw=true" width=400px>
+</p>
+
