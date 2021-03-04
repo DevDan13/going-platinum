@@ -118,12 +118,6 @@ export default function ControlledAccordions({
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <FormControlLabel
-            aria-label="Select"
-            onClick={(event) => event.stopPropagation()}
-            onFocus={(event) => event.stopPropagation()}
-            control={<Checkbox style={{ color: "rgba(204, 162, 162)" }} />}
-          />
           <div className={classes.column}>
             <Typography id="heading" style={{ fontSize: 20 }}>
               {taskState.task ? taskState.task.name : null}

@@ -201,7 +201,7 @@ function Profile() {
   };
 
   return (
-    <div className="img">
+    <div className="profile-img">
       <Header />
       <div id="spotify-login-div">
         {spotifyBtnState ? (
