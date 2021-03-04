@@ -24,12 +24,8 @@
   border: 0.2em solid rgb(30, 215, 96);
   color: #000;
   cursor: pointer;
-  padding: 0.7em 1.5em;
-  
+  padding: 0.3em .7em;
   transition: all 0.25s ease;
-
-  margin: 3px;
-  margin-top: 0.75em;
   font-size: 20px;
   background-color: rgb(30, 215, 96);
 }

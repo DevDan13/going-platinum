@@ -21,7 +21,7 @@ function Profile() {
   const [tasksState, setTasksState] = useState();
   const [isDesktop, setDesktop] = useState(window.innerWidth > 962);
   const [playerPulse, setPlayerPulse] = useState(window.innerWidth > 1500);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const [spotifyBtnState, setSpotifyBtnState] = useState(false);
   const [currentlyPlaying, setCurrentlyPlaying] = useState({});
   const [newPlaylist, setNewPlaylist] = useState("");
@@ -218,7 +218,7 @@ function Profile() {
         )}
       </div>
       <Grid
-        style={{ display: "flex", justifyContent: "center", marginTop: 45 }}
+        style={{ display: "flex", justifyContent: "center", marginTop: 25 }}
         container
       >
         <Grid item xs={12} md={5}>
@@ -245,6 +245,7 @@ function Profile() {
         <Grid item xs={12} md={1}>
           <Zoom in={checked}>
             <div id="motion-div">
+              
               {isDesktop ? (
                 <LinePulse playing={{ playing }}></LinePulse>
               ) : (
